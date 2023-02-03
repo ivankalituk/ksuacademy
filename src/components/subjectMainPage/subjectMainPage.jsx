@@ -4,6 +4,7 @@ import arrow from '../../photos/arrow.svg'
 import './subjectMainPage.css'
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function SubjectMainPage(){
 
@@ -20,7 +21,7 @@ function SubjectMainPage(){
                             <img src={subj} alt="subject" />
                         </div>
 
-                        <a href="#">Назва предмету</a>
+                        <Link to="/courses">Назва предмету</Link>
                     </div>
                     
                     <div className="custom_check">
@@ -31,13 +32,14 @@ function SubjectMainPage(){
 
                 <div className={check? "subject_content, active_content": "subject_content"}>
                     <div className="subject_content_container">
-                        <a href="#">Розділ</a>
-                        <a href="#">Розділ</a>
-                        <a href="#">Розділ</a>
-                        <a href="#">Розділ</a>
-                        <a href="#">Розділ</a>
-                        <a href="#">Розділ</a>
-                        <a href="#">Розділ</a>
+                        <Link to="/chapter">Розділ</Link>
+                        <Link to="/chapter">Розділ</Link>
+                        <Link to="/chapter">Розділ</Link>
+                        <Link to="/chapter">Розділ</Link>
+                        <Link to="/chapter">Розділ</Link>
+                        <Link to="/chapter">Розділ</Link>
+                        <Link to="/chapter">Розділ</Link>
+                        <Link to="/chapter">Розділ</Link>
                     </div>
                 </div>
             </div>

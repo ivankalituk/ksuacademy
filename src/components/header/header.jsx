@@ -6,15 +6,17 @@ import burger from '../../photos/burgerMenu.svg'
 
 import Search from './components/searchBar.jsx'
 
+import { Link } from 'react-router-dom'
+
 function Header(){
     return(
         <header>
             <div className="header_container">
                 <div className="header_inner">
-                    <a href="main" className="logo_group" >
+                    <Link to="/" className="logo_group" >
                         <img src={logo} alt="logo" />
                         <span>ksu academy</span>
-                    </a>
+                    </Link>
 
                     <div className="searchbar_and_courses">
                         <Search></Search>

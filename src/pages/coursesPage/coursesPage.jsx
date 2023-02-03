@@ -1,5 +1,3 @@
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer";
 import SubjectCourses from "../../components/subjectCourses/subjectCourses.jsx"
 
 import './coursesPage.scss'
@@ -7,8 +5,6 @@ import './coursesPage.scss'
 function coursesPage(){
     return(
         <div className="coursesPage">
-            <Header></Header>
-
             <div className="content">
                 <div className="content_container">
                     <div className="content_header">Назва предмету</div>
@@ -20,8 +16,6 @@ function coursesPage(){
                     </div>
                 </div>
             </div>
-
-            <Footer></Footer>
         </div>
     )
 }

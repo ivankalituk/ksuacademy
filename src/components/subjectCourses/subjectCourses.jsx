@@ -1,6 +1,7 @@
 import './subjectCourses.scss';
 
 import subjectLogo from '../../photos/subjectLogo.svg'
+import { Link } from 'react-router-dom';
 
 function SubjectCources(){
     return(
@@ -13,21 +14,22 @@ function SubjectCources(){
                     </div>
 
                     <div className="Course_name">
-                        <a href='#'>назва курсу</a>
+                        <Link to='/courses'>назва курсу</Link>
                     </div>
                 </div>
 
                 <div className="subThemes">
                     <div className="subThemes_container">
-                        <a href="#">Назва розділу</a>
-                        <a href="#">Назва розділу</a>
-                        <a href="#">Назва розділу</a>
-                        <a href="#">Назва розділу</a>
-                        <a href="#">Назва розділу</a>
-                        <a href="#">Назва розділу</a>
-                        <a href="#">Назва розділу</a>
-                        <a href="#">Назва розділу</a>
-                        <a href="#">Назва розділу</a>
+                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter">Назва розділу</Link>
                     </div>
                 </div>
 

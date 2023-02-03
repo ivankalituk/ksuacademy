@@ -8,12 +8,13 @@ import cat2 from '../../photos/cat2.png'
 
 import './mainPage.scss'
 
+// import CoursesPage from './pages/coursesPage/coursesPage';
+// import ChaptrerPage from './pages/chapterPage/chapterPage.jsx';
+
 function MainPage(){
 
     return(
         <div className="mainPage">
-            <Header></Header>
-
             <div className="content">
                 <div className="content_container">
 
@@ -46,7 +47,6 @@ function MainPage(){
                         <div className="cources_header">курси</div>
 
                         <div className="cources_colomns">
-                            <Subject></Subject>
                             <Subject></Subject>
                             <Subject></Subject>
                             <Subject></Subject>
@@ -107,10 +107,9 @@ function MainPage(){
 
                 </div>
             </div>
-
-            <Footer></Footer>
         </div>
 
+        
     )
 }
 

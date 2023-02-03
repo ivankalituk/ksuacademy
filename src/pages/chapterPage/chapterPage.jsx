@@ -9,7 +9,6 @@ import './chapterPage.scss'
 function ChaptrerPage(){
     return(
         <div className="chapterPage">
-            <Header></Header>
             <ChapterProgress></ChapterProgress>
 
             <div className="content">
@@ -21,9 +20,6 @@ function ChaptrerPage(){
                     <FinalTest></FinalTest>
                 </div>
             </div>
-
-            <Footer></Footer>
-
         </div>
     )
 }

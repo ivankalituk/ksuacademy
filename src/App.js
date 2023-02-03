@@ -2,25 +2,25 @@ import './App.css';
 
 import MainPage from './pages/mainPage/mainPage';
 import CoursesPage from './pages/coursesPage/coursesPage';
-import ChaptrerPage from './pages/chapterPage/chapterPage.jsx';
+import ChaptrerPage from './pages/chapterPage/chapterPage';
 
-import ChapterProgress from './components/chapterProgress/chapterProgress';
 import Header from './components/header/header';
-import ThemeMenu from './components/themeMenu/themeMenu';
-import SubjectMainPage from './components/subjectMainPage/subjectMainPage';
-import FinalTest from './components/finalTest/finalTest';
+import Footer from './components/footer/footer';
+
+import { Routes, Route, Form } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      {/* <MainPage></MainPage> */}
-      {/* <CoursesPage></CoursesPage> */}
-      <ChaptrerPage></ChaptrerPage>
+      <Header></Header>
 
-      {/* <ChapterProgress></ChapterProgress> */}
-      {/* <ThemeMenu></ThemeMenu> */}
-      {/* <Header></Header> */}
-      {/* <FinalTest></FinalTest> */}
+        <Routes>
+          <Route path='/' element={<MainPage/>}/>
+          <Route path='/courses' element={<CoursesPage/>}/>
+          <Route path='/chapter' element={<ChaptrerPage/>}/>
+        </Routes>
+
+      <Footer></Footer>
     </div>
   );
 }
