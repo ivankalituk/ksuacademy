@@ -1,0 +1,45 @@
+.lection{
+    margin-bottom: 10px;
+    text-decoration: none;
+    display: block;
+    max-width: 100%;
+    min-width: 400px;
+    background-color: #F1F1F1;
+    border-radius: 16px;
+
+    .lection_container{
+        padding: 16px;
+        display: flex;
+        align-items: center;
+
+        .lection_type{
+            width: 64px;
+            height: 64px;
+            display: flex;
+            justify-content: center;
+            background: #FFFFFF;
+            border-radius: 16px;
+
+            img{
+                width: 50%;
+            }
+        }
+
+        span{
+            max-width: 70%;
+            margin-left: 10px;
+            display: block;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #16325C;
+        }
+
+    }
+}
+
+@media (max-width: 871px) {
+    .lection{
+        min-width: 100px;
+    }
+}

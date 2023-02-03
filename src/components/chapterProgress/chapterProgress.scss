@@ -1,0 +1,22 @@
+.ChapterProgress{
+    background-color: #005495;
+
+    .progress_container{
+        max-width: 1440px;
+        margin: 0 auto;
+     
+        .progress_inner{
+            padding: 16px 116px;
+
+            span{
+                font-weight: 900;
+                font-size: 36px;
+                line-height: 44px;
+                color: white;
+                text-transform: uppercase;
+            }
+            
+        }
+
+    }
+}

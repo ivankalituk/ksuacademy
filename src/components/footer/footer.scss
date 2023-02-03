@@ -7,13 +7,13 @@
         margin: 0 auto;
 
         .footer_inner{
-            margin: 0 116px;
+            padding: 0 116px;
             display: flex;
             justify-content: space-between;
         }
 
         .main_info{
-
+            flex: 1;
             .logo_group{
                 text-decoration: none;
                 display: flex;
@@ -32,7 +32,7 @@
 
             .info{
                 margin-top: 8px;
-                width: 400px;
+                width: 100%;
                 color: white;
                 font-weight: 400;
                 font-size: 14px;
@@ -40,41 +40,85 @@
             }
         }
 
-        .main_links{
-            a{
-                display: block;
-                margin-bottom: 16px;
-                text-decoration: none;
-                color: white;
-                font-weight: 700;
-                font-size: 14px;
-                line-height: 17px;
+        .links{
+            margin-left: 40px;
+            display: flex;
+            justify-content: space-between;
+            flex: 1;
+            .main_links{
+                a{
+                    display: block;
+                    margin-bottom: 16px;
+                    text-decoration: none;
+                    color: white;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 17px;
+                }
+                a:last-child{
+                    margin: none;
+                }
             }
-            a:last-child{
-                margin: none;
-            }
-        }
 
-        .theme_links{
-            .theme_name{
-                font-weight: 700;
-                font-size: 14px;
-                line-height: 17px;
-                color: white;
-                opacity: 0.5;
-            }
-            
-            a{
-                text-decoration: none;
-                display: block;
-                margin-top: 16px;
-                font-weight: 700;
-                font-size: 14px;
-                line-height: 17px;
-                color: white;
+            .theme_links{
+                .theme_name{
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: white;
+                    opacity: 0.5;
+                }
+                
+                a{
+                    text-decoration: none;
+                    display: block;
+                    margin-top: 16px;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: white;
+                }
             }
         }
         
 
+    }
+}
+
+@media (max-width: 1000px) {
+    .footer{
+        .footer_container{
+            .footer_inner{
+                padding: 0 20px;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 800px) {
+    .footer{
+        .footer_container{
+            .footer_inner{
+                display: block;
+                
+                .links{
+                    justify-content: space-around;
+                    margin-top: 16px;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 700px) {
+    .footer{
+        .footer_container{
+            .footer_inner{
+                padding: 0 10px;
+            }
+        }
     }
 }

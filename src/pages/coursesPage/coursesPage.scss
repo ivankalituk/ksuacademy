@@ -1,0 +1,49 @@
+.coursesPage{
+
+    .content{
+        max-width: 1440px;
+        margin: 0 auto;
+
+        .content_container{
+            margin: 64px 0 52px 0;
+            padding: 0 116px;
+            .content_header{
+                
+                background: linear-gradient(0deg, #16325C 5.11%, #005494 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-transform: uppercase;
+                font-weight: 900;
+                font-size: 36px;
+                line-height: 44px;
+            }
+
+            .subjects{
+                margin-top: 32px;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 1000px) {
+    .coursesPage{
+        
+        .content{
+            .content_container{
+                padding: 0 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .coursesPage{
+        
+        .content{
+            .content_container{
+                padding: 0 10px;
+            }
+        }
+    }
+}

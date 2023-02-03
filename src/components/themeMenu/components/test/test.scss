@@ -1,0 +1,88 @@
+.test{
+    min-width: 400px;
+    width: 100%;
+    background-color: #F1F1F1;
+    border-radius: 16px;
+
+    .test_container{
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .text_heading{
+            display: flex;
+            align-items: center;
+            .test_type{
+                width: 64px;
+                height: 64px;
+                display: flex;
+                justify-content: center;
+                background: #FFFFFF;
+                border-radius: 16px;
+
+                img{
+                    width: 32px;
+                }
+            }
+
+            .test_info{
+                span{
+                    display: block;
+                    margin-left: 10px;
+                    display: block;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: #16325C;
+                }
+
+                .questions_num{
+                    margin-top: 8px;
+                    display: block;
+                    color: #16325C;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 17px;
+                }
+            }
+        }
+
+        a{
+            text-decoration: none;
+            display: block;
+            padding: 8px 16px;
+            background-color: #005495;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 16px;
+            color: white;
+            border-radius: 16px;
+            transition: 0.5s;
+        }
+
+        a:active{
+            background-color: #16325C;
+            transition: 0.5s;
+        }
+    }
+}
+
+@media (max-width: 871px) {
+    .test{
+        min-width: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .test{
+        .test_container{
+            a{
+                text-align: center;
+                width: 100px;
+                word-break: normal;
+            }
+        }
+    }
+}

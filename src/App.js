@@ -1,18 +1,26 @@
 import './App.css';
 
+import MainPage from './pages/mainPage/mainPage';
+import CoursesPage from './pages/coursesPage/coursesPage';
+import ChaptrerPage from './pages/chapterPage/chapterPage.jsx';
+
+import ChapterProgress from './components/chapterProgress/chapterProgress';
 import Header from './components/header/header';
-import SubjectMainMenu from './components/subjectMainPage/subjectMainMenu';
-import Footer from './components/footer/footer';
-import SubjectCources from './components/subjectCourses/subjectCourses';
+import ThemeMenu from './components/themeMenu/themeMenu';
+import SubjectMainPage from './components/subjectMainPage/subjectMainPage';
+import FinalTest from './components/finalTest/finalTest';
 
 function App() {
   return (
     <div className="App">
-      <Header></Header>
+      {/* <MainPage></MainPage> */}
+      {/* <CoursesPage></CoursesPage> */}
+      <ChaptrerPage></ChaptrerPage>
 
-      <SubjectCources></SubjectCources>
-      {/* <SubjectMainMenu></SubjectMainMenu>
-      <Footer></Footer> */}
+      {/* <ChapterProgress></ChapterProgress> */}
+      {/* <ThemeMenu></ThemeMenu> */}
+      {/* <Header></Header> */}
+      {/* <FinalTest></FinalTest> */}
     </div>
   );
 }

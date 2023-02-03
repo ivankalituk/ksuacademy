@@ -1,8 +1,10 @@
 import './header.scss'
 
 import logo from '../../photos/logo.svg'
-import search from '../../photos/search.svg'
 import courses from '../../photos/courses.svg'
+import burger from '../../photos/burgerMenu.svg'
+
+import Search from './components/searchBar.jsx'
 
 function Header(){
     return(
@@ -15,12 +17,7 @@ function Header(){
                     </a>
 
                     <div className="searchbar_and_courses">
-                        <div className="seatchBar">
-                            <input type="text" placeholder='Пошук'/>
-                            <button>
-                                <img src={search} alt="search" />
-                            </button>
-                        </div>
+                        <Search></Search>
 
                         <div className="courses">
                             <span>Курси</span>
@@ -30,10 +27,14 @@ function Header(){
 
                     <div className="account">
                         <div className="login_join">
-                            <button className='login'>Вхід</button>
-                            <button className='join'>Реєстрація</button>
+                            <a href='#' className='login'>Вхід</a>
+                            <a href='#' className='join'>Реєстрація</a>
                         </div>
                     </div>
+
+                    <button className="burger">
+                        <img src={burger} alt="burger" />
+                    </button>
                 </div>
             </div>
         </header>

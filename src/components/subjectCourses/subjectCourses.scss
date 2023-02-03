@@ -1,7 +1,7 @@
 .SubjectCouces{
-    // width: 100%;
-    max-width: 1208px;
-
+    width: 100%;
+    // max-width: 1208px;
+    margin-bottom: 32px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
     border-radius: 16px;
     background-color: white;
@@ -64,6 +64,48 @@
                     font-size: 14px;
                     line-height: 17px;
                     color: #16325C;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .SubjectCouces{
+        .SubjectCouces_container{
+
+            .heading{
+                .Course_name{
+                    a{
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .subThemes{
+                .subThemes_container{
+                    column-count: 2;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .SubjectCouces{
+        .SubjectCouces_container{
+
+            .heading{
+                .Course_name{
+                    a{
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .subThemes{
+                .subThemes_container{
+                    column-count: 1;
                 }
             }
         }

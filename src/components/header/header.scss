@@ -3,26 +3,29 @@ header{
     height: 64px;
     border: 1px solid #F1F1F1;
 
-
     .header_container{
         max-width: 1440px;
         margin: 0 auto;
 
         .header_inner{
             padding: 0 116px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
             height: 64px;
+            position: relative;
             
             .logo_group{
                 text-decoration: none;
                 display: flex;
                 align-items: center;
 
+                img{
+                    margin-right: 10px;
+                }
+
                 span{
-                    margin-left: 8px;
+                    
 
                     width: 72px;
                     font-weight: 900;
@@ -35,43 +38,10 @@ header{
             }
 
             .searchbar_and_courses{
-
                 display: flex;
 
-                .seatchBar{
-                    margin-right: 16px;
-                    padding: 0 16px;
-                    width: 128px;
-                    background-color: #F1F1F1;
-                    border-radius: 16px;
-                    height: 32px;
-                    display: flex;
-
-                    input{
-                        background-color: #F1F1F1;
-                        outline: none;
-                        border: none;
-                        font: inherit;
-                        font-weight: 600;
-                        font-size: 13px;
-                        line-height: 16px;
-                        width: 100px;
-                    }
-                    input::placeholder{
-                        color: #005495;
-                    }
-
-                    button{
-                        display: flex;
-                        align-items: center;
-                        cursor: pointer;
-                        outline: none;
-                        border: none;
-                    }
-                    
-                }
-
                 .courses{
+                    margin-left: 16px;
                     display: flex;
                     align-items: center;
 
@@ -86,15 +56,17 @@ header{
             }
 
             .account{
+
                 .login_join{
+
                     .login{
+                        text-decoration: none;
+                        text-align: center;
                         margin-right: 8px;
                         text-transform: uppercase;
                         cursor: pointer;
                         font-family: 'Montserrat';
                         font-weight: 600;
-                        outline: none;
-                        border: none;
                         background-color: white;
                         padding: 8px 16px;
                         border-radius: 16px;
@@ -108,16 +80,16 @@ header{
                     }
 
                     .join{
+                        text-align: center;
+                        text-decoration: none;
                         transition: 0.5s;
                         text-transform: uppercase;
                         cursor: pointer;
                         font-weight: 600;
                         font-family: 'Montserrat';
-                        outline: none;
-                        border: none;
                         background-color: #005495;
                         padding: 8px 16px;
-                        border-radius: 16px;
+                        border-radius: 20px;
                         color: white;
                     }
 
@@ -127,6 +99,68 @@ header{
                     }
                 }
             }
+
+            .burger{
+                display: none;
+                margin-left: 10px;
+
+                padding: 0;
+                background-color: white;
+                outline: none;
+                border: none;
+
+                img{
+                    width: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1000px) {
+    header{
+        .header_container{
+            .header_inner{
+                padding: 0 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    header{
+        .header_container{
+            .header_inner{
+                padding: 0 10px;
+                display: flex;
+                justify-content: start;
+                
+                .logo_group{
+                    span{
+                        display: none;
+                    }
+                }
+
+                .searchbar_and_courses{
+                    flex: 1;
+                    max-width: 100%;
+                    position: relative;
+                    .courses{
+                        display: none;
+                    }
+                }
+
+                .account{
+                    display: none;
+                }
+
+                .burger{
+                    display: block;
+                }
+            }
+
+
         }
     }
 }
