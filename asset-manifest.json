@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/ksuacademy/static/css/main.f25e9316.css",
+    "main.js": "/ksuacademy/static/js/main.5d9abd04.js",
+    "static/js/787.8127545e.chunk.js": "/ksuacademy/static/js/787.8127545e.chunk.js",
+    "static/media/mainInfoImg.png": "/ksuacademy/static/media/mainInfoImg.25b1b0763d9e67be91b4.png",
+    "static/media/cat1.png": "/ksuacademy/static/media/cat1.7bc8fa1cde711797cdea.png",
+    "static/media/testCat.svg": "/ksuacademy/static/media/testCat.fd000e1d1976b17a3b4cccdf1f838d64.svg",
+    "static/media/cat2.png": "/ksuacademy/static/media/cat2.8b1e9ee26ff8d33f93a7.png",
+    "static/media/logo.svg": "/ksuacademy/static/media/logo.a736a2ae350fdc3c2b4c6b7519944097.svg",
+    "static/media/lectionText.svg": "/ksuacademy/static/media/lectionText.725f1ec9ecbeefff69be0eb10e45196b.svg",
+    "static/media/test.svg": "/ksuacademy/static/media/test.e9b13cfc5440fbfbdde7fb28f4eb7c36.svg",
+    "static/media/subjectLogo.svg": "/ksuacademy/static/media/subjectLogo.650ea61d469402bb7a88aa8f8ebbac64.svg",
+    "index.html": "/ksuacademy/index.html",
+    "static/media/lectionVideo.svg": "/ksuacademy/static/media/lectionVideo.71fa263da885940c03b32e9d75df80da.svg",
+    "static/media/search.svg": "/ksuacademy/static/media/search.bec6ff3b96da0a27f44a082510ce87f9.svg",
+    "static/media/burgerMenu.svg": "/ksuacademy/static/media/burgerMenu.390b9556fdc744d00080b71bea9f9d28.svg",
+    "static/media/arrow.svg": "/ksuacademy/static/media/arrow.443ef55afb6b44dafbd2d3cb0512d1b5.svg",
+    "static/media/courses.svg": "/ksuacademy/static/media/courses.5bdaae3f23a26d547a114215ab48da8e.svg",
+    "main.f25e9316.css.map": "/ksuacademy/static/css/main.f25e9316.css.map",
+    "main.5d9abd04.js.map": "/ksuacademy/static/js/main.5d9abd04.js.map",
+    "787.8127545e.chunk.js.map": "/ksuacademy/static/js/787.8127545e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f25e9316.css",
+    "static/js/main.5d9abd04.js"
+  ]
+}
