@@ -1,4 +1,4 @@
-.footer{
+footer{
     background-color: #005495;
 
     .footer_container{
@@ -86,7 +86,7 @@
 }
 
 @media (max-width: 1000px) {
-    .footer{
+    footer{
         .footer_container{
             .footer_inner{
                 padding: 0 20px;
@@ -97,7 +97,7 @@
 }
 
 @media (max-width: 800px) {
-    .footer{
+    footer{
         .footer_container{
             .footer_inner{
                 display: block;
@@ -114,7 +114,7 @@
 }
 
 @media (max-width: 700px) {
-    .footer{
+    footer{
         .footer_container{
             .footer_inner{
                 padding: 0 10px;

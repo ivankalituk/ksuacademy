@@ -1,6 +1,6 @@
 import Header from '../../components/header/header.jsx'
 import Footer from '../../components/footer/footer.jsx'
-import Subject from '../../components/subjectMainPage/subjectMainPage.jsx'
+import Subject from '../../components/subjectMain/subjectMain.jsx'
 
 import mainInfoImg from '../../photos/mainInfoImg.png'
 import cat1 from '../../photos/cat1.png'

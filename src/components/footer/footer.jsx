@@ -5,7 +5,7 @@ import logo from '../../photos/logo.svg'
 
 function Footer(){
     return(
-        <div className="footer">
+        <footer>
             <div className="footer_container">
                 <div className="footer_inner">
 
@@ -60,7 +60,7 @@ function Footer(){
 
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }
 

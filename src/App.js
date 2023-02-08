@@ -15,7 +15,7 @@ function App() {
       <Header></Header>
 
         <Routes>
-          <Route path='' element={<MainPage/>}/>
+          <Route path='/' element={<MainPage/>}/>
           <Route path='/courses' element={<CoursesPage/>}/>
           <Route path='/chapter' element={<ChaptrerPage/>}/>
         </Routes>

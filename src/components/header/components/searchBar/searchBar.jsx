@@ -1,6 +1,6 @@
 import './searchBar.scss'
 
-import search from '../../../photos/search.svg'
+import search from '../../../../photos/search.svg'
 
 function SearchBar(){
     return(

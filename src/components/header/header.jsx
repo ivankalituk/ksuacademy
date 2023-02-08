@@ -4,7 +4,8 @@ import logo from '../../photos/logo.svg'
 import courses from '../../photos/courses.svg'
 import burger from '../../photos/burgerMenu.svg'
 
-import Search from './components/searchBar.jsx'
+import Search from './components/searchBar/searchBar'
+import BurgerMenu from './components/burgerMenu/burgerMenu'
 
 import { Link } from 'react-router-dom'
 
@@ -39,6 +40,7 @@ function Header(){
                     </button>
                 </div>
             </div>
+            <BurgerMenu></BurgerMenu>
         </header>
     )
 }

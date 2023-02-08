@@ -1,7 +1,7 @@
 import subj from '../../photos/subjectLogo.svg'
 import arrow from '../../photos/arrow.svg'
 
-import './subjectMainPage.css'
+import './subjectMain.scss'
 
 import React from 'react';
 import { Link } from 'react-router-dom';
