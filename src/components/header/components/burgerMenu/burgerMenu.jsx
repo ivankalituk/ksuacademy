@@ -14,38 +14,15 @@ function BurgerMenu(){
                     <span>Курси</span>
                     <ul>
                         <li>
-                            <Link to="/courses">Назва предмету</Link>
+                            <Link to="/courses"><h1>Назва предмету</h1></Link>
 
                             <ul>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <Link to="/courses">Назва предмету</Link>
-
-                            <ul>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <Link to="/courses">Назва предмету</Link>
-
-                            <ul>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
-                                <li><Link to="/chapter">Розділ</Link></li>
+                                <li><Link to="/chapter"><h2>Розділ</h2></Link></li>
+                                <li><Link to="/chapter"><h2>Розділ</h2></Link></li>
+                                <li><Link to="/chapter"><h2>Розділ</h2></Link></li>
+                                <li><Link to="/chapter"><h2>Розділ</h2></Link></li>
+                                <li><Link to="/chapter"><h2>Розділ</h2></Link></li>
+                                <li><Link to="/chapter"><h2>Розділ</h2></Link></li>
                             </ul>
                         </li>
                     </ul>

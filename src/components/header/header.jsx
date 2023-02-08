@@ -16,7 +16,7 @@ function Header(){
                 <div className="header_inner">
                     <Link to="/" className="logo_group" >
                         <img src={logo} alt="logo" />
-                        <span>ksu academy</span>
+                        <h1>ksu academy</h1>
                     </Link>
 
                     <div className="searchbar_and_courses">

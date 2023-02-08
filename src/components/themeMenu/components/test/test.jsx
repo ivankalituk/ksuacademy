@@ -12,7 +12,7 @@ function Test(){
                     </div>
                     
                     <div className="test_info">
-                        <span>Навза тесту</span>
+                        <h5>Навза тесту</h5>
                         <span className="questions_num">12 питань</span>
                     </div>
                 </div>

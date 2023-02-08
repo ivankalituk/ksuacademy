@@ -10,7 +10,7 @@ function ThemeMenu(){
     return(
         <div className="themeMenu">
             <div className="theme_container">
-                <span>Ствроення репозиторію</span>
+                <h4>Створоення репозиторію</h4>
 
                 <div className="content_container">
                     <div className="lections">

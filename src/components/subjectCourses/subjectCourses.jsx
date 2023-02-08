@@ -14,22 +14,24 @@ function SubjectCources(){
                     </div>
 
                     <div className="Course_name">
-                        <Link to='/courses'>назва курсу</Link>
+                        <Link to='/courses'><h2>назва курсу</h2></Link>
                     </div>
                 </div>
 
                 <div className="subThemes">
                     <div className="subThemes_container">
-                        <Link to="/chapter">Назва розділу</Link>
-                        <Link to="/chapter">Назва розділу</Link>
-                        <Link to="/chapter">Назва розділу</Link>
-                        <Link to="/chapter">Назва розділу</Link>
-                        <Link to="/chapter">Назва розділу</Link>
-                        <Link to="/chapter">Назва розділу</Link>
-                        <Link to="/chapter">Назва розділу</Link>
-                        <Link to="/chapter">Назва розділу</Link>
-                        <Link to="/chapter">Назва розділу</Link>
-                        <Link to="/chapter">Назва розділу</Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
+                        <Link to="/chapter"><h3>Назва розділу</h3></Link>
                     </div>
                 </div>
 

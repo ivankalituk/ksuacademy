@@ -21,7 +21,7 @@ function SubjectMainPage(){
                             <img src={subj} alt="subject" />
                         </div>
 
-                        <Link to="/courses">Назва предмету</Link>
+                        <Link to="/courses"><h2>Назва предмету</h2></Link>
                     </div>
                     
                     <div className="custom_check">
@@ -32,14 +32,13 @@ function SubjectMainPage(){
 
                 <div className={check? "subject_content, active_content": "subject_content"}>
                     <div className="subject_content_container">
-                        <Link to="/chapter">Розділ</Link>
-                        <Link to="/chapter">Розділ</Link>
-                        <Link to="/chapter">Розділ</Link>
-                        <Link to="/chapter">Розділ</Link>
-                        <Link to="/chapter">Розділ</Link>
-                        <Link to="/chapter">Розділ</Link>
-                        <Link to="/chapter">Розділ</Link>
-                        <Link to="/chapter">Розділ</Link>
+                        <Link to="/chapter"><h3>Розділ</h3></Link>
+                        <Link to="/chapter"><h3>Розділ</h3></Link>
+                        <Link to="/chapter"><h3>Розділ</h3></Link>
+                        <Link to="/chapter"><h3>Розділ</h3></Link>
+                        <Link to="/chapter"><h3>Розділ</h3></Link>
+                        <Link to="/chapter"><h3>Розділ</h3></Link>
+                        <Link to="/chapter"><h3>Розділ</h3></Link>
                     </div>
                 </div>
             </div>

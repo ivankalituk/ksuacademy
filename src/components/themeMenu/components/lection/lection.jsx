@@ -11,7 +11,7 @@ function Lection(){
                     <img src={lectionvideo} alt="lectionType" />
                 </div>
 
-                <span>Навза лекції</span>
+                <h5>Навза лекції</h5>
             </div>
 
 

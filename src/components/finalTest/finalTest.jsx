@@ -12,10 +12,10 @@ function FinalTest(){
                     <span className='second_heading'>Загальний тест по розділам</span>
 
                     <div className="lection_links">
-                        <a href="#">Посилання на тему</a>
-                        <a href="#">Посилання на тему</a>
-                        <a href="#">Посилання на тему</a>
-                        <a href="#">Посилання на тему</a>
+                        <a href="#"><h3>Посилання на тему</h3></a>
+                        <a href="#"><h3>Посилання на тему</h3></a>
+                        <a href="#"><h3>Посилання на тему</h3></a>
+                        <a href="#"><h3>Посилання на тему</h3></a>
                     </div>
 
                     <a href="#" className="test_btn">Почати тест</a>
