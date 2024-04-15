@@ -1,0 +1,39 @@
+.regstration{
+
+    > .header_registrationGroup_notAuthorized{
+
+    }
+
+    > .header_registrationGroup_Authorized{
+        background-color: #005495;
+        color: white;
+        border-radius: 16px;
+        text-decoration: none;
+        height: 32px;
+        width: 148px;
+        display: block;
+        
+        > .registrationGroup_Authorized_container{
+            display: flex;
+            align-items: center;
+            padding: 0 0 0 16px;
+            height: 32px;
+
+            > .registrationGroup_Authorized_nickname{
+                font-size: 13px;
+                line-height: 15.85px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            > img{
+                margin: 0 2px 0 2px;
+                display: block;
+                width: 28px;
+                height: 28px;
+                border-radius: 15px;
+            }
+        }
+    }
+}

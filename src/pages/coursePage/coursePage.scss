@@ -1,0 +1,20 @@
+.coursePage{
+    > .coursePage_courseName{
+        margin-top: 64px;
+        font-weight: 900;
+        font-size: 36px;
+        line-height: 43.88px;
+        text-transform: uppercase;
+        background: var(--main-gradient, linear-gradient(360deg, #16325C 0%, #005494 100%));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    > .coursePage_courses{
+        margin: 32px 0 32x;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}

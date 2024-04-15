@@ -1,0 +1,289 @@
+header{
+    border-bottom: 1px solid #F1F1F1;
+
+    > .header_container{
+        box-sizing: border-box;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 116px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+
+        > .header_logoGroup{
+            display: flex;
+            text-decoration: none;
+            align-items: center;
+
+            > .header_logoGroup_text{
+                margin-left: 8px;
+                text-transform: uppercase;
+                font-size: 13px;
+                line-height: 15.85px;
+                color: #16325C;
+                font-weight: 900;
+                width: 72px;
+            }
+        }
+
+        > .header_searchGroup{
+            display: flex;
+
+            > .header_searchGroup_courses{
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                margin-left: 16px;
+
+                > .searchGroup_courses_text{
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    color: #005495;
+                    font-size: 13px;
+                    line-height: 15.85px;
+                }
+
+                > img{
+                    margin-left: 4px;
+                    transform: rotate(180deg);
+                    transition: 0.5s;
+                }
+
+                > img.rotate{
+                    transform: rotate(0deg);
+                    transition: 0.5s;
+                }
+            }
+        }
+
+        > .header_burger{
+            display: none;
+
+            > img{
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+
+    > .header_courses{
+        position: absolute;
+        top: 65px;
+        left: 50%;       /* располагаем блок по горизонтали на 50% от левой границы родительского элемента */
+        transform: translateX(-50%); /* смещаем блок назад на половину его ширины */
+    
+        > .header_courses_container{
+            z-index: -100;
+            padding: 20px 116px;
+            box-sizing: border-box;
+            width: 1440px;
+            background-color: white;
+            columns: 2;
+            opacity: 1;
+            transition: 0.5s;
+            animation: fadeAndSlide 0.25s forwards;
+
+            > .course{
+                cursor: pointer;
+            }
+        }
+
+        > .header_courses_container.show{
+            animation: fadeAndHide 0.5s forwards;
+        }
+    }
+
+    > .header_burgerMenu{
+
+        > .header_burgerMenu_burger{
+            z-index: 100;
+            position: absolute;
+            left: 0;
+            height: 100vh;
+            background-color: white;
+            width: 300px;
+            top: 0;
+            animation: fadeAndSlideBurger 1s forwards;
+
+            > .header_burgerMenu_container{
+                padding: 16px;
+
+                > .header_burgerMenu_subjectList{
+                    margin-top: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    > a{
+                        display: block;
+                        text-decoration: none;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        word-wrap: nowrap;
+                    }
+                }
+            }
+
+            &.show{
+                animation: fadeAndHideBurger 1s forwards;
+            }
+        }
+
+        .header_burgerMenu_background{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 99;
+            opacity: 0.7;
+            animation: opacityFadeBG 0.5s forwards;
+
+            &.show{
+                animation: opacityUnFadeBG 0.5s forwards;
+            }
+        }
+    }
+}
+
+
+@keyframes fadeAndHide {
+    0%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    25%{
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(-100%);
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes fadeAndSlide {
+    0%{
+        display: block;
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    75%{
+        opacity: 0;
+        display: block;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+        display: block;
+    }
+}
+
+@keyframes fadeAndHideBurger {
+    0%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(-100%);
+        opacity: 1;
+        display: none;
+    }
+}
+
+@keyframes fadeAndSlideBurger {
+    0%{
+        display: block;
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    25%{
+        opacity: 1;
+        display: block;
+        transform: translateX(0);
+    }
+    100%{
+        opacity: 1;
+        display: block;
+    }
+}
+
+@keyframes opacityFadeBG {
+    0%{
+        display: block;
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.7;
+    }
+}
+
+@keyframes opacityUnFadeBG {
+    0%{
+        opacity: 0.7;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}
+
+
+@media (max-width: 1440px) {
+    header{
+        > .header_courses{
+            left: 0;
+            width: 100%;
+            transform: none;
+            > .header_courses_container{
+                max-width: 1440px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    header{
+        > .header_container{
+            padding: 0 20px;
+        }
+    }
+}
+
+@media (max-width:700px) {
+    header{
+        > .header_container{
+            padding: 0 10px;
+            justify-content: flex-start;
+
+            > .header_logoGroup{
+                > .header_logoGroup_text{
+                    display: none;
+                }
+            }
+
+            > .header_searchGroup{
+                flex: 1;
+                margin: 0 10px;
+
+                > .header_searchGroup_courses{
+                    display: none;
+                }
+            }
+
+            > .header_registrationGroup{
+                display: none;
+            }
+
+            > .header_burger{
+                display: block;
+                z-index: 100;
+            }
+        }
+    }
+}

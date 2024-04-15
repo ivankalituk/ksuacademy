@@ -1,0 +1,41 @@
+.searchBar{
+    padding: 0 16px;
+    min-width: 128px;
+    background-color: #F1F1F1;
+    border-radius: 16px;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+
+    > input{
+        background-color: #F1F1F1;
+        outline: none;
+        border: none;
+        font: inherit;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 16px;
+    
+
+        &::placeholder{
+            text-transform: uppercase;
+            color: #005495;
+        }
+    }
+
+    > button{
+        padding: 0;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        outline: none;
+        border: none;
+    }
+}
+
+@media (max-width: 700px){
+    .searchBar{
+        flex: 1;
+        min-width: none;
+    }
+}

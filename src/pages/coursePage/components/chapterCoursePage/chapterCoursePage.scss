@@ -1,0 +1,80 @@
+.chapterCP{
+    padding: 16px 16px 16px 16px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    border-radius: 16px;
+
+    > .chapterCP_header{
+        display: flex;
+        position: relative;
+
+        > .chapterCP_header_logo{
+            position: absolute;
+            height: 64px;
+            width: 64px;
+            border-radius: 36px;
+            background-color: #6054A3;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border: solid white 4px;
+            top: -4px;
+        }
+
+        > .chapterCP_header_heading{
+            margin-left: 32px;
+            flex: 1;
+            background-color: #F1F1F1;
+            height: 64px;
+            align-items: center;
+            display: flex;
+            border-radius: 0 32px 32px 0;
+            overflow: hidden;
+
+            > .chapterCP_header_heading_name{
+                text-decoration: none;
+                padding-left: 52px;
+                color: #16325C;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 29.26px;
+                flex: 1;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    > .chapterCP_themes{
+        padding: 0 16px 0 86px;
+        margin-top: 16px;
+        columns: 3;
+        gap: 10px;
+
+        > a{
+            margin-bottom: 16px;
+            text-decoration: none;
+            display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+}
+
+@media (max-width:1000px) {
+    .chapterCP{
+        > .chapterCP_themes{
+            columns: 2;
+        }
+    }
+}
+
+@media (max-width:700px) {
+    .chapterCP{
+        > .chapterCP_themes{
+            columns: 1;
+        }
+    }
+}

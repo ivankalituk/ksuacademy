@@ -1,0 +1,109 @@
+.mainPage_courseBlock_course{
+    break-inside: avoid;
+    box-sizing: border-box;
+    padding: 16px;
+    margin-bottom: 16px;
+    flex: 1;
+    max-width: 584px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+
+    > .course_heading{
+        display: flex;
+        align-items: center;
+        flex: 1;
+
+        > .course_heading_img{
+            height: 64px;
+            width: 64px;
+            border-radius: 32px;
+            background-color: #005495;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        > .course_heading_container{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+
+            > a{
+                margin-left: 16px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 29.26px;
+                color: #16325C;
+                flex: 1;
+            }
+
+            > .course_heading_tick{
+                margin-right: 20px;
+                height: 24px;
+                width: 24px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                background-color: #F1F1F1;
+                border-radius: 12px;
+                cursor: pointer;
+
+                > img{
+                    transform: rotate(180deg);
+                    transition: 0.5s;
+                }
+
+                >img.rotate{
+                    transform: rotate(0deg);
+                    transition: 0.5s;
+                }
+
+            }
+        }
+    }
+
+    .course_chapters {
+        transition: max-height 0.5s ease-out;
+        max-height: 0vh;
+        overflow: hidden;
+        box-sizing: border-box;
+
+        > .course_chapters_container{
+            padding: 16px 16px 16px 80px;
+            columns: 2;
+
+            > a {
+                display: block;
+                text-decoration: none;
+                font-size: 14px;
+                line-height: 17.07px;
+                font-weight: 400;
+                flex: 1;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                margin-bottom: 16px;
+                color: #16325C;
+            }
+        }
+    }
+    
+    /* При раскрытии блока */
+    .course_chapters.show {
+        max-height: 100vh; /* или другое большое значение для раскрытия на максимальную высоту */
+        transition: 0.7s;
+    }        
+}
+
+@media (max-width: 800px) {
+    .mainPage_courseBlock_course{
+        max-width: none;
+    }
+
+}
