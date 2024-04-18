@@ -22,7 +22,7 @@ function CourseMainPage(){
                 </div>
 
                 <div className="course_heading_container">
-                    <Link>Назва курсу</Link>
+                    <Link to={`/course/${'courseNum'}`}>Назва курсу</Link>
 
                     <div className="course_heading_tick" onClick={togleCourse}>
                         <img src={courseHeadingTick} alt="Tick" className={tick? "rotate" : ""}/>
@@ -32,13 +32,12 @@ function CourseMainPage(){
 
             <div className={`course_chapters ${tick? 'show' : ''}`}>
                 <div className="course_chapters_container">
-                    <Link>РозділРозділРозділРозділРозділ</Link>
-                    <Link>РозділРозділРозділРозділРозділ</Link>
-                    <Link>Розділ</Link>
-                    <Link>РозділРозділ</Link>
-                    <Link>РозділРозділРозділРозділРозділ</Link>
-                    <Link>Розділ</Link>
-                    <Link>РозділРозділРозділРозділРозділ</Link>
+                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
+                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
+                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
+                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
+                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
+                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
                 </div>
             </div>
         </div>

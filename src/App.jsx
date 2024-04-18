@@ -3,6 +3,8 @@ import Header from "./components/header/header";
 
 import MainPage from "./pages/mainPage/mainPage";
 import CoursePage from "./pages/coursePage/coursePage";
+import ThemePage from "./pages/themePage/themePage";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.scss"
 
@@ -21,10 +23,13 @@ function App() {
   return (
     <div className={`App ${blockScroll? 'blockScroll' : ''}`}>
       <Header burgerCallback={burgerCallback}></Header>
-        <div className="pageContent">
-          {/* <MainPage></MainPage> */}
-          <CoursePage></CoursePage>
-        </div>
+
+      <Routes>
+        <Route path="/" Component={MainPage} ></Route>
+        <Route path="/course/:subId" Component={CoursePage}></Route>
+        <Route path="/course/:subId/theme/:theId" Component={ThemePage} ></Route>
+      </Routes>
+
       <Footer></Footer>
 
     </div>

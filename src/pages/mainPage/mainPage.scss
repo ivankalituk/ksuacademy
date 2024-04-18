@@ -1,109 +1,28 @@
 .mainPage{
 
-    > .mainPage_mainBlock{
-        margin-top: 24px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 26px;
+    max-width: 1440px;
+    margin: 0 auto;
 
-        > img{
-            flex: 1;
-            max-width: 50%;
-        }
-        
-        > .mainPage_mainBlock_info{
-            flex: 1;
-            max-width: 50%;
+    > .mainPage_container{
+        padding: 0 116px;
 
-            > .mainPage_mainBlock_heading{
-                font-size: 36px;
-                font-weight: 900;
-                line-height: normal;
-                text-transform: uppercase;
-                background: var(--main-gradient, linear-gradient(360deg, #16325C 0%, #005494 100%));
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+        > .mainPage_mainBlock{
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 26px;
+
+            > img{
+                flex: 1;
+                max-width: 50%;
             }
             
-            > .mainPage_mainBlock_text{
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 17.07px;
-                color: #16325C;
-                margin-top: 8px;
-            }
-
-            > .mainPage_mainBlock_buttons{
-                margin-top: 20px;
-                display: flex;
-
-                > a{
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    flex: 1;
-                    color: white;
-                    font-weight: 600;
-                    line-height: 15.85px;
-                    font-size: 13px;
-                    background-color: #005495;
-                    border-radius: 16px;
-                    height: 32px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-around;
-                    transition: 0.5s;
-
-                    &:active{
-                        transition: 0.5s;
-                        background-color: #16325C;
-                    }
-                }
-                
-                > a+a{
-                    margin-left: 16px;
-                }
-            }
-        }
-    }
-
-    .mainPage_courseBlock{
-        margin-top: 64px;
-        
-        > .mainPage_courseBlock_heading{
-            font-weight: 900;
-            font-size: 24px;
-            line-height: 29.26px;
-            color: #005495;
-            text-transform: uppercase;
-        }
-
-        > .coursesColumns{
-            margin-top: 16px;
-            columns: 2;
-        }
-    }
-
-    > .mainPage_secondaryBlock{
-        margin: 56px 0 56px 0;
-
-        > .secondaryBlock_block{
-            display: flex;
-            align-items: center;
-            gap: 103px;
-
-            >img{
+            > .mainPage_mainBlock_info{
                 flex: 1;
-                max-width: 521px;
-                width: 50%;
-            }
+                max-width: 50%;
 
-            > .secondaryBlock_text{
-                flex: 1;
-                width: 50%;
-
-                > .secondaryBlock_text_heading{
+                > .mainPage_mainBlock_heading{
                     font-size: 36px;
                     font-weight: 900;
                     line-height: normal;
@@ -113,20 +32,108 @@
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }
-
-                > .secondaryBlock_text_info{
+                
+                > .mainPage_mainBlock_text{
+                    font-weight: 400;
                     font-size: 14px;
                     line-height: 17.07px;
-                    font-weight: 400;
                     color: #16325C;
+                    margin-top: 8px;
+                }
+
+                > .mainPage_mainBlock_buttons{
+                    margin-top: 20px;
+                    display: flex;
+
+                    > a{
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        flex: 1;
+                        color: white;
+                        font-weight: 600;
+                        line-height: 15.85px;
+                        font-size: 13px;
+                        background-color: #005495;
+                        border-radius: 16px;
+                        height: 32px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        transition: 0.5s;
+
+                        &:active{
+                            transition: 0.5s;
+                            background-color: #16325C;
+                        }
+                    }
+                    
+                    > a+a{
+                        margin-left: 16px;
+                    }
                 }
             }
+        }
 
-            &:nth-child(2){
-                margin-top: 5px;
+        .mainPage_courseBlock{
+            margin-top: 64px;
+            
+            > .mainPage_courseBlock_heading{
+                font-weight: 900;
+                font-size: 24px;
+                line-height: 29.26px;
+                color: #005495;
+                text-transform: uppercase;
+            }
+
+            > .coursesColumns{
+                margin-top: 16px;
+                columns: 2;
+            }
+        }
+
+        > .mainPage_secondaryBlock{
+            margin: 56px 0 56px 0;
+
+            > .secondaryBlock_block{
+                display: flex;
+                align-items: center;
+                gap: 103px;
 
                 >img{
-                    order: 2;
+                    flex: 1;
+                    max-width: 521px;
+                    width: 50%;
+                }
+
+                > .secondaryBlock_text{
+                    flex: 1;
+                    width: 50%;
+
+                    > .secondaryBlock_text_heading{
+                        font-size: 36px;
+                        font-weight: 900;
+                        line-height: normal;
+                        text-transform: uppercase;
+                        background: var(--main-gradient, linear-gradient(360deg, #16325C 0%, #005494 100%));
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+
+                    > .secondaryBlock_text_info{
+                        font-size: 14px;
+                        line-height: 17.07px;
+                        font-weight: 400;
+                        color: #16325C;
+                    }
+                }
+
+                &:nth-child(2){
+                    margin-top: 5px;
+
+                    >img{
+                        order: 2;
+                    }
                 }
             }
         }
@@ -135,9 +142,14 @@
 
 @media (max-width: 1000px) {
     .mainPage{
-        > .mainPage_secondaryBlock{
-            > .secondaryBlock_block{
-                gap: 40px;
+
+        > .mainPage_container{
+            padding: 0 20px;
+
+            > .mainPage_secondaryBlock{
+                > .secondaryBlock_block{
+                    gap: 40px;
+                }
             }
         }
     }
@@ -146,60 +158,65 @@
 // more accurate on 800 then on 700
 @media (max-width: 800px) {
     .mainPage{
-        > .mainPage_mainBlock{
-            display: flex;
-            flex-direction: column;
+        
+        > .mainPage_container{
+            padding: 0 10px;
 
-            >img{
-                flex: 1;
-                max-width: 100%;
-            }
-
-            > .mainPage_mainBlock_info{
-                flex: 1;
-                max-width: 100%;
-
-                > .mainPage_mainBlock_heading{
-                    font-size: 24px;
-                    line-height: 24px;
-                }
-            }
-        }
-
-        > .mainPage_courseBlock{
-            margin-top: 30px;
-
-            > .coursesColumns{
-                columns: 1;
-            }
-        }
-
-        > .mainPage_secondaryBlock{
-            > .secondaryBlock_block{
-                gap: 20px;
+            > .mainPage_mainBlock{
+                display: flex;
                 flex-direction: column;
 
-                > img{
+                >img{
                     flex: 1;
-                    width: 100%;
-                    max-width: none;
+                    max-width: 100%;
                 }
 
-                > .secondaryBlock_text{
+                > .mainPage_mainBlock_info{
                     flex: 1;
-                    width: 100%;
-                    max-width: none;
-                }
-                
-                
-                &:nth-child(2){
-                    margin-top: 20px;
-                    > img{
-                        order: 0;
+                    max-width: 100%;
+
+                    > .mainPage_mainBlock_heading{
+                        font-size: 24px;
+                        line-height: 24px;
                     }
                 }
+            }
 
-                
+            > .mainPage_courseBlock{
+                margin-top: 30px;
+
+                > .coursesColumns{
+                    columns: 1;
+                }
+            }
+
+            > .mainPage_secondaryBlock{
+                > .secondaryBlock_block{
+                    gap: 20px;
+                    flex-direction: column;
+
+                    > img{
+                        flex: 1;
+                        width: 100%;
+                        max-width: none;
+                    }
+
+                    > .secondaryBlock_text{
+                        flex: 1;
+                        width: 100%;
+                        max-width: none;
+                    }
+                    
+                    
+                    &:nth-child(2){
+                        margin-top: 20px;
+                        > img{
+                            order: 0;
+                        }
+                    }
+
+                    
+                }
             }
         }
     }

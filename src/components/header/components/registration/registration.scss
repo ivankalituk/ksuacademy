@@ -37,3 +37,12 @@
         }
     }
 }
+
+@media (max-width:700px) {
+    .regstration{
+        > .header_registrationGroup_Authorized{
+            flex: 1;
+            width: 268px;
+        }
+    }
+}

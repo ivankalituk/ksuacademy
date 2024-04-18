@@ -1,0 +1,39 @@
+.themePage_theme_material{
+    max-width: 583px;
+    display: flex;
+    background-color: #F1F1F1;
+    border-radius: 16px;
+    height: 96px;
+    box-sizing: border-box;
+    padding: 16px;
+    align-items: center;
+    text-decoration: none;
+
+    > .theme_material_img{
+        height: 64px;
+        width: 64px;
+        background-color: white;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    > .theme_material_name{
+        margin-left: 10px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17.07px;
+        color: #16325C;
+        flex: 1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 700px) {
+    .themePage_theme_material{
+        max-width: none;
+    }
+}

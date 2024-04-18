@@ -54,17 +54,21 @@ footer{
                 font-size: 14px;
                 line-height: 17.07px;
                 font-weight: 700;
+                overflow: hidden;
+                white-space: nowrap;
               
                 > li{
                     padding: none;
                     margin: none;
+                    flex: 1;
+                    color: white;
+                    text-overflow: ellipsis;
                     overflow: hidden;
-
+                    
                     > a{
-                        display: block;
+                        
                         color: white;
                         text-decoration: none;
-                        flex: 1;
                     }
                 }
 

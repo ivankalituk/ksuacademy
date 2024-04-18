@@ -12,20 +12,19 @@ function ChapterCoursePage(){
                 </div>
 
                 <div className="chapterCP_header_heading">
-                    <Link className="chapterCP_header_heading_name">Назва розділу курсу</Link>
+                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
                 </div>
             </div>
 
             <div className="chapterCP_themes">
-                <Link>НазваНазваНазваНазваНазваНазваНазваНазва</Link>
-                <Link>Назва теми розділу</Link>
-                <Link>Назва теми розділу</Link>
-                <Link>Назва теми розділу</Link>
-                <Link>Назва теми розділу</Link>
-                <Link>Назва теми розділу</Link>
-                <Link>Назва теми розділу</Link>
-                <Link>Назва теми розділу</Link>
-                <Link>Назва теми розділу</Link>
+                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
+                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
+                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
+                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
+                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
+                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
+                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
+                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
             </div>
         </div>
     )

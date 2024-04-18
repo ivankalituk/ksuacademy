@@ -70,8 +70,8 @@ header{
     > .header_courses{
         position: absolute;
         top: 65px;
-        left: 50%;       /* располагаем блок по горизонтали на 50% от левой границы родительского элемента */
-        transform: translateX(-50%); /* смещаем блок назад на половину его ширины */
+        left: 50%;                      /* располагаем блок по горизонтали на 50% от левой границы родительского элемента */
+        transform: translateX(-50%);    /* смещаем блок назад на половину его ширины */
     
         > .header_courses_container{
             z-index: -100;
@@ -107,19 +107,38 @@ header{
             animation: fadeAndSlideBurger 1s forwards;
 
             > .header_burgerMenu_container{
-                padding: 16px;
+                padding: 0 16px 16px 16px;
+
+                > .header_burgerMenu_header{
+                    height: 64px;
+                    border-bottom: 1px solid #F1F1F1;
+                    display: flex;
+                    align-items: center;
+                }
+
+                > .header_burgerMenu_listHeading{
+                    margin-top: 16px;
+                    font-weight: 900;
+                    font-size: 36px;
+                    color: #16325C;
+                }
 
                 > .header_burgerMenu_subjectList{
                     margin-top: 10px;
                     display: flex;
                     flex-direction: column;
                     gap: 5px;
+                    
+
                     > a{
+                        font-size: 24px;
+                        font-weight: 700;
+                        color: #005495;
                         display: block;
                         text-decoration: none;
                         text-overflow: ellipsis;
                         overflow: hidden;
-                        word-wrap: nowrap;
+                        white-space: nowrap;
                     }
                 }
             }
@@ -231,7 +250,6 @@ header{
         display: none;
     }
 }
-
 
 @media (max-width: 1440px) {
     header{

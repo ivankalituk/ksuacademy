@@ -30,6 +30,7 @@ function Header({burgerCallback}){
 
         if(!isMobile && !burger){
             setBurger(true)
+            burgerCallback(burger)
         }
     }, [isMobile, courses])
 
@@ -43,8 +44,6 @@ function Header({burgerCallback}){
         setBurger(!burger)
         burgerCallback(burger)
     }
-
-
 
     return(
         <header>
@@ -92,7 +91,11 @@ function Header({burgerCallback}){
             <div className="header_burgerMenu">
                 <div className={`header_burgerMenu_burger ${burger? "show" : ""}`}>
                     <div className="header_burgerMenu_container">
-                        <Registration />
+                        <div className="header_burgerMenu_header">
+                            <Registration />
+                        </div>
+
+                        <div className="header_burgerMenu_listHeading">Курси</div>
 
                         <div className="header_burgerMenu_subjectList">
                             <Link>Subject1</Link>

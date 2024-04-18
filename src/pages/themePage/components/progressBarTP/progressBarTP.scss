@@ -1,0 +1,77 @@
+.progressBar{
+    background-color: #005495;
+
+    .progressBar_container{
+        max-width: 1440px;
+        margin: 0 auto;
+
+        .progressBar_padding{
+            padding: 0 116px;
+
+            > .progressBar_chapterName{
+                color: white;
+                font-weight: 900;
+                font-size: 36px;
+                text-transform: uppercase;
+                padding: 8px 0;
+            }
+
+            > .progressBar_progress{
+                position: relative;
+
+                > .progressBar_progress_list{
+                    display: flex;
+                    justify-content: space-between;
+
+                    >.progress_step{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        
+                        > .progress_step_title{
+                            font-weight: 400;
+                            font-size: 16px;
+                            color: white;
+                        }
+
+                        > .progress_step_dot{
+                            border-radius: 50%;
+                            width: 14px;
+                            height: 14px;
+                            background-color: #CACACC;
+                            border: 3px  solid white;
+
+                            &.active{
+                                background-color: #60BD46;
+                            }
+                        }
+
+                        &:first-child{
+                            align-items: start;
+                        }
+
+                        &:last-child{
+                            align-items: end;
+                        }
+                    }
+                }
+
+                // > .progress_line{
+                //     position: absolute;
+                //     height: 4px;
+                //     width: 100%;
+                //     padding: 0 3px;
+                //     box-sizing: border-box;
+                //     top: 27px;
+
+                //     > .progress_line_line{
+                //         width: calc(25% + 6px);
+                //         background-color: #60BD46;
+                //         height: 4px;
+                //         border-radius: 2px;
+                //     }
+                // }   
+            }
+        }
+    }
+}
