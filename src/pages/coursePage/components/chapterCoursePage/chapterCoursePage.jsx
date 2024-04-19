@@ -12,7 +12,7 @@ function ChapterCoursePage(){
                 </div>
 
                 <div className="chapterCP_header_heading">
-                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
+                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`} className='chapterCP_header_heading_name'>Назва розділу</Link>
                 </div>
             </div>
 

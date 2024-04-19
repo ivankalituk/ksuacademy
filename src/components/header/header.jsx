@@ -49,7 +49,7 @@ function Header({burgerCallback}){
         <header>
             <div className="header_container">
                 
-                <Link to="/" className="header_logoGroup">
+                <Link to="/profile" className="header_logoGroup">
                     <img src={logo} alt="Logo" />
                     
                     <div className="header_logoGroup_text">ksu academy</div>

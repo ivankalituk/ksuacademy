@@ -1,0 +1,102 @@
+.profilePage{
+    max-width: 1440px;
+    margin: 0 auto;
+
+    > .profilePage_container{
+        padding: 0 116px;
+        display: flex;
+        gap: 40px;
+
+        > .profilePage_leftBlock{
+            flex: 1;
+            max-width: 376px;
+            box-sizing: border-box;
+            padding: 24px 16px; 
+            border-radius: 16px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        > .profilePage_rightBlock{
+            flex: 1;
+
+            > .profilePage_rightBlock_accountInfo{
+                background-color: #005495;
+                border-radius: 16px;
+                box-sizing: border-box;
+                padding: 16px;
+                display: flex;
+                justify-content: space-between;
+                
+                > .rightBlock_accoutGroup{
+                    display: flex;
+                    align-items: center;
+                    
+                    >  img{
+                        height: 48px;
+                        width: 48px;
+                        border-radius: 16px;
+                    }
+
+                    > .rightBlock_nicknameGroup{
+                        margin-left: 8px;
+                        > .rightBlock_nicknameGroup_name{
+                            display: flex;
+                            gap: 10px;
+
+                            > span{
+                                color: white;
+                                font-weight: 700;
+                                font-size: 24px;
+                                line-height: 29.26px;
+                            }
+                        }
+
+                        > .rightBlock_nicknameGroup_role{
+                            color: white;
+                            font-weight: 700;
+                            font-size: 16px;
+                            line-height: 19.5px;
+                            opacity: 50%;
+                        }
+                    }
+                }
+
+                > .rightBlock_accountInfo_courseInfo{
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    > .accountInfo_courseInfo_courseNum{
+                        color: white;
+                        font-weight: 900;
+                        font-size: 48px;
+                        line-height: 58.51px;
+                    }
+
+                    > .accountInfo_courseInfo_courseText{
+                        font-weight: 400;
+                        width: 90px;
+                        color: white;
+                        font-size: 16px;
+                    }
+
+                }                
+            }
+
+            .rightBlock_changeCourses{
+                margin-top: 16px;
+                border: 4px solid #005495;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                text-decoration: none;
+                border-radius: 16px;
+                height: 56px;
+                color: #005495;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 19.5px;
+            }
+
+        }
+    }
+}
