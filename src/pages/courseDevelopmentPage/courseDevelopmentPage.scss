@@ -1,0 +1,94 @@
+.couDevPage{
+    max-width: 1440px;
+    margin: 0 auto;
+
+    > .couDevPage_container{
+        padding: 0 116px;
+
+        > .couDevPage_courseDevControl{
+            margin-top: 32px;
+            box-sizing: border-box;
+            padding: 16px 16px 32px 16px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            > .couDevPage_courseDevControl_selectCourse{
+
+            }
+
+            > .couDevPage_courseDevControl_createCourse{
+                display: flex;
+                gap: 16px;
+                
+                > input{
+                    flex: 1;
+                    border: none;
+                    outline: none;
+                    background-color: #F1F1F1;
+                    border-radius: 16px;
+                    height: 32px;
+                    box-sizing: border-box;
+                    padding: 8px 16px;
+                    font-family: Montserrat;
+                    font-weight: 600;
+
+                    &::placeholder{
+                        color: #005495;
+                        text-transform: uppercase;
+                    }
+                }
+
+                > button{
+                    outline: none;
+                    border: none;
+                    border-radius: 16px;
+                    background-color: #005495;
+                    color: white;
+                    font-family: Montserrat;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+
+
+                button{
+                    flex: 1;
+                }
+            }
+        }
+
+        > .couDevPage_courseName{
+            margin-top: 64px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            > .couDevPage_courseName_name{
+                font-weight: 900;
+                font-size: 36px;
+                line-height: 43.88px;
+                text-transform: uppercase;
+                background: var(--main-gradient, linear-gradient(360deg, #16325C 0%, #005494 100%));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            > .couDevPage_courseName_delete{
+                border: none;
+                outline: none;
+                padding: 0;
+                height: 32px;
+                width: 32px;
+                border-radius: 50%;
+                background-color: #F1F1F1;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                cursor: pointer;
+            }
+        }
+    }
+}
