@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import './chapterCDP.scss'
 
 import chapterImg from '../../../../assets/photos/sampleChapterLogo.svg'
+import del from  '../../../../assets/photos/delete.svg'
 
 function ChapterCDP(){
     return(
@@ -13,19 +14,21 @@ function ChapterCDP(){
                 </div>
 
                 <div className="chapterCDP_header_heading">
-                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`} className='chapterCDP_header_heading_name'>Назва розділу</Link>
+                    <Link to={'/themedev'} className='chapterCDP_header_heading_name'>Назва розділу</Link>
+
+                    <button className="chapterCDP_header_heading_del">
+                        <img src={del} alt="delete" />
+                    </button>
                 </div>
             </div>
 
             <div className="chapterCDP_themes">
-                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
-                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
-                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
-                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
-                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
-                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
-                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
-                <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва теми</Link>
+                <Link to={'/themedev'}>Назва теми</Link>
+                <Link to={'/themedev'}>Назва теми</Link>
+                <Link to={'/themedev'}>Назва теми</Link>
+                <Link to={'/themedev'}>Назва теми</Link>
+                <Link to={'/themedev'}>Назва теми</Link>
+                <Link to={'/themedev'}>Назва теми</Link>
             </div>
         </div>
     )

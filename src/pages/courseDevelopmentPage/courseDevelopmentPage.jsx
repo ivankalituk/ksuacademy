@@ -30,7 +30,17 @@ function CourseDevelopmentPage(){
 
                 <div className="couDevPage_chapterList">
                     <ChapterCDP />
+                    <ChapterCDP />
+                    <ChapterCDP />
+                </div>
 
+                <div className="couDevPage_createChapter">
+                    <div className="couDevPage_createChapter_heading">Створення розділу</div>
+
+                    <div className="couDevPage_createChapter_createGroup">
+                        <input type="text" placeholder='Назва розділу'/>
+                        <button>+ Створити розділ</button>
+                    </div>
                 </div>
             </div>
         </div>

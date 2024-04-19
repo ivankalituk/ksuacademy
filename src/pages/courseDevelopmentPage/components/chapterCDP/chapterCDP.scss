@@ -7,7 +7,6 @@
     > .chapterCDP_header{
         display: flex;
         position: relative;
-
         > .chapterCDP_header_logo{
             position: absolute;
             height: 64px;
@@ -22,12 +21,14 @@
         }
 
         > .chapterCDP_header_heading{
+            padding-right: 20px;
             margin-left: 32px;
             flex: 1;
             background-color: #F1F1F1;
             height: 64px;
             align-items: center;
             display: flex;
+            justify-content: space-between;
             border-radius: 0 32px 32px 0;
             overflow: hidden;
 
@@ -42,6 +43,20 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+            }
+
+            > .chapterCDP_header_heading_del{
+                margin-left: 10px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 32px;
+                width: 32px;
+                border-radius: 16px;
+                background-color: white;
+                border: none;
+                padding: 0;
+                cursor: pointer;
             }
         }
     }
@@ -59,6 +74,7 @@
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+            color: #16325C;
         }
     }
 }
@@ -73,7 +89,7 @@
 
 @media (max-width:700px) {
     .chapterCDP{
-        > .chapterCP_themes{
+        > .chapterCDP_themes{
             columns: 1;
         }
     }
