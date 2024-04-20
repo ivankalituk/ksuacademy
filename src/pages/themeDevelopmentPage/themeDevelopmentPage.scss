@@ -1,0 +1,96 @@
+.themeDevPage{
+    max-width: 1440px;
+    margin: 0 auto;
+
+    > .themeDevPage_container{
+        margin: 10px 0 16px 0;
+        padding: 0 116px;
+        box-sizing: border-box;
+
+        > .themeDevPage_themeList{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        > .themeDevPage_createTheme{
+            padding: 16px 16px 32px 16px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+
+            > .themeDevPage_createTheme_heading{
+                color: #16325C;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 29.26px;
+                height: 64px;
+                display: flex;
+                align-items: center;
+            }
+
+            > .themeDevPage_createTheme_createGroup{
+                display: flex;
+                gap: 16px;
+
+                > input{
+                    flex: 1;
+                    border: none;
+                    outline: none;
+                    background-color: #F1F1F1;
+                    border-radius: 16px;
+                    height: 32px;
+                    box-sizing: border-box;
+                    padding: 8px 16px;
+                    font-family: Montserrat;
+                    font-weight: 600;
+
+                    &::placeholder{
+                        color: #005495;
+                        text-transform: uppercase;
+                    }
+                }
+
+                > button{
+                    height: 32px;
+                    flex: 1;
+                    outline: none;
+                    border: none;
+                    border-radius: 16px;
+                    background-color: #005495;
+                    color: white;
+                    font-family: Montserrat;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+
+    }
+}
+
+@media (max-width: 1000px) {
+    .themeDevPage{
+        > .themeDevPage_container{
+            padding: 0 20px;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .themeDevPage{
+        > .themeDevPage_container{
+            padding: 0 10px;
+
+            > .themeDevPage_createTheme{
+                > .themeDevPage_createTheme_createGroup{
+                    flex-direction: column;
+
+                    > button{
+                        flex: none;
+                    }
+                }
+            }
+        }
+    }
+}

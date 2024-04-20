@@ -6,6 +6,7 @@ import CoursePage from "./pages/coursePage/coursePage";
 import ThemePage from "./pages/themePage/themePage";
 import ProfilePage from "./pages/profilePage/profilePage";
 import SubjectDevelopmentPage from "./pages/courseDevelopmentPage/courseDevelopmentPage";
+import ThemeDevelopmentPage from "./pages/themeDevelopmentPage/themeDevelopmentPage";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/course/:subId/theme/:theId" Component={ThemePage} ></Route>
         <Route path="/profile" Component={ProfilePage}></Route>
         <Route path="/courseDevelopment" Component={SubjectDevelopmentPage}></Route>
+        <Route path="/courseDevelopment/themeDevelopment" Component={ThemeDevelopmentPage}></Route>
       </Routes>
 
       <Footer></Footer>
