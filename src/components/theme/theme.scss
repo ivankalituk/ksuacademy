@@ -1,0 +1,99 @@
+.theme{
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+    max-width: none;
+    box-sizing: border-box;
+    padding: 16px 16px 32px 16px;
+    border-radius: 16px;
+
+    > .theme_heading{
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        > .theme_heading_name{
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 29.26px;
+            color: #16325C;
+        }
+
+        > .theme_heading_delete{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 32px;
+            width: 32px;
+            border-radius: 16px;
+            background-color: #F1F1F1;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+    }
+
+    > .theme_education{
+        margin-top: 16px;
+        display: flex;
+        gap: 10px;
+
+        > .theme_materialsBlock{
+            flex: 1;
+
+            > .theme_materials_list{
+                margin-top: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                > .theme_material_create{
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    background-color: #005495;
+                    border-radius: 16px;
+                    height: 32px;
+                    text-decoration: none;
+                    font-size: 13px;
+                    line-height: 15.85px;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        > .theme_practiceBlock{
+            flex: 1;
+
+            > .theme_practice_list{
+                margin-top: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                > .theme_practice_create{
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    background-color: #005495;
+                    border-radius: 16px;
+                    height: 32px;
+                    text-decoration: none;
+                    font-size: 13px;
+                    line-height: 15.85px;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .theme_education_heading{
+            font-weight: 400;
+            size: 14px;
+            line-height: 17.07px;
+            color: #16325C;
+        }
+    }
+}

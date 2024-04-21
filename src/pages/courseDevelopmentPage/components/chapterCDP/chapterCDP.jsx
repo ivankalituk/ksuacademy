@@ -14,7 +14,7 @@ function ChapterCDP(){
                 </div>
 
                 <div className="chapterCDP_header_heading">
-                    <Link to={'/themedev'} className='chapterCDP_header_heading_name'>Назва розділу</Link>
+                    <Link to={"/courseDevelopment/themeDevelopment"} className='chapterCDP_header_heading_name'>Назва розділу</Link>
 
                     <button className="chapterCDP_header_heading_del">
                         <img src={del} alt="delete" />
@@ -23,12 +23,11 @@ function ChapterCDP(){
             </div>
 
             <div className="chapterCDP_themes">
-                <Link to={'/themedev'}>Назва теми</Link>
-                <Link to={'/themedev'}>Назва теми</Link>
-                <Link to={'/themedev'}>Назва теми</Link>
-                <Link to={'/themedev'}>Назва теми</Link>
-                <Link to={'/themedev'}>Назва теми</Link>
-                <Link to={'/themedev'}>Назва теми</Link>
+                <Link to={"/courseDevelopment/themeDevelopment"}>Назва теми</Link>
+                <Link to={"/courseDevelopment/themeDevelopment"}>Назва теми</Link>
+                <Link to={"/courseDevelopment/themeDevelopment"}>Назва теми</Link>
+                <Link to={"/courseDevelopment/themeDevelopment"}>Назва теми</Link>
+                <Link to={"/courseDevelopment/themeDevelopment"}>Назва теми</Link>
             </div>
         </div>
     )

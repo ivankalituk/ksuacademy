@@ -1,12 +1,14 @@
 import './themeDevelopmentPage.scss'
 
+import Theme from '../../components/theme/theme'
+
 function ThemeDevelopmentPage(){
     return(
         <div className="themeDevPage">
             <div className="themeDevPage_container">
 
                 <div className="themeDevPage_themeList">
-                    {/* ТУТ БУДУТ ТЕМЫ */}
+                    <Theme></Theme>
                 </div>
                 
                 <div className="themeDevPage_createTheme">

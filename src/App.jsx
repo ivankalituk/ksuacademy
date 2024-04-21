@@ -37,7 +37,7 @@ function App() {
         <Route path="/courseDevelopment/themeDevelopment" Component={ThemeDevelopmentPage}></Route>
       </Routes>
 
-      <Footer></Footer>
+      <Footer />
 
     </div>
   );

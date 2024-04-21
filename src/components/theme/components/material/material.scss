@@ -1,4 +1,4 @@
-.themePage_theme_material{
+.material{
     max-width: 583px;
     display: flex;
     background-color: #F1F1F1;
@@ -9,7 +9,7 @@
     align-items: center;
     text-decoration: none;
 
-    > .theme_material_img{
+    > .material_img{
         height: 64px;
         width: 64px;
         background-color: white;
@@ -19,7 +19,7 @@
         justify-content: space-around;
     }
 
-    > .theme_material_name{
+    > .material_name{
         margin-left: 10px;
         font-weight: 400;
         font-size: 14px;
@@ -33,7 +33,7 @@
 }
 
 @media (max-width: 700px) {
-    .themePage_theme_material{
+    .material{
         max-width: none;
     }
 }

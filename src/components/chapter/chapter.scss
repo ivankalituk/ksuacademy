@@ -1,14 +1,13 @@
-.chapterCP{
+.chapter{
     padding: 16px 16px 16px 16px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
     box-sizing: border-box;
     border-radius: 16px;
 
-    > .chapterCP_header{
+    > .chapter_header{
         display: flex;
         position: relative;
-
-        > .chapterCP_header_logo{
+        > .chapter_header_logo{
             position: absolute;
             height: 64px;
             width: 64px;
@@ -21,17 +20,19 @@
             top: -4px;
         }
 
-        > .chapterCP_header_heading{
+        > .chapter_header_heading{
+            padding-right: 20px;
             margin-left: 32px;
             flex: 1;
             background-color: #F1F1F1;
             height: 64px;
             align-items: center;
             display: flex;
+            justify-content: space-between;
             border-radius: 0 32px 32px 0;
             overflow: hidden;
 
-            > .chapterCP_header_heading_name{
+            > .chapter_header_heading_name{
                 text-decoration: none;
                 padding-left: 52px;
                 color: #16325C;
@@ -43,10 +44,24 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+
+            > .chapter_header_heading_del{
+                margin-left: 10px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 32px;
+                width: 32px;
+                border-radius: 16px;
+                background-color: white;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+            }
         }
     }
 
-    > .chapterCP_themes{
+    > .chapter_themes{
         padding: 0 16px 0 86px;
         margin-top: 16px;
         columns: 3;
@@ -59,21 +74,22 @@
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+            color: #16325C;
         }
     }
 }
 
 @media (max-width:1000px) {
-    .chapterCP{
-        > .chapterCP_themes{
+    .chapter{
+        > .chapter_themes{
             columns: 2;
         }
     }
 }
 
 @media (max-width:700px) {
-    .chapterCP{
-        > .chapterCP_themes{
+    .chapter{
+        > .chapter_themes{
             columns: 1;
         }
     }

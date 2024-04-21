@@ -1,6 +1,6 @@
 import './themePage.scss'
 
-import ThemeTP from './components/themeTP/themeTP';
+import Theme from '../../components/theme/theme';
 import ProgressBarTP from './components/progressBarTP/progressBarTP';
 
 import { Link } from 'react-router-dom';
@@ -17,8 +17,8 @@ function ThemePage(){
                 <div className="themePage_padding">
 
                     <div className="themePage_themeList">
-                        <ThemeTP></ThemeTP>
-                        <ThemeTP></ThemeTP>
+                        <Theme role = {'student'}></Theme>
+                        <Theme role = {'student'}></Theme>
                     </div>
 
                     <div className="themePage_finalTest">
