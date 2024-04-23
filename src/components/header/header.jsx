@@ -32,7 +32,7 @@ function Header({burgerCallback}){
             setBurger(true)
             burgerCallback(burger)
         }
-    }, [isMobile, courses])
+    }, [isMobile])
 
     // обработка нажатия на кнопку курсов
     let handleCourse = () => {

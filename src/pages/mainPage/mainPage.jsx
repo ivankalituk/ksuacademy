@@ -7,8 +7,18 @@ import cat1 from '../../assets/photos/mainCatSB1.png'
 import cat2 from '../../assets/photos/mainCatSB2.png'
 
 import CourseMainPage from './components/courseMainPage/courseMainPage';
+import { useEffect, useState } from 'react';
+
+import { useFetchRequest } from '../../hooks/hook';
+import { getCourse } from '../../api/course';
 
 function MainPage(){
+
+    const data = useFetchRequest({fetchFunc: getCourse, key: []})
+    console.log(data)
+
+
+    
     return(
         <div className="mainPage">
             <div className="mainPage_container">
