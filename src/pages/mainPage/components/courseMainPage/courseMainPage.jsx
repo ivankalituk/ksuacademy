@@ -5,13 +5,17 @@ import courseHeadingTick from '../../../../assets/photos/courseHeadingTick.svg'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-function CourseMainPage(){
+function CourseMainPage(props){
 
     let [tick, setTick] = useState(false)
 
+    // открытие, закрытие курса
     let togleCourse = () => {
         setTick(!tick)
     }
+
+    // сделать показ разделов
+    // разделы пока не добавлены
 
     return(
         <div className="mainPage_courseBlock_course">
@@ -22,7 +26,7 @@ function CourseMainPage(){
                 </div>
 
                 <div className="course_heading_container">
-                    <Link to={`/course/${'courseNum'}`}>Назва курсу</Link>
+                    <Link to={`/course/${props.data.course_id}`}>{props.data.course_name}</Link>
 
                     <div className="course_heading_tick" onClick={togleCourse}>
                         <img src={courseHeadingTick} alt="Tick" className={tick? "rotate" : ""}/>

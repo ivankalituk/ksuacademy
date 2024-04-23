@@ -1,22 +1,25 @@
+// style
 import './mainPage.scss'
 
-import { Link } from 'react-router-dom';
-
+// photos
 import university from '../../assets/photos/university.png'
 import cat1 from '../../assets/photos/mainCatSB1.png'
 import cat2 from '../../assets/photos/mainCatSB2.png'
 
+// components
 import CourseMainPage from './components/courseMainPage/courseMainPage';
-import { useEffect, useState } from 'react';
 
+// functions
 import { useFetchRequest } from '../../hooks/hook';
 import { getCourse } from '../../api/course';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function MainPage(){
 
-    const data = useFetchRequest({fetchFunc: getCourse, key: []})
+    // сделать так, чтоб обновление было только при запуске страницы
+    const {data, isFeching} = useFetchRequest({fetchFunc: getCourse, key: []})
     console.log(data)
-
 
     
     return(
@@ -49,12 +52,9 @@ function MainPage(){
                     <div className="mainPage_courseBlock_heading">курси</div>
 
                     <div className="coursesColumns">
-                        <CourseMainPage></CourseMainPage>
-                        <CourseMainPage></CourseMainPage>
-                        <CourseMainPage></CourseMainPage>
-                        <CourseMainPage></CourseMainPage>
-                        <CourseMainPage></CourseMainPage>
-                        <CourseMainPage></CourseMainPage>
+                        {isFeching && data.map((data, index) => (
+                            <CourseMainPage data = {data} key={index}></CourseMainPage>
+                        ))}
                     </div>
                 </div>
 
