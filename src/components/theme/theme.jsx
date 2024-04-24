@@ -11,7 +11,7 @@ function Theme(props){
     return(
         <div className="theme">
             <div className="theme_heading">
-                <div className="theme_heading_name">Назва теми</div>
+                <div className="theme_heading_name">{props.data.theme_name}</div>
 
                 <button className="theme_heading_delete" style={(props.role === 'student')? {display: 'none'}: {}}>
                     <img src={del} alt="delete" />

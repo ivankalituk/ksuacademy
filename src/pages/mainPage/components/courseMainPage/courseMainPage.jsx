@@ -17,9 +17,6 @@ function CourseMainPage(props){
     }
 
     const {data: chapters, isFeching: chaptersIsFeching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId(props.data.course_id),key: []})
-    
-    // сделать показ разделов
-    // разделы пока не добавлены
 
     return(
         <div className="mainPage_courseBlock_course">
@@ -40,9 +37,11 @@ function CourseMainPage(props){
 
             <div className={`course_chapters ${tick? 'show' : ''}`}>
                 <div className="course_chapters_container">
-                    {chaptersIsFeching && chapters.map((data) => (
-                        <Link to={`/course/${props.data.course_id}/chapter/${data.chapter_id}`}>{data.chapter_name}</Link>
+
+                    {chaptersIsFeching && chapters.map((data, index) => (
+                        <Link to={`/course/${props.data.course_id}/chapter/${data.chapter_id}`} key={index}>{data.chapter_name}</Link>
                     ))}
+
                 </div>
             </div>
         </div>
