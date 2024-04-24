@@ -83,9 +83,15 @@ header{
             opacity: 1;
             transition: 0.5s;
             animation: fadeAndSlide 0.25s forwards;
+            gap: 10px;
 
-            > .course{
+            > a{
+                display: block;
                 cursor: pointer;
+                text-decoration: none;
+                color: #16325C;
+                font-weight: 900;
+                margin-top: 10px;
             }
         }
 

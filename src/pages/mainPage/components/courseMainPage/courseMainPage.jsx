@@ -4,16 +4,20 @@ import courseImg from '../../../../assets/photos/courseSampleAvatar.svg'
 import courseHeadingTick from '../../../../assets/photos/courseHeadingTick.svg'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { useFetchRequest } from '../../../../hooks/hook'
+import { getChaptersByCourseId } from '../../../../api/chapter'
 
 function CourseMainPage(props){
 
-    let [tick, setTick] = useState(false)
+    const [tick, setTick] = useState(false)
 
     // открытие, закрытие курса
-    let togleCourse = () => {
+    const togleCourse = () => {
         setTick(!tick)
     }
 
+    const {data: chapters, isFeching: chaptersIsFeching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId(props.data.course_id),key: []})
+    
     // сделать показ разделов
     // разделы пока не добавлены
 
@@ -36,12 +40,9 @@ function CourseMainPage(props){
 
             <div className={`course_chapters ${tick? 'show' : ''}`}>
                 <div className="course_chapters_container">
-                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
-                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
-                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
-                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
-                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
-                    <Link to={`/course/${'courseNum'}/theme/${'themeNum'}`}>Назва розділу</Link>
+                    {chaptersIsFeching && chapters.map((data) => (
+                        <Link to={`/course/${props.data.course_id}/chapter/${data.chapter_id}`}>{data.chapter_name}</Link>
+                    ))}
                 </div>
             </div>
         </div>

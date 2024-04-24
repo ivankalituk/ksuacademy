@@ -30,8 +30,8 @@ function App() {
 
       <Routes>
         <Route path="/" Component={MainPage} ></Route>
-        <Route path="/course/:subId" Component={CoursePage}></Route>
-        <Route path="/course/:subId/theme/:theId" Component={ThemePage} ></Route>
+        <Route path="/course/:course_id" Component={CoursePage}></Route>
+        <Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} ></Route>
         <Route path="/profile" Component={ProfilePage}></Route>
         <Route path="/courseDevelopment" Component={SubjectDevelopmentPage}></Route>
         <Route path="/courseDevelopment/themeDevelopment" Component={ThemeDevelopmentPage}></Route>

@@ -11,15 +11,14 @@ import CourseMainPage from './components/courseMainPage/courseMainPage';
 
 // functions
 import { useFetchRequest } from '../../hooks/hook';
-import { getCourse } from '../../api/course';
+import { getAllCourses } from '../../api/course';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 
 function MainPage(){
 
     // сделать так, чтоб обновление было только при запуске страницы
-    const {data, isFeching} = useFetchRequest({fetchFunc: getCourse, key: []})
-    console.log(data)
+    const {data: courses, isFeching: coursesIsFeching} = useFetchRequest({fetchFunc: getAllCourses, key: []})
+    console.log(courses)
 
     
     return(
@@ -52,7 +51,7 @@ function MainPage(){
                     <div className="mainPage_courseBlock_heading">курси</div>
 
                     <div className="coursesColumns">
-                        {isFeching && data.map((data, index) => (
+                        {coursesIsFeching && courses.map((data, index) => (
                             <CourseMainPage data = {data} key={index}></CourseMainPage>
                         ))}
                     </div>

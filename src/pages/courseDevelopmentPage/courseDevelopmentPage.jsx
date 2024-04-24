@@ -4,9 +4,13 @@ import Select from 'react-select'
 
 import del from '../../assets/photos/delete.svg'
 
-import ChapterCDP from './components/chapterCDP/chapterCDP'
+import Chapter from '../../components/chapter/chapter'
 
 function CourseDevelopmentPage(){
+
+    // тут ошибка так как я ничего не передаю Чаптерам
+
+
     return(
         <div className="couDevPage">
             <div className="couDevPage_container">
@@ -29,9 +33,9 @@ function CourseDevelopmentPage(){
                 </div>
 
                 <div className="couDevPage_chapterList">
-                    <ChapterCDP />
-                    <ChapterCDP />
-                    <ChapterCDP />
+                    <Chapter isTeacher = {true}></Chapter>
+                    <Chapter isTeacher = {true}></Chapter>
+                    <Chapter isTeacher = {true}></Chapter>
                 </div>
 
                 <div className="couDevPage_createChapter">

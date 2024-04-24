@@ -4,10 +4,17 @@ import './chapter.scss'
 
 import del from '../../assets/photos/delete.svg'
 import chapterImg from '../../assets/photos/sampleChapterLogo.svg'
+import { useFetchRequest } from "../../hooks/hook"
+import { getThemesByChapterId } from "../../api/theme"
 
 function Chapter(props){
+
+    // получение тем
+    const {data: themes, isFeching: themesIsFetching} = useFetchRequest({fetchFunc: () => getThemesByChapterId(props.data.chapter_id), key: []})
     let link = '/'
 
+    console.log(props.data)
+    // новые ссылки
     if(props.isTeacher === true){
         link = "/courseDevelopment/themeDevelopment"
     }
@@ -23,7 +30,7 @@ function Chapter(props){
                 </div>
 
                 <div className="chapter_header_heading">
-                    <Link to={link} className='chapter_header_heading_name'>Назва розділу</Link>
+                    <Link to={`/course/${props.data.course_id}/chapter/${props.data.chapter_id}`} className='chapter_header_heading_name'>{props.data.chapter_name}</Link>
 
                     {props.isTeacher && (                    
                         <button className="chapter_header_heading_del">
@@ -34,11 +41,9 @@ function Chapter(props){
             </div>
 
             <div className="chapter_themes">
-                <Link to={link}>Назва теми</Link>
-                <Link to={link}>Назва теми</Link>
-                <Link to={link}>Назва теми</Link>
-                <Link to={link}>Назва теми</Link>
-                <Link to={link}>Назва теми</Link>
+                {themesIsFetching && themes.map((data, index) => (
+                    <Link key={index} to={`/course/${props.data.course_id}/chapter/${props.data.chapter_id}`}>{data.theme_name}</Link>
+                ))}
             </div>
         </div>
     )

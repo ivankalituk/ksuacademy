@@ -11,6 +11,8 @@ import Registration from './components/registration/registration'
 
 import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
+import { useFetchRequest } from '../../hooks/hook'
+import { getAllCourses } from '../../api/course'
 
 
 function Header({burgerCallback}){
@@ -21,7 +23,7 @@ function Header({burgerCallback}){
     let isMobile = useMediaQuery({maxWidth: 700});
 
 
-    // сложно работает, запутано тру и фолс, переделать
+    // для отслеживания размера экрана
     useEffect(()=>{
         console.log('mob: '+isMobile+' cou: ' + courses + ' bur: ' + burger)
         if(isMobile && !courses){
@@ -44,6 +46,8 @@ function Header({burgerCallback}){
         setBurger(!burger)
         burgerCallback(burger)
     }
+
+    const {data: coursesList, isFeching: coursesIsFeching} = useFetchRequest({fetchFunc: getAllCourses, key: []})
 
     return(
         <header>
@@ -80,11 +84,11 @@ function Header({burgerCallback}){
 
             <div className="header_courses">
                 <div className={`header_courses_container ${courses? "show" : ""}`}>
-                    <div className="course">COURSE</div>
-                    <div className="course">COURSE</div>
-                    <div className="course">COURSE</div>
-                    <div className="course">COURSE</div>
-                    <div className="course">COURSE</div>
+
+                    {coursesIsFeching && coursesList.map((data, index) => (
+                        <Link key={index}>{data.course_name}</Link>
+                    ))}
+
                 </div>
             </div>
 
@@ -98,12 +102,11 @@ function Header({burgerCallback}){
                         <div className="header_burgerMenu_listHeading">Курси</div>
 
                         <div className="header_burgerMenu_subjectList">
-                            <Link>Subject1</Link>
-                            <Link>Subject1</Link>
-                            <Link>Subject1</Link>
-                            <Link>Subject1</Link>
-                            <Link>Subject1</Link>
-                            <Link>Subject1</Link>
+
+                            {coursesIsFeching && coursesList.map((data, index) => (
+                                <Link key={index}>{data.course_name}</Link>
+                            ))}
+
                         </div>
                     </div>
                 </div>
