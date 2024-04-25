@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 export const useFetchRequest = ({fetchFunc, key}) => {
 
-    let [data, setData] = useState(null)
+    const [data, setData] = useState(null)
     const [isFeching, setIsFecching] = useState(false)
 
     useEffect(() =>{
@@ -11,6 +11,18 @@ export const useFetchRequest = ({fetchFunc, key}) => {
             setIsFecching(true)
         })
     }, key)
+
+    return {data, isFeching}
+}
+
+export const useRequest = ({fetchFunc}) =>{
+    const[data, setData] = useState(null)
+    const[isFeching, setIsFecching] = useState(false)
+
+    fetchFunc().then((fechedData) => {
+        setData(fechedData)
+        setIsFecching(true)
+    })
 
     return {data, isFeching}
 }
