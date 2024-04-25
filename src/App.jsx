@@ -12,17 +12,15 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.scss"
 
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 function App() {
-
   let [blockScroll, setBlockScroll] = useState(false)
 
   // колбек для бургер меню (блокировка скрола)
-  let burgerCallback = (block) =>{
+  let burgerCallback = useCallback((block) =>{
     setBlockScroll(block)
-  }
-
+  }, [])
 
   return (
     <div className={`App ${blockScroll? 'blockScroll' : ''}`}>

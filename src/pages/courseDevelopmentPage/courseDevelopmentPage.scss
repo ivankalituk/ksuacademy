@@ -16,6 +16,13 @@
             gap: 16px;
 
             > .couDevPage_courseDevControl_selectCourse{
+                z-index: 0;
+
+                Select{
+                    z-index: -1;
+                }
+
+                // СТИЛИЗАЦИЯ СЕЛЕКТА
 
             }
 
@@ -52,6 +59,12 @@
                     font-family: Montserrat;
                     font-weight: 600;
                     text-transform: uppercase;
+                    transition: 0.5s;
+
+                    &:active{
+                        background-color: #16325C;
+                        transition: 0.5s;
+                    }
                 }
             }
         }
@@ -94,59 +107,6 @@
             flex-direction: column;
             gap: 10px;
         }
-
-        > .couDevPage_createChapter{
-            margin: 10px 0 16px 0;
-            padding: 16px 16px 32px 16px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
-
-            > .couDevPage_createChapter_heading{
-                color: #16325C;
-                font-weight: 700;
-                font-size: 24px;
-                line-height: 29.26px;
-                height: 64px;
-                display: flex;
-                align-items: center;
-            }
-
-            > .couDevPage_createChapter_createGroup{
-                display: flex;
-                gap: 16px;
-
-                > input{
-                    flex: 1;
-                    border: none;
-                    outline: none;
-                    background-color: #F1F1F1;
-                    border-radius: 16px;
-                    height: 32px;
-                    box-sizing: border-box;
-                    padding: 8px 16px;
-                    font-family: Montserrat;
-                    font-weight: 600;
-
-                    &::placeholder{
-                        color: #005495;
-                        text-transform: uppercase;
-                    }
-                }
-
-                > button{
-                    height: 32px;
-                    flex: 1;
-                    outline: none;
-                    border: none;
-                    border-radius: 16px;
-                    background-color: #005495;
-                    color: white;
-                    font-family: Montserrat;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                }
-            }
-        }
     }
 }
 
@@ -165,16 +125,6 @@
 
             > .couDevPage_courseDevControl{
                 > .couDevPage_courseDevControl_createCourse{
-                    flex-direction: column;
-
-                    > button{
-                        flex: none;
-                    }
-                }
-            }
-
-            > .couDevPage_createChapter{
-                > .couDevPage_createChapter_createGroup{
                     flex-direction: column;
 
                     > button{

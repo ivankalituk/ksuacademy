@@ -69,6 +69,12 @@
                     width: 130px;
                     height: 32px;
                     border-radius: 16px;
+                    transition: 0.5s;
+
+                    &:active{
+                        background-color: #4e9939;
+                        transition: 0.5s;
+                    }
                 }
 
                 > img{

@@ -25,7 +25,7 @@ function Header({burgerCallback}){
 
     // для отслеживания размера экрана
     useEffect(()=>{
-        console.log('mob: '+isMobile+' cou: ' + courses + ' bur: ' + burger)
+        // console.log('mob: '+isMobile+' cou: ' + courses + ' bur: ' + burger)
         if(isMobile && !courses){
             setCourses(true)
         }
@@ -47,6 +47,7 @@ function Header({burgerCallback}){
         burgerCallback(burger)
     }
 
+    // получение списка курсов для бургера и выпадащего списка
     const {data: coursesList, isFeching: coursesIsFeching} = useFetchRequest({fetchFunc: getAllCourses, key: []})
 
     return(

@@ -5,11 +5,14 @@ import Select from 'react-select'
 import del from '../../assets/photos/delete.svg'
 
 import Chapter from '../../components/chapter/chapter'
+import Development from '../../components/development/development'
 
 function CourseDevelopmentPage(){
 
     // тут ошибка так как я ничего не передаю Чаптерам
 
+    // получение предметов по айди препода, взять из редакса
+    const theacher_id = 1;
 
     return(
         <div className="couDevPage">
@@ -33,19 +36,12 @@ function CourseDevelopmentPage(){
                 </div>
 
                 <div className="couDevPage_chapterList">
+                    {/* <Chapter isTeacher = {true}></Chapter>
                     <Chapter isTeacher = {true}></Chapter>
-                    <Chapter isTeacher = {true}></Chapter>
-                    <Chapter isTeacher = {true}></Chapter>
+                    <Chapter isTeacher = {true}></Chapter> */}
                 </div>
 
-                <div className="couDevPage_createChapter">
-                    <div className="couDevPage_createChapter_heading">Створення розділу</div>
-
-                    <div className="couDevPage_createChapter_createGroup">
-                        <input type="text" placeholder='Назва розділу'/>
-                        <button>+ Створити розділ</button>
-                    </div>
-                </div>
+                <Development mode = {"chapter"}></Development>
             </div>
         </div>
     )
