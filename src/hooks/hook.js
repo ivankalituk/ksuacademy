@@ -9,6 +9,7 @@ export const useFetchRequest = ({fetchFunc, key}) => {
         fetchFunc().then((fechedData) => {
             setData(fechedData)
             setIsFecching(true)
+            // console.log(fechedData)
         })
     }, key)
 
@@ -17,12 +18,12 @@ export const useFetchRequest = ({fetchFunc, key}) => {
 
 export const useRequest = ({fetchFunc}) =>{
     const[data, setData] = useState(null)
-    const[isFeching, setIsFecching] = useState(false)
+    const[isFetching, setIsFetching] = useState(false)
 
-    fetchFunc().then((fechedData) => {
+    const mutatedFunc = (data) => fetchFunc(data).then((fechedData) =>{
         setData(fechedData)
-        setIsFecching(true)
+        setIsFetching(true)
     })
 
-    return {data, isFeching}
+    return {mutatedFunc, isFetching, data}
 }

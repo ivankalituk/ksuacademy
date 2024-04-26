@@ -17,6 +17,7 @@ function CourseMainPage(props){
     }
 
     const {data: chapters, isFeching: chaptersIsFeching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId(props.data.course_id),key: []})
+    
 
     return(
         <div className="mainPage_courseBlock_course">

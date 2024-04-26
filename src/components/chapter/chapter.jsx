@@ -4,22 +4,22 @@ import './chapter.scss'
 
 import del from '../../assets/photos/delete.svg'
 import chapterImg from '../../assets/photos/sampleChapterLogo.svg'
+import edit from '../../assets/photos/edit.svg'
+
 import { useFetchRequest } from "../../hooks/hook"
 import { getThemesByChapterId } from "../../api/theme"
+import { useState } from "react"
 
 function Chapter(props){
 
     // получение тем
     const {data: themes, isFeching: themesIsFetching} = useFetchRequest({fetchFunc: () => getThemesByChapterId(props.data.chapter_id), key: []})
-    let link = '/'
 
-    console.log(props.data)
-    // новые ссылки
-    if(props.isTeacher === true){
-        link = "/courseDevelopment/themeDevelopment"
-    }
-    else {
-        link = "/course/:subId/theme/:theId"
+    // режим редактирования
+    const [editMode, setEditMode] = useState(false)
+
+    const handleEditMode = () =>{
+        setEditMode(!editMode)
     }
 
     return(
@@ -30,12 +30,21 @@ function Chapter(props){
                 </div>
 
                 <div className="chapter_header_heading">
-                    <Link to={`/course/${props.data.course_id}/chapter/${props.data.chapter_id}`} className='chapter_header_heading_name'>{props.data.chapter_name}</Link>
+                    {!editMode && <Link to={`/course/${props.data.course_id}/chapter/${props.data.chapter_id}`} className='chapter_header_heading_name'>{props.data.chapter_name}</Link>}
+                    
+                    {editMode && <input type="text" placeholder="Введіть назву розділу"></input>}
 
-                    {props.isTeacher && (                    
-                        <button className="chapter_header_heading_del">
-                            <img src={del} alt="delete" />
-                        </button>
+
+                    {props.isTeacher && (      
+                        <div className="chapter_header_heading_teacherGroup">
+                            <button className="chapter_header_heading_edit" onClick={handleEditMode}>
+                                <img src={edit} alt="edit" />
+                            </button>
+
+                            <button className="chapter_header_heading_del">
+                                <img src={del} alt="delete" />
+                            </button>
+                        </div>
                     )}
                 </div>
             </div>

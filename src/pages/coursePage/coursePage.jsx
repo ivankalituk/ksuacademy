@@ -7,7 +7,7 @@ import { getOneCourse } from '../../api/course';
 import { getChaptersByCourseId } from '../../api/chapter';
 
 function CoursePage(){
-
+    
     const {course_id} = useParams()
 
     const {data: course, isFeching: courseIsFeching} = useFetchRequest({fetchFunc: () => getOneCourse(course_id), key: []})
@@ -21,7 +21,7 @@ function CoursePage(){
                 
                 <div className="coursePage_courses">
                     {chaptersIsFeching && chapters.map((data, index) => (
-                        <Chapter isTeacher = {false} data = {data} key = {index}></Chapter>
+                        <Chapter isTeacher = {!false} data = {data} key = {index}></Chapter>
                     ))}
                 </div>
             </div>

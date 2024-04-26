@@ -15,7 +15,7 @@
         font-weight: 600;
         font-size: 13px;
         line-height: 16px;
-    
+        
 
         &::placeholder{
             text-transform: uppercase;
@@ -37,5 +37,9 @@
     .searchBar{
         flex: 1;
         min-width: none;
+
+        >input{
+            width: 100%;
+        }
     }
 }

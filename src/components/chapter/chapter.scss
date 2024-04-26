@@ -7,6 +7,7 @@
     > .chapter_header{
         display: flex;
         position: relative;
+
         > .chapter_header_logo{
             position: absolute;
             height: 64px;
@@ -45,18 +46,68 @@
                 text-overflow: ellipsis;
             }
 
-            > .chapter_header_heading_del{
-                margin-left: 10px;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                height: 32px;
-                width: 32px;
-                border-radius: 16px;
-                background-color: white;
+            > input{
+                margin-left: 52px;
+                // flex: 1;
                 border: none;
-                padding: 0;
-                cursor: pointer;
+                outline: none;
+                background-color: white;
+                border-radius: 16px;
+                height: 32px;
+                box-sizing: border-box;
+                padding: 8px 16px;
+                font-family: Montserrat;
+                font-weight: 600;
+                width: 100%;
+
+                &::placeholder{
+                    font-weight: 600;
+                    // color: #F1F1F1;
+                    text-transform: uppercase;
+                }
+            }
+
+            > .chapter_header_heading_teacherGroup{
+                display: flex;
+                gap: 5px;
+
+                > .chapter_header_heading_del{
+                    margin-left: 10px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                    background-color: white;
+                    border: none;
+                    padding: 0;
+                    cursor: pointer;
+
+                    > img{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+                > .chapter_header_heading_edit{
+                    margin-left: 10px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                    background-color: white;
+                    border: none;
+                    padding: 0;
+                    cursor: pointer;
+
+                    > img{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
             }
         }
     }

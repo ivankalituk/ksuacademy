@@ -18,7 +18,7 @@ function MainPage(){
 
     // сделать так, чтоб обновление было только при запуске страницы
     const {data: courses, isFeching: coursesIsFeching} = useFetchRequest({fetchFunc: getAllCourses, key: []})
-    console.log(courses)
+    // console.log(courses)
 
     
     return(

@@ -6,8 +6,8 @@ export async function getAllCourses() {
 }
 
 // получение одного курса
-export async function getOneCourse(course_id){
-  return await axios.get('http://localhost:1000/course/' + course_id).then(({data}) => data);
+export async function getOneCourse(data){
+  return await axios.get('http://localhost:1000/course/' + data.course_id).then(({data}) => data);
 }
 
 // получение всех курсов преподавателя
@@ -16,8 +16,8 @@ export async function getAllCoursesByTeacherId(teacher_id){
 }
 
 // создание курса
-export async function postCourse(course_name, teacher_id){
-  return axios.post('http://localhost:1000/course', {course_name: course_name, teacher_id: teacher_id})
+export async function postCourse(data){
+  return axios.post('http://localhost:1000/course', {course_name: data.course_name, teacher_id: data.teacher_id})
 }
 
 // обновление курса
@@ -26,6 +26,6 @@ export async function updateCourse(){
 }
 
 // удаление курса
-export async function deleteCourse(){
-
+export async function deleteCourse(data){
+  return axios.delete('http://localhost:1000/course/' + data.course_id)
 }
