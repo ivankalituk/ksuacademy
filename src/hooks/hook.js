@@ -9,7 +9,7 @@ export const useFetchRequest = ({fetchFunc, key}) => {
         fetchFunc().then((fechedData) => {
             setData(fechedData)
             setIsFecching(true)
-            // console.log(fechedData)
+            console.log("worked")
         })
     }, key)
 
