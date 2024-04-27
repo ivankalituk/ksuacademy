@@ -48,7 +48,7 @@ function Header({burgerCallback}){
     }
 
     // получение списка курсов для бургера и выпадащего списка
-    const {data: coursesList, isFeching: coursesIsFeching} = useFetchRequest({fetchFunc: getAllCourses, key: []})
+    const {data: coursesList, isFetching: coursesIsFeching} = useFetchRequest({fetchFunc: getAllCourses, key: [], enebled: true})
 
     return(
         <header>

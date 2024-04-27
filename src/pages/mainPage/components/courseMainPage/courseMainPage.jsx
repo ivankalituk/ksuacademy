@@ -16,7 +16,7 @@ function CourseMainPage(props){
         setTick(!tick)
     }
 
-    const {data: chapters, isFeching: chaptersIsFeching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId(props.data.course_id),key: []})
+    const {data: chapters, isFetching: chaptersIsFeching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId(props.data.course_id),key: [], enebled: true})
     
 
     return(

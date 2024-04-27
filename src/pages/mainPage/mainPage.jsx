@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 function MainPage(){
 
     // сделать так, чтоб обновление было только при запуске страницы
-    const {data: courses, isFeching: coursesIsFeching} = useFetchRequest({fetchFunc: getAllCourses, key: []})
+    const {data: courses, isFetching: coursesIsFeching} = useFetchRequest({fetchFunc: getAllCourses, key: [], enebled: true})
     // console.log(courses)
 
     

@@ -10,17 +10,16 @@ function CoursePage(){
     
     const {course_id} = useParams()
 
-    const {data: course, isFeching: courseIsFeching} = useFetchRequest({fetchFunc: () => getOneCourse(course_id), key: []})
-
-    const {data: chapters, isFeching: chaptersIsFeching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId(course_id), key: []})
-
+    const {data: course, isFetching: courseIsFetching} = useFetchRequest({fetchFunc: () => getOneCourse({course_id: course_id}), key: [], enebled: true})
+    const {data: chapters, isFetching: chaptersIsFetching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId(course_id), key: [], enebled: true})
+    // console.log(course_id)
     return(
         <div className="coursePage">
             <div className="coursePage_container">
-                {courseIsFeching && <div className="coursePage_courseName">{course[0].course_name}</div>}
+                {courseIsFetching && <div className="coursePage_courseName">{course[0].course_name}</div>}
                 
                 <div className="coursePage_courses">
-                    {chaptersIsFeching && chapters.map((data, index) => (
+                    {chaptersIsFetching && chapters.map((data, index) => (
                         <Chapter isTeacher = {!false} data = {data} key = {index}></Chapter>
                     ))}
                 </div>

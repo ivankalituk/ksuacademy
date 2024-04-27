@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react"
 
-export const useFetchRequest = ({fetchFunc, key}) => {
+export const useFetchRequest = ({fetchFunc, key, enebled}) => {
 
     const [data, setData] = useState(null)
-    const [isFeching, setIsFecching] = useState(false)
+    const [isFetching, setIsFecching] = useState(false)
 
     useEffect(() =>{
-        fetchFunc().then((fechedData) => {
-            setData(fechedData)
-            setIsFecching(true)
-            console.log("worked")
-        })
+
+        if (enebled) {
+            fetchFunc().then((fechedData) => {
+                setData(fechedData)
+                setIsFecching(true)
+                console.log(fechedData)
+            })
+        }
     }, key)
 
-    return {data, isFeching}
+    return {data, isFetching}
 }
 
 export const useRequest = ({fetchFunc}) =>{
