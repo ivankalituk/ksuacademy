@@ -21,7 +21,7 @@ function CourseDevelopmentPage(){
     const [chosenCourseKey, setChosenCourseKey] = useState(0)                   //ключ для обновления получения одного курса
     const [enebledChosenCourse, setEnebledChosenCourse] = useState(false)       //енейблед для получения одного курса
 
-    const [chapterKey, setChapterKey] = useState(0)                            //ключ для разделов
+    const [chapterKey, setChapterKey] = useState(0)                             //ключ для разделов
     const [chapterEnebled, setChapterEnebled] = useState(false)                 //енейблед для разделов
 
 
@@ -44,10 +44,11 @@ function CourseDevelopmentPage(){
     const {data: chapters, isFetching: chaptersIsFetching} = useFetchRequest({fetchFunc: ()=> getChaptersByCourseId(chosenCourseId), key: [chapterKey], enebled: chapterEnebled})
 
     // создание раздела курса (не используется)
-    const {mutatedFunc: createChapterFunc, isFetching: createChapterIsFetching, data: createChapterData} = useRequest({fetchFunc: createChapter})
+    // const {mutatedFunc: createChapterFunc, isFetching: createChapterIsFetching, data: createChapterData} = useRequest({fetchFunc: createChapter})
 
 
     // генерация опшнов для реакт-селекта
+    // ПЕРЕДЕЛАТЬ ГЕНЕРАЦИЮ ОПШНОВ ДЛЯ СЕЛЕКТА, ЗАНЕСТИ ЕГО В ХУК
     let courseOptions
     if (coursesIsFeching){ 
         courseOptions = courses.map(data => ({
@@ -131,7 +132,8 @@ function CourseDevelopmentPage(){
                     ))}
                 </div>
 
-                <Development mode = {"chapter"}></Development>
+                {/* создание раздела */}
+                {chosenCourseId && <Development mode = {"chapter"} course_id = {chosenCourseId.course_id}></Development>}
             </div>
         </div>
     )
