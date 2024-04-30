@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const useFetchRequest = ({fetchFunc, key, enebled}) => {
+export const useFetchRequest = ({fetchFunc, key, enebled, reactSelect}) => {
 
     const [data, setData] = useState(null)
     const [isFetching, setIsFecching] = useState(false)
@@ -9,9 +9,19 @@ export const useFetchRequest = ({fetchFunc, key, enebled}) => {
 
         if (enebled) {
             fetchFunc().then((fechedData) => {
-                setData(fechedData)
-                setIsFecching(true)
-                console.log(fechedData)
+
+                if (reactSelect){
+                    const courseOptions = fechedData.map(data => ({
+                            value: data.course_id,
+                            label: data.course_name
+                        }))
+                    
+                    setData(courseOptions)
+                } else {
+                    setData(fechedData)
+                    setIsFecching(true)
+                    console.log(fechedData)
+                }
             })
         }
     }, key)

@@ -29,7 +29,7 @@ function CourseDevelopmentPage(){
     const teacher_id = 2;
 
     // получение курсов
-    const {data: courses, isFetching: coursesIsFeching} = useFetchRequest({fetchFunc: ()=> getAllCoursesByTeacherId(teacher_id), key: [courseKey], enebled: true})
+    const {data: courses, isFetching: coursesIsFeching} = useFetchRequest({fetchFunc: ()=> getAllCoursesByTeacherId(teacher_id), key: [courseKey], enebled: true, reactSelect: true})
 
     // создание курса
     const {mutatedFunc: createCourseFunc, isFetching: courseCreateIsFeching, data: courseData} = useRequest({fetchFunc: postCourse})
@@ -42,20 +42,6 @@ function CourseDevelopmentPage(){
 
     // получение разделов курса
     const {data: chapters, isFetching: chaptersIsFetching} = useFetchRequest({fetchFunc: ()=> getChaptersByCourseId(chosenCourseId), key: [chapterKey], enebled: chapterEnebled})
-
-    // создание раздела курса (не используется)
-    // const {mutatedFunc: createChapterFunc, isFetching: createChapterIsFetching, data: createChapterData} = useRequest({fetchFunc: createChapter})
-
-
-    // генерация опшнов для реакт-селекта
-    // ПЕРЕДЕЛАТЬ ГЕНЕРАЦИЮ ОПШНОВ ДЛЯ СЕЛЕКТА, ЗАНЕСТИ ЕГО В ХУК
-    let courseOptions
-    if (coursesIsFeching){ 
-        courseOptions = courses.map(data => ({
-            value: data.course_id,
-            label: data.course_name
-        }))
-    }
 
     // обработчик создания курсов
     const handleCreateCourse = () => {
@@ -97,8 +83,8 @@ function CourseDevelopmentPage(){
         setCourseKey(courseKey+1)
 
         setEnebledChosenCourse(false)
+        setChosenCourseId(null)
         setChosenCourseKey(chosenCourseKey+1)
-
     }
 
 
@@ -108,7 +94,7 @@ function CourseDevelopmentPage(){
                 <div className="couDevPage_courseDevControl">
 
                     <div className="couDevPage_courseDevControl_selectCourse">
-                        <Select options={courseOptions} onChange={handleCourseSelect} />
+                        <Select options={courses} onChange={handleCourseSelect} />
                     </div>
 
                     <div className="couDevPage_courseDevControl_createCourse">
