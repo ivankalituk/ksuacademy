@@ -10,6 +10,7 @@ import { useFetchRequest, useRequest } from '../../hooks/hook'
 import { getAllCoursesByTeacherId, getOneCourse, postCourse, deleteCourse } from '../../api/course'
 import { useState } from 'react'
 import { createChapter, getChaptersByCourseId } from '../../api/chapter'
+import { dataToOptions } from '../../utils/mutationFunctions'
 
 function CourseDevelopmentPage(){
 
@@ -25,11 +26,12 @@ function CourseDevelopmentPage(){
     const [chapterEnebled, setChapterEnebled] = useState(false)                 //енейблед для разделов
 
 
+
+
     // получение предметов по айди препода, взять из редакса
     const teacher_id = 2;
-
     // получение курсов
-    const {data: courses, isFetching: coursesIsFeching} = useFetchRequest({fetchFunc: ()=> getAllCoursesByTeacherId(teacher_id), key: [courseKey], enebled: true, reactSelect: true})
+    const {data: courses, isFetching: coursesIsFetching} = useFetchRequest({fetchFunc: ()=> getAllCoursesByTeacherId(teacher_id), key: [courseKey], enebled: true, mutationFunc: dataToOptions })
 
     // создание курса
     const {mutatedFunc: createCourseFunc, isFetching: courseCreateIsFeching, data: courseData} = useRequest({fetchFunc: postCourse})
@@ -76,17 +78,25 @@ function CourseDevelopmentPage(){
         console.log(chapters)
     }
 
-    //удаление курса
+    //удаление курса ТОЛЬКО если в нём нет разделов
     const handleDeleteCourse = () => {
-        console.log(`удаление курса с айди: ${chosenCourseId.course_id}`)
-        deleteCourseFunc({course_id: chosenCourseId.course_id})
-        setCourseKey(courseKey+1)
 
-        setEnebledChosenCourse(false)
-        setChosenCourseId(null)
-        setChosenCourseKey(chosenCourseKey+1)
+
+        if (chapters.length >0){
+            alert("Для початку необхідно відалити всі розділи курсу")
+        } else {
+            console.log(`удаление курса с айди: ${chosenCourseId}`)
+            deleteCourseFunc({course_id: chosenCourseId.course_id})
+            setCourseKey(courseKey+1)
+    
+            setEnebledChosenCourse(false)
+            setChosenCourseId(null)
+            setChosenCourseKey(chosenCourseKey+1)
+        }
     }
 
+
+    // console.log(courses)
 
     return(
         <div className="couDevPage">
@@ -104,7 +114,7 @@ function CourseDevelopmentPage(){
                 </div>
 
                 
-                {chosenCourseIsFetching && 
+                {chosenCourse && 
                     <div className="couDevPage_courseName">
                         <div className="couDevPage_courseName_name">{chosenCourse[0].course_name}</div>
 

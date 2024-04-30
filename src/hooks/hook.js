@@ -1,27 +1,23 @@
 import { useEffect, useState } from "react"
 
-export const useFetchRequest = ({fetchFunc, key, enebled, reactSelect}) => {
+export const useFetchRequest = ({fetchFunc, key, enebled, mutationFunc}) => {
 
     const [data, setData] = useState(null)
-    const [isFetching, setIsFecching] = useState(false)
+    const [isFetching, setIsFetching] = useState(false)
 
     useEffect(() =>{
 
         if (enebled) {
-            fetchFunc().then((fechedData) => {
+            fetchFunc().then((fetchedData) => {
 
-                if (reactSelect){
-                    const courseOptions = fechedData.map(data => ({
-                            value: data.course_id,
-                            label: data.course_name
-                        }))
-                    
-                    setData(courseOptions)
-                } else {
-                    setData(fechedData)
-                    setIsFecching(true)
-                    console.log(fechedData)
+                let data = fetchedData
+
+                if(mutationFunc){
+                    data = mutationFunc(fetchedData)
                 }
+
+                setIsFetching(true)
+                setData(data)
             })
         }
     }, key)

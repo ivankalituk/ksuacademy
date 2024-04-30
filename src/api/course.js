@@ -27,5 +27,6 @@ export async function updateCourse(){
 
 // удаление курса
 export async function deleteCourse(data){
+  console.log(data)
   return axios.delete('http://localhost:1000/course/' + data.course_id)
 }

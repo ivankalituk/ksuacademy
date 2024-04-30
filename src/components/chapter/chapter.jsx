@@ -52,9 +52,14 @@ function Chapter(props){
 
     // удаление раздела
     const handleDelete = () => {
-        chapterDelete({chapter_id: props.data.chapter_id})
-        // alert('Розділ видалено')
-        // console.log(props.data.chapter_id)
+
+        if (themes.length > 0){
+            alert("Спочатку видаліть теми розділу")
+        } else {
+            chapterDelete({chapter_id: props.data.chapter_id})
+
+            // колбек для обновления разделов курса
+        }
     }
 
 
