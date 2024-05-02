@@ -6,6 +6,7 @@ export const useFetchRequest = ({fetchFunc, key, enebled, mutationFunc}) => {
     const [isFetching, setIsFetching] = useState(false)
 
     useEffect(() =>{
+        setIsFetching(false)
 
         if (enebled) {
             fetchFunc().then((fetchedData) => {
@@ -16,12 +17,15 @@ export const useFetchRequest = ({fetchFunc, key, enebled, mutationFunc}) => {
                     data = mutationFunc(fetchedData)
                 }
 
+                console.log(data)
                 setIsFetching(true)
                 setData(data)
+
             })
         }
     }, key)
 
+    // console.log(isFetching)
     return {data, isFetching}
 }
 
