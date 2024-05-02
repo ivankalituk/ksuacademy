@@ -24,6 +24,8 @@ function CourseDevelopmentPage(){
 
     const [chapterKey, setChapterKey] = useState(0)                             //ключ для разделов
     const [chapterEnebled, setChapterEnebled] = useState(false)                 //енейблед для разделов
+    
+    const [selectedOption, setSelectedOption] = useState(null)                  //переменная для изменения опшна без взаимодейсвия с селектом
 
 
 
@@ -65,10 +67,11 @@ function CourseDevelopmentPage(){
     }
     
     // сохранение выбора реакт-селекта
-    const handleCourseSelect = (selectedOption) =>{
+    const handleCourseSelect = (option) =>{
 
         // получение одного курса
-        setChosenCourseId({course_id: selectedOption.value})
+        setSelectedOption(option)
+        setChosenCourseId({course_id: option.value})
         setEnebledChosenCourse(true)
         setChosenCourseKey(chosenCourseKey+1)
 
@@ -89,9 +92,13 @@ function CourseDevelopmentPage(){
             deleteCourseFunc({course_id: chosenCourseId.course_id})
             setCourseKey(courseKey+1)
     
+            setSelectedOption(null)
             setEnebledChosenCourse(false)
             setChosenCourseId(null)
             setChosenCourseKey(chosenCourseKey+1)
+            
+            // не происходит удаления предмета из списка селекта
+            // предмет продолжает отображаться
         }
     }
 
@@ -104,7 +111,7 @@ function CourseDevelopmentPage(){
                 <div className="couDevPage_courseDevControl">
 
                     <div className="couDevPage_courseDevControl_selectCourse">
-                        <Select options={courses} onChange={handleCourseSelect} />
+                        <Select options={courses} onChange={handleCourseSelect} value={selectedOption} />
                     </div>
 
                     <div className="couDevPage_courseDevControl_createCourse">
@@ -114,7 +121,7 @@ function CourseDevelopmentPage(){
                 </div>
 
                 
-                {chosenCourse && 
+                {selectedOption && 
                     <div className="couDevPage_courseName">
                         <div className="couDevPage_courseName_name">{chosenCourse[0].course_name}</div>
 
