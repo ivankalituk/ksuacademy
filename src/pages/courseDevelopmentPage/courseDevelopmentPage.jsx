@@ -68,6 +68,7 @@ function CourseDevelopmentPage(){
             setCourseKey(courseKey + 1)                             //обновляем получение курса уже без его получния 
             setSelectedCourse(null)                                 //присваиваем валью селекта нулю
             setCoursesKey(coursesKey + 1)                           //обновляем курсы и селект
+            // setChaptersEnebled(false)
         } else {
             alert("Спочатку необхідно видалити розділи курсу")
         }
@@ -123,7 +124,7 @@ function CourseDevelopmentPage(){
                 </div>
 
                 {/* создание раздела */}
-                {courseFetching && <Development mode = {"chapter"} course_id = {selectedCourse.value}></Development>}
+                {courseFetching && <Development mode = {"chapter"} chapter_id = {selectedCourse}></Development>}
             </div>
         </div>
     )
