@@ -86,6 +86,24 @@
                 -webkit-text-fill-color: transparent;
             }
 
+            > .couDevPage_courseName_input{
+                flex: 1;
+                border: none;
+                outline: none;
+                background-color: #F1F1F1;
+                border-radius: 16px;
+                height: 32px;
+                box-sizing: border-box;
+                padding: 8px 16px;
+                font-family: Montserrat;
+                font-weight: 600;
+
+                &::placeholder{
+                    color: #005495;
+                    text-transform: uppercase;
+                }
+            }
+
             > .couDevPage_courseName_delete{
                 border: none;
                 outline: none;
@@ -98,6 +116,25 @@
                 justify-content: space-around;
                 align-items: center;
                 cursor: pointer;
+            }
+
+            > .couDevPage_courseName_edit{
+                border: none;
+                outline: none;
+                padding: 0;
+                height: 32px;
+                width: 32px;
+                border-radius: 50%;
+                background-color: #F1F1F1;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                cursor: pointer;
+
+                > img{
+                    height: 23px;
+                    width: 23px ;
+                }
             }
         }
 

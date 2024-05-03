@@ -22,8 +22,8 @@ export async function postCourse(data){
 }
 
 // обновление курса
-export async function updateCourse(){
-
+export async function updateCourse(data){
+  return await axios.put('http://localhost:1000/course', {course_id: data.course_id, course_name: data.course_name}).then(({data}) => data);
 }
 
 // удаление курса

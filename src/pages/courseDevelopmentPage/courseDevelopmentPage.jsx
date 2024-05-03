@@ -3,13 +3,14 @@ import  './courseDevelopmentPage.scss'
 import Select from 'react-select'
 
 import del from '../../assets/photos/delete.svg'
+import edit from '../../assets/photos/edit.svg'
 
 import Chapter from '../../components/chapter/chapter'
 import Development from '../../components/development/development'
 import { useFetchRequest, useRequest } from '../../hooks/hook'
-import { getAllCoursesByTeacherId, getOneCourse, postCourse, deleteCourse } from '../../api/course'
+import { getAllCoursesByTeacherId, getOneCourse, postCourse, deleteCourse, updateCourse } from '../../api/course'
 import { useState } from 'react'
-import { createChapter, getChaptersByCourseId } from '../../api/chapter'
+import { getChaptersByCourseId } from '../../api/chapter'
 import { dataToOptions } from '../../utils/mutationFunctions'
 
 function CourseDevelopmentPage(){
@@ -21,16 +22,20 @@ function CourseDevelopmentPage(){
     const [coursesKey, setCoursesKey] = useState(1)                     //ключ для обновления курсов
 
     const [courseKey, setCourseKey] = useState(1)                       //ключ для обновления одного курса
-    const [courseEnebled, setCourseEnebled] = useState(false)           
-    const [selectedCourse, setSelectedCourse] = useState(null)
+    const [courseEnebled, setCourseEnebled] = useState(false)           //значение для начала получения курса
+    const [selectedCourse, setSelectedCourse] = useState(null)          //ключ для получения курса
 
     const [courseInput, setCourseInput] = useState('')                  //для инпута курсов
 
-    const [chaptersKey, setChaptersKey] = useState(1)
-    const [chaptersEnebled, setChaptersEnebled] = useState(false)
+    const [chaptersKey, setChaptersKey] = useState(1)                   //ключ получения разделов 
+    const [chaptersEnebled, setChaptersEnebled] = useState(false)       //значение для начала получения данных
+
+    const [courseEdit, setCourseEdit] = useState(false)                 //для отображения инпута изменения названия курса
+    const [courseEditInput, setCourseEditInput] = useState('')          //для сохранения текста в инпуте
+
 
     // получение всех курсов преподавателя
-    const {data: courses, isFetching: coursesFetching} = useFetchRequest({fetchFunc: ()=> getAllCoursesByTeacherId(teacher_id), enebled: true, mutationFunc: dataToOptions, key: [coursesKey]})
+    const {data: courses} = useFetchRequest({fetchFunc: ()=> getAllCoursesByTeacherId(teacher_id), enebled: true, mutationFunc: dataToOptions, key: [coursesKey]})
 
     // получение одного, выбранного курса
     const {data: course, isFetching: courseFetching} = useFetchRequest({fetchFunc: () => getOneCourse({course_id: selectedCourse.value}), enebled: courseEnebled, key: [courseKey]}) 
@@ -43,6 +48,9 @@ function CourseDevelopmentPage(){
 
     // получение всех разделов курса
     const {data: chapters, isFetching: chaptersFetching} = useFetchRequest({fetchFunc: ()=> getChaptersByCourseId({course_id: selectedCourse.value}), enebled: chaptersEnebled, key: [chaptersKey]})
+
+    // изменение названия курса
+    const {mutatedFunc: changeCourse} = useRequest({fetchFunc: updateCourse})
 
 
     // обработчик изменения селекта
@@ -91,13 +99,26 @@ function CourseDevelopmentPage(){
         }
     }
 
-
     // колбеки для удаления и изменения курса
     const handleChaptersChange = () =>{
         setChaptersKey(chaptersKey + 1)
     }
 
+    // изменение названия курса
+    const handleEnterEdit = async (event) => {
+        if (event.key === 'Enter'){
+            if (courseEditInput !== ''){
+                await changeCourse({course_id: selectedCourse.value, course_name: courseEditInput})
+                setCourseEditInput('')
 
+                //получение изменённого текущего курса и опшнов
+                setCourseKey(courseKey + 1)
+                setCoursesKey(coursesKey + 1)
+            } else {
+                alert('Поле вводу назви нового курсу порожнє')
+            }
+        }
+    }
 
 
     return(
@@ -118,9 +139,12 @@ function CourseDevelopmentPage(){
                 
                 {courseFetching && 
                     <div className="couDevPage_courseName">
-                        <div className="couDevPage_courseName_name">{course[0].course_name}</div>
+                        {!courseEdit && <div className="couDevPage_courseName_name">{course[0].course_name}</div>}
+                        
+                        {courseEdit && <input type='text' className="couDevPage_courseName_input" placeholder='Нова назва предмету' onChange={(event)=>{setCourseEditInput(event.target.value)}} value={courseEditInput} onKeyDown={handleEnterEdit}></input>}
 
                         <button className="couDevPage_courseName_delete" onClick={handleDelete} ><img src={del} alt="delete" /></button>
+                        <button className="couDevPage_courseName_edit"> <img src={edit} alt="edit" onClick={()=> {setCourseEdit(!courseEdit)}}/></button>
                     </div>}
 
 

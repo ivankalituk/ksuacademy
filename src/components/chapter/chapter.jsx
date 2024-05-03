@@ -5,10 +5,12 @@ import './chapter.scss'
 import del from '../../assets/photos/delete.svg'
 import chapterImg from '../../assets/photos/sampleChapterLogo.svg'
 import edit from '../../assets/photos/edit.svg'
+import addPhoto from '../../assets/photos/addPhoto.svg'
+
 
 import { useFetchRequest, useRequest } from "../../hooks/hook"
 import { getThemesByChapterId } from "../../api/theme"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { deleteChapter, updateChapter } from "../../api/chapter"
 
 function Chapter(props){
@@ -71,8 +73,13 @@ function Chapter(props){
         <div className="chapter">
             <div className="chapter_header">
                 <div className="chapter_header_logo">
-                    <img src={chapterImg} alt="chapterLogo" />
+                    {!editMode && <img src={chapterImg} alt="chapterLogo" />}
                 </div>
+
+                {editMode && <div className="chapter_header_logoInput">
+                    <input type="file" />
+                    <img src={addPhoto} alt="addPhoto" />
+                </div>}
 
                 <div className="chapter_header_heading">
                     {!editMode && <Link to={props.isTeacher? `/courseDevelopment/${props.data.course_id}/themeDevelopment/${props.data.chapter_id}` : `/course/${props.data.course_id}/chapter/${props.data.chapter_id}`} className='chapter_header_heading_name'>{props.data.chapter_name}</Link>}
