@@ -21,6 +21,7 @@ function Development(props){
             console.log(props.course_id)
             await createChapterFunc({course_id: props.course_id.value, chapter_name: devInput})
             props.handleChaptersChange()
+            setDevInput('')
             // КОЛБЕК СМЕНЫ КЛЮЧА ДЛЯ ПОЛУЧЕНИЯ РАЗДЕЛОВ
         } else {
             alert('Назва розділу порожня')
@@ -40,7 +41,7 @@ function Development(props){
             <div className="development_heading">{(props.mode === 'chapter')? 'Створення розділу' : 'Створення теми'}</div>
 
             <div className="development_createGroup">
-                <input type="text" placeholder={(props.mode === 'chapter')? 'Назва розділу' : 'Назва теми'} onChange={ (event) => {setDevInput(event.target.value)}} onKeyDown={handleInputEnter}/>
+                <input type="text" placeholder={(props.mode === 'chapter')? 'Назва розділу' : 'Назва теми'} onChange={ (event) => {setDevInput(event.target.value)}} onKeyDown={handleInputEnter} value={devInput}/>
                 <button onClick={handleCreate}>{(props.mode === 'chapter')? '+ Створити розділ' : '+ Створити тему'}</button>
             </div>
         </div>

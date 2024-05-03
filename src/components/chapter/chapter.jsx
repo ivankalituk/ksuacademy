@@ -96,7 +96,7 @@ function Chapter(props){
 
             <div className="chapter_themes">
                 {themesIsFetching && themes.map((data, index) => (
-                    <Link key={index} to={`/course/${props.data.course_id}/chapter/${props.data.chapter_id}`}>{data.theme_name}</Link>
+                    <Link key={index} to={props.isTeacher? `/courseDevelopment/${props.data.course_id}/themeDevelopment/${props.data.chapter_id}` : `/course/${props.data.course_id}/chapter/${props.data.chapter_id}`} >{data.theme_name}</Link>
                 ))}
             </div>
         </div>
