@@ -77,7 +77,7 @@ function CourseDevelopmentPage(){
     // создание курса
     const handleCreateCourse = async () => {
         if (courseInput !== ''){
-            createCourse({teacher_id: teacher_id, course_name: courseInput})
+            await createCourse({teacher_id: teacher_id, course_name: courseInput})
             setCourseInput('')
             setCoursesKey(coursesKey + 1)
         } else {
@@ -90,6 +90,13 @@ function CourseDevelopmentPage(){
             handleCreateCourse()
         }
     }
+
+
+    // колбеки для удаления и изменения курса
+    const handleChaptersChange = () =>{
+        setChaptersKey(chaptersKey + 1)
+    }
+
 
 
 
@@ -119,12 +126,12 @@ function CourseDevelopmentPage(){
 
                 <div className="couDevPage_chapterList">
                     {chaptersFetching && chapters.map((data, index) => (
-                        <Chapter data = {data} isTeacher = {true} key = {index}></Chapter>
+                        <Chapter data = {data} isTeacher = {true} key = {index} handleChaptersChange = {handleChaptersChange}></Chapter>
                     ))}
                 </div>
 
                 {/* создание раздела */}
-                {courseFetching && <Development mode = {"chapter"} chapter_id = {selectedCourse}></Development>}
+                {courseFetching && <Development mode = {"chapter"} course_id = {selectedCourse} handleChaptersChange = {handleChaptersChange}></Development>}
             </div>
         </div>
     )

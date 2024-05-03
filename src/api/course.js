@@ -7,7 +7,7 @@ export async function getAllCourses() {
 
 // получение одного курса
 export async function getOneCourse(data){
-  console.log(data)
+  // console.log(data)
   return await axios.get('http://localhost:1000/course/' + data.course_id).then(({data}) => data);
 }
 
@@ -28,6 +28,6 @@ export async function updateCourse(){
 
 // удаление курса
 export async function deleteCourse(data){
-  console.log(data)
+  // console.log(data)
   return await axios.delete('http://localhost:1000/course/' + data.course_id)
 }

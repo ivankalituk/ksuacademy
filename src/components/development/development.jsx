@@ -7,18 +7,20 @@ function Development(props){
 
     // props.mode chapter/theme
 
+    // console.log(props.course_id)
+
     const [devInput, setDevInput] = useState('')                    //переменная для хранения инпута
 
     //получение функции создания предмета
     const {mutatedFunc: createChapterFunc} = useRequest({fetchFunc: postChapter})
 
     //создание предмета 
-    const handleCreate = () => {
+    const handleCreate = async () => {
 
         if (devInput !== ''){
             console.log(props.course_id)
-            createChapterFunc({course_id: props.course_id, chapter_name: devInput})
-
+            await createChapterFunc({course_id: props.course_id.value, chapter_name: devInput})
+            props.handleChaptersChange()
             // КОЛБЕК СМЕНЫ КЛЮЧА ДЛЯ ПОЛУЧЕНИЯ РАЗДЕЛОВ
         } else {
             alert('Назва розділу порожня')

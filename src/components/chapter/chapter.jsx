@@ -32,18 +32,21 @@ function Chapter(props){
         setEditMode(!editMode)
     }
 
+    
+
+
     // обработка обновления раздела по нажатию на Enter
-    const handleEnterInput = (event) => {
+    const handleEnterInput = async (event) => {
         if (event.key === "Enter"){
 
             if(chapterInputValue !== ''){
-                chapterUpdateFunc({chapter_id: props.data.chapter_id, chapter_name: chapterInputValue})
+                await chapterUpdateFunc({chapter_id: props.data.chapter_id, chapter_name: chapterInputValue})
 
                 setEditMode(!editMode)
                 setChapterInputValue('')
 
-                // СДЕЛАТЬ ИЗМЕНЕНИЕ КЛЮЧА ПОЛУЧЕНИЯ РАЗДЕЛОВ
-
+                // измменение ключа разделов 
+                props.handleChaptersChange()
             }else{
                 alert("Поле вводу назви розділу порожнє")
             }
@@ -51,14 +54,15 @@ function Chapter(props){
     }
 
     // удаление раздела
-    const handleDelete = () => {
+    const handleDelete = async () => {
 
         if (themes.length > 0){
             alert("Спочатку видаліть теми розділу")
         } else {
-            chapterDelete({chapter_id: props.data.chapter_id})
+            await chapterDelete({chapter_id: props.data.chapter_id})
 
-            // колбек для обновления разделов курса
+            // измменение ключа разделов 
+            props.handleChaptersChange()
         }
     }
 
@@ -71,7 +75,7 @@ function Chapter(props){
                 </div>
 
                 <div className="chapter_header_heading">
-                    {!editMode && <Link to={`/course/${props.data.course_id}/chapter/${props.data.chapter_id}`} className='chapter_header_heading_name'>{props.data.chapter_name}</Link>}
+                    {!editMode && <Link to={props.isTeacher? `/courseDevelopment/${props.data.course_id}/themeDevelopment/${props.data.chapter_id}` : `/course/${props.data.course_id}/chapter/${props.data.chapter_id}`} className='chapter_header_heading_name'>{props.data.chapter_name}</Link>}
                     
                     {editMode && <input type="text" onChange={(event) => {setChapterInputValue(event.target.value)}} placeholder="Введіть назву розділу" onKeyDown={handleEnterInput}></input>}
 

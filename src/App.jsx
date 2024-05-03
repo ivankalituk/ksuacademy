@@ -32,7 +32,7 @@ function App() {
         <Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} ></Route>
         <Route path="/profile" Component={ProfilePage}></Route>
         <Route path="/courseDevelopment" Component={SubjectDevelopmentPage}></Route>
-        <Route path="/courseDevelopment/themeDevelopment" Component={ThemeDevelopmentPage}></Route>
+        <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage}></Route>
       </Routes>
 
       <Footer />
