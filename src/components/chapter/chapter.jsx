@@ -26,16 +26,13 @@ function Chapter(props){
 
 
     const [editMode, setEditMode] = useState(false)                 //режим редактирования (смена названия)
-    const [chapterInputValue, setChapterInputValue] = useState('')
-
+    const [chapterInputValue, setChapterInputValue] = useState('')  //инпут для смены названия темы
+    const [selectedImg, setSelectedImg] = useState(null)          //для сохранения нового фото раздела
 
     // нажатие на кнопку редактирования (смены названия)
     const handleEditMode = () =>{
         setEditMode(!editMode)
     }
-
-    
-
 
     // обработка обновления раздела по нажатию на Enter
     const handleEnterInput = async (event) => {
@@ -68,16 +65,28 @@ function Chapter(props){
         }
     }
 
+    // новое фото раздела
+    const handleImgChange = (event) =>  {
+        const file = event.target.files[0]
+        const reader = new FileReader()
+
+        reader.onload =  () =>{
+            setSelectedImg(reader.result)
+        }
+
+        reader.readAsDataURL(file)
+    }
+
 
     return(
         <div className="chapter">
             <div className="chapter_header">
                 <div className="chapter_header_logo">
-                    {!editMode && <img src={chapterImg} alt="chapterLogo" />}
+                    {selectedImg ? <img src={selectedImg} alt="chapterLogo" /> : <img src={chapterImg} alt="chapterLogo" />}
                 </div>
 
                 {editMode && <div className="chapter_header_logoInput">
-                    <input type="file" />
+                    <input type="file" onChange={handleImgChange} />
                     <img src={addPhoto} alt="addPhoto" />
                 </div>}
 

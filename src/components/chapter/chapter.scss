@@ -19,6 +19,13 @@
             justify-content: space-around;
             border: solid white 4px;
             top: -4px;
+
+            > img{
+                width: 48px;
+                height: 48px;
+                border-radius: 100%;
+
+            }
         }
 
         > .chapter_header_logoInput{
@@ -28,7 +35,7 @@
             width: 64px;
             border-radius: 100%;
             background-color: gray;
-            opacity: 0.5;
+            opacity: 0;
             left: 4px;
             // cursor: pointer;
             display: flex;
