@@ -18,17 +18,61 @@
             color: #16325C;
         }
 
-        > .theme_heading_delete{
+        > .theme_heading_buttons{
             display: flex;
-            justify-content: space-around;
             align-items: center;
-            height: 32px;
-            width: 32px;
-            border-radius: 16px;
-            background-color: #F1F1F1;
+
+            > .theme_heading_delete{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 32px;
+                width: 32px;
+                border-radius: 16px;
+                background-color: #F1F1F1;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+            }
+
+            > .theme_heading_edit{
+                margin-right: 5px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: 32px;
+                width: 32px;
+                border-radius: 16px;
+                background-color: #F1F1F1;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+
+                > img{
+                    width: 23px;
+                    height: 23px;
+                }
+            }
+        }
+
+        > input{
+            margin-right: 5px;
             border: none;
-            padding: 0;
-            cursor: pointer;
+            outline: none;
+            background-color: #F1F1F1;
+            border-radius: 16px;
+            height: 32px;
+            box-sizing: border-box;
+            padding: 8px 16px;
+            font-family: Montserrat;
+            font-weight: 600;
+            width: 100%;
+
+            &::placeholder{
+                font-weight: 600;
+                // color: #F1F1F1;
+                text-transform: uppercase;
+            }
         }
     }
 
