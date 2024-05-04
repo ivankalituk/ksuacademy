@@ -32,7 +32,7 @@ function ThemeDevelopmentPage(){
                     ))}
                 </div>
                 
-                <Development mode = {'theme'}></Development>
+                <Development mode = {'theme'} themesKeyCallback = {themesKeyCallback} chapter_id = {chapter_id}></Development>
 
             </div>
         </div>

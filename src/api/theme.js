@@ -17,3 +17,7 @@ export async function updateTheme(data){
 }
 
 // создание темы
+export async function createTheme(data){
+  console.log(data)
+  return await axios.post('http://localhost:1000/theme', {chapter_id: data.chapter_id, theme_name: data.theme_name}).then(({data}) => data);
+}

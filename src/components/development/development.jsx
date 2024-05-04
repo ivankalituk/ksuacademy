@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './development.scss'
 import { useRequest } from '../../hooks/hook'
 import { postChapter } from '../../api/chapter'
+import { createTheme } from '../../api/theme'
 
 function Development(props){
 
@@ -14,15 +15,23 @@ function Development(props){
     //получение функции создания предмета
     const {mutatedFunc: createChapterFunc} = useRequest({fetchFunc: postChapter})
 
+    //функция создание темы
+    const {mutatedFunc: themeCreate} = useRequest({fetchFunc: createTheme})
+
     //создание предмета 
     const handleCreate = async () => {
 
         if (devInput !== ''){
-            console.log(props.course_id)
-            await createChapterFunc({course_id: props.course_id.value, chapter_name: devInput})
-            props.handleChaptersChange()
+            if (props.mode === "chapter"){
+                await createChapterFunc({course_id: props.course_id.value, chapter_name: devInput})
+                props.handleChaptersChange()
+            } else {
+                console.log({chapter_id: props.chapter_id, theme_name: devInput})
+                await themeCreate({chapter_id: props.chapter_id, theme_name: devInput})
+                props.themesKeyCallback()
+            }
+
             setDevInput('')
-            // КОЛБЕК СМЕНЫ КЛЮЧА ДЛЯ ПОЛУЧЕНИЯ РАЗДЕЛОВ
         } else {
             alert('Назва розділу порожня')
         }
