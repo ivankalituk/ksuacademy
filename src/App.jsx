@@ -13,6 +13,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.scss"
 
 import React, { useCallback, useState } from "react";
+import TestPage from "./pages/testPage/testPage";
 
 function App() {
   let [blockScroll, setBlockScroll] = useState(false)
@@ -27,7 +28,7 @@ function App() {
       <Header burgerCallback={burgerCallback}></Header>
 
       <Routes>
-        <Route path="/" Component={MainPage} ></Route>
+        <Route path="/" Component={TestPage} ></Route>
         <Route path="/course/:course_id" Component={CoursePage}></Route>
         <Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} ></Route>
         <Route path="/profile" Component={ProfilePage}></Route>

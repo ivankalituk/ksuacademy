@@ -1,0 +1,64 @@
+.testPage{
+    max-width: 1440px;
+    margin: 0 auto;
+
+    > .testPage_container{
+        padding: 0 116px;
+
+        >.testPage_heading{
+            margin-top: 10px;
+            font-weight: 900;
+            font-size: 30px;
+        }
+
+        >.testPage_course{
+            display: flex;
+            align-items: center;
+
+            >.testPage_course_img{
+                position: relative;
+                background-color: red;
+                display: flex;
+                width: 60px;
+                height: 60px;
+                justify-content: space-around;
+                align-items: center;
+                border-radius: 100%;
+
+                > img{
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 100%;
+                }
+
+                > input{
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 100%;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+            }
+
+            >.testPage_course_name{
+                margin-left: 10px;
+                font-size: 30px;
+                font-weight: 700;
+            }
+
+            > input{
+                margin-left: 10px;
+            }
+    
+
+        }
+        > .testPage_buttons{
+
+            margin-top: 10px;
+            button + button{
+                margin-left: 5px;
+            }
+        }
+    }
+}
