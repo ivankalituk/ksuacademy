@@ -27,7 +27,8 @@ function Chapter(props){
 
     const [editMode, setEditMode] = useState(false)                 //режим редактирования (смена названия)
     const [chapterInputValue, setChapterInputValue] = useState('')  //инпут для смены названия темы
-    const [selectedImg, setSelectedImg] = useState(null)          //для сохранения нового фото раздела
+    const [selectedImg, setSelectedImg] = useState(null)            //для сохранения нового фото раздела (ТОЛЬКО ОТОБРАЖЕНИЕ)
+    const [selecredImgFile, setSelectedImgFile] = useState(null)    //для сохранение нового фото в виде файла (ДЛЯ ПЕРЕДАЧИ НА СЕРВЕР)
 
     // нажатие на кнопку редактирования (смены названия)
     const handleEditMode = () =>{
@@ -37,9 +38,13 @@ function Chapter(props){
     // обработка обновления раздела по нажатию на Enter
     const handleEnterInput = async (event) => {
         if (event.key === "Enter"){
-
             if(chapterInputValue !== ''){
-                await chapterUpdateFunc({chapter_id: props.data.chapter_id, chapter_name: chapterInputValue})
+
+                const data =  new FormData()
+                data.append('chapter_id',  props.data.chapter_id)
+                data.append('chapter_name', chapterInputValue)
+                data.append('photo', selecredImgFile)
+                await chapterUpdateFunc(data)
 
                 setEditMode(!editMode)
                 setChapterInputValue('')
@@ -68,6 +73,7 @@ function Chapter(props){
     // новое фото раздела
     const handleImgChange = (event) =>  {
         const file = event.target.files[0]
+        setSelectedImgFile(file)
         const reader = new FileReader()
 
         reader.onload =  () =>{
@@ -82,7 +88,10 @@ function Chapter(props){
         <div className="chapter">
             <div className="chapter_header">
                 <div className="chapter_header_logo">
-                    {selectedImg ? <img src={selectedImg} alt="chapterLogo" /> : <img src={chapterImg} alt="chapterLogo" />}
+                
+                    {/* отображение фото, есди есть на сервере, то отображать, если нету, то отображать пример, если выбрано, то выбранное */}
+                    {props.data.img_path? (selectedImg ? <img src={selectedImg} alt="chapterLogo" /> : <img src={'http://localhost:1000/' + props.data.img_path} alt="chapterLogo" />) : (selectedImg ? <img src={selectedImg} alt="chapterLogo" /> : <img src={chapterImg} alt="chapterLogo" />)}
+
                 </div>
 
                 {editMode && <div className="chapter_header_logoInput">

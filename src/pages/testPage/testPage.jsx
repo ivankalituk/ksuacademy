@@ -43,11 +43,13 @@ function  TestPage(){
     }
 
     return(
-        <div className="testPage">
-            <input type="file" id="fileInput" onChange={handlePhoto}/>
-            <button onClick={handleUpload}>SUBMIT</button>
-            <img src={selectedImg} alt="" />
-        </div>
+        // <div className="testPage">
+        //     <input type="file" id="fileInput" onChange={handlePhoto}/>
+        //     <button onClick={handleUpload}>SUBMIT</button>
+        //     <img src={selectedImg} alt="" />
+        // </div>
+        
+        <img src={'http://localhost:1000/uploads/sample.jpg'} alt="" />
     )
 }
 

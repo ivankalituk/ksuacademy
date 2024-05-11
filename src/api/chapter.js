@@ -14,7 +14,7 @@ export async function postChapter(data){
 // обновление раздела
 export async function updateChapter(data){
     // console.log(data)
-    return await axios.put('http://localhost:1000/chapter', {chapter_id: data.chapter_id, chapter_name: data.chapter_name}).then(({data}) => data);
+    return await axios.put('http://localhost:1000/chapter', data, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => data);
 }
 
 // удаление раздела

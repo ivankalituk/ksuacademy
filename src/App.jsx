@@ -28,7 +28,7 @@ function App() {
       <Header burgerCallback={burgerCallback}></Header>
 
       <Routes>
-        <Route path="/" Component={TestPage} ></Route>
+        <Route path="/" Component={MainPage} ></Route>
         <Route path="/course/:course_id" Component={CoursePage}></Route>
         <Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} ></Route>
         <Route path="/profile" Component={ProfilePage}></Route>
@@ -40,9 +40,6 @@ function App() {
 
     </div>
   );
-
-
-
 }
 
 export default App;
