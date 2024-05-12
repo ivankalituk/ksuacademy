@@ -48,6 +48,7 @@ function Chapter(props){
                 const data =  new FormData()
                 data.append('chapter_id',  props.chapter_id)
 
+    
 
                 if (chapterInputValue !== ''){
                     data.append('chapter_name', chapterInputValue)
@@ -60,6 +61,7 @@ function Chapter(props){
                     data.append('photo', selectedImgFile)
                 }
                 
+                console.log(data)
                 await chapterUpdateFunc(data)
 
                 setEditMode(!editMode)

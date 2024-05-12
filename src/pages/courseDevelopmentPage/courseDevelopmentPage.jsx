@@ -4,6 +4,8 @@ import Select from 'react-select'
 
 import del from '../../assets/photos/delete.svg'
 import edit from '../../assets/photos/edit.svg'
+import sampleCoursePhoto from '../../assets/photos/courseSampleAvatar.svg'
+import addPhoto from '../../assets/photos/addPhoto.svg'
 
 import Chapter from '../../components/chapter/chapter'
 import Development from '../../components/development/development'
@@ -14,8 +16,6 @@ import { getChaptersByCourseId } from '../../api/chapter'
 import { dataToOptions } from '../../utils/mutationFunctions'
 
 function CourseDevelopmentPage(){
-
-    
     // получение всех разделов преподавателя
     const teacher_id = 2;
 
@@ -33,6 +33,8 @@ function CourseDevelopmentPage(){
     const [courseEdit, setCourseEdit] = useState(false)                 //для отображения инпута изменения названия курса
     const [courseEditInput, setCourseEditInput] = useState('')          //для сохранения текста в инпуте
 
+    const [selectedFile, setSelectedFile] = useState(null)                  //для сохранения ФАЙЛА фото курса
+    const [selectedCoursePhoto, setSelectedCoursePhoto] = useState(null)    //для сохранения ссылки на фото курса
 
     // получение всех курсов преподавателя
     const {data: courses} = useFetchRequest({fetchFunc: ()=> getAllCoursesByTeacherId(teacher_id), enebled: true, mutationFunc: dataToOptions, key: [coursesKey]})
@@ -71,7 +73,7 @@ function CourseDevelopmentPage(){
 
         // проверка на наличие разделов у курса
         if (chapters.length === 0){
-            await courseDelete({course_id: selectedCourse.value})         //функция удаления
+            await courseDelete({course_id: selectedCourse.value})   //функция удаления
             setCourseEnebled(false)                                 //убираем получение курса
             setCourseKey(courseKey + 1)                             //обновляем получение курса уже без его получния 
             setSelectedCourse(null)                                 //присваиваем валью селекта нулю
@@ -105,10 +107,27 @@ function CourseDevelopmentPage(){
     }
 
     // изменение названия курса
+    // переделать на побобие изменение курса
     const handleEnterEdit = async (event) => {
+
         if (event.key === 'Enter'){
-            if (courseEditInput !== ''){
-                await changeCourse({course_id: selectedCourse.value, course_name: courseEditInput})
+            if (courseEditInput !== '' || selectedFile !== null){
+                
+                const data = new FormData()
+                data.append('course_id', course[0].course_id)
+                
+                if(courseEditInput !== ''){
+                    data.append('course_name', courseEditInput)
+                } else {
+                    data.append('course_name', course[0].course_name)
+                }
+
+                if(selectedFile !== null){
+                    data.append('photo', selectedFile)
+                }
+
+                await changeCourse(data)
+                
                 setCourseEditInput('')
 
                 //получение изменённого текущего курса и опшнов
@@ -120,6 +139,19 @@ function CourseDevelopmentPage(){
         }
     }
 
+    // изменение фото курса
+    const handleImgChange = async (event) => {
+        const file = event.target.files[0]
+        setSelectedFile(file)
+        const reader = new FileReader()
+
+        reader.onload = () => {
+            setSelectedCoursePhoto(reader.result)
+        }
+
+        reader.readAsDataURL(file)
+        console.log(1)
+    }
 
     return(
         <div className="couDevPage">
@@ -139,6 +171,17 @@ function CourseDevelopmentPage(){
                 
                 {courseFetching && 
                     <div className="couDevPage_courseName">
+                        <div className="couDevPage_courseName_photo">
+                            {course[0].img_path? (selectedCoursePhoto? <img src={selectedCoursePhoto} alt="courseLogo" /> : <img src={'http://localhost:1000/' + course[0].img_path} alt="courseLogo" />) : (selectedCoursePhoto? <img src={selectedCoursePhoto} alt="courseLogo" /> : <img src={sampleCoursePhoto} alt="courseLogo" />)}
+                            {/* <img src={sampleCoursePhoto} alt="course_photo" /> */}
+                            
+                            {courseEdit && <div className="couDevPage_courseName_photo_edit">
+                                <img src={addPhoto} alt="addPhoto" />
+                                <input type="file" onChange={handleImgChange} />
+                            </div>}
+
+                        </div>
+
                         {!courseEdit && <div className="couDevPage_courseName_name">{course[0].course_name}</div>}
                         
                         {courseEdit && <input type='text' className="couDevPage_courseName_input" placeholder='Нова назва предмету' onChange={(event)=>{setCourseEditInput(event.target.value)}} value={courseEditInput} onKeyDown={handleEnterEdit}></input>}

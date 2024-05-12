@@ -23,6 +23,7 @@ export async function postCourse(data){
 
 // обновление курса
 export async function updateCourse(data){
+  console.log(1)
   return await axios.put('http://localhost:1000/course', data, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => data);
 }
 

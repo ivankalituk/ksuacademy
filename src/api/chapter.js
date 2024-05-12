@@ -13,7 +13,7 @@ export async function postChapter(data){
 
 // обновление раздела
 export async function updateChapter(data){
-    // console.log(data)
+    console.log(data)
     return await axios.put('http://localhost:1000/chapter', data, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => data);
 }
 
