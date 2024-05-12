@@ -20,7 +20,7 @@ function CoursePage(){
                 
                 <div className="coursePage_courses">
                     {chaptersIsFetching && chapters.map((data, index) => (
-                        <Chapter isTeacher = {false} data = {data} key = {index}></Chapter>
+                        <Chapter isTeacher = {false} chapter_id = {data.chapter_id} key = {index}></Chapter>
                     ))}
                 </div>
             </div>

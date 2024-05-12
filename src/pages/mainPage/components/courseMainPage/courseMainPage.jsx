@@ -16,15 +16,15 @@ function CourseMainPage(props){
         setTick(!tick)
     }
 
-    const {data: chapters, isFetching: chaptersIsFeching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId(props.data.course_id),key: [], enebled: true})
-    
+    //  получение разделов курса
+    const {data: chapters, isFetching: chaptersIsFeching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId({course_id: props.data.course_id}), key: [], enebled: true})
 
     return(
         <div className="mainPage_courseBlock_course">
 
             <div className="course_heading">
                 <div className="course_heading_img">
-                    <img src={courseImg} alt="courseImg" />
+                    {props.data.img_path? <img src={'http://localhost:1000/' + props.data.img_path} alt="courseImg" /> : <img src={courseImg} alt="courseImg" />}
                 </div>
 
                 <div className="course_heading_container">
