@@ -150,7 +150,7 @@ function CourseDevelopmentPage(){
 
                 <div className="couDevPage_chapterList">
                     {chaptersFetching && chapters.map((data, index) => (
-                        <Chapter data = {data} isTeacher = {true} key = {index} handleChaptersChange = {handleChaptersChange}></Chapter>
+                        <Chapter chapter_id = {data.chapter_id} course_id = {data.course_id}isTeacher = {true} key = {index} handleChaptersChange = {handleChaptersChange}></Chapter>
                     ))}
                 </div>
 

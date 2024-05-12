@@ -22,3 +22,8 @@ export async function deleteChapter(data){
     // console.log(data)
     return await axios.delete('http://localhost:1000/chapter/' + data.chapter_id).then(({data}) => data)
 }
+
+// получение одного раздела
+export async function getOneChapter(data){
+    return await axios.get('http://localhost:1000/chapter/' + data.chapter_id).then(({data}) => data)
+}
