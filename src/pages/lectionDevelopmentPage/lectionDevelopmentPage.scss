@@ -1,0 +1,92 @@
+.lectionDevPage{
+    max-width: 1440px;
+    margin: 0 auto;
+
+    > .lectionDevPage_container{
+        padding: 0 116px;
+
+        > .lectionDevPage_lectionName{
+            margin-top: 20px;
+
+            > .lectionDevPage_lectionName_heading{
+                font-size: 36px;
+                font-weight: 900;
+                line-height: normal;
+                text-transform: uppercase;
+                background: var(--main-gradient, linear-gradient(360deg, #16325C 0%, #005494 100%));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            > input{
+                margin-top: 10px;
+                width: 100%;
+                max-width: 400px;
+                border: none;
+                outline: none;
+                background-color: #F1F1F1;
+                border-radius: 16px;
+                height: 32px;
+                box-sizing: border-box;
+                padding: 8px 16px;
+                font-family: Montserrat;
+                font-weight: 600;
+
+                &::placeholder{
+                    color: #005495;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        > .lectionDevPage_lectionContent{
+            margin-top: 20px;
+
+            > .lectionDevPage_lectionContent_heading{
+                font-size: 36px;
+                font-weight: 900;
+                line-height: normal;
+                text-transform: uppercase;
+                background: var(--main-gradient, linear-gradient(360deg, #16325C 0%, #005494 100%));
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+        > .lectionDevPage_lectionControll{
+            display: flex;
+            gap: 10px;
+            margin: 5px 0 20px 0;
+
+            > button{
+                height: 32px;
+                flex: 1;
+                outline: none;
+                border: none;
+                border-radius: 16px;
+                background-color: #005495;
+                color: white;
+                font-family: Montserrat;
+                font-weight: 600;
+                text-transform: uppercase;
+                transition: 0.5s;
+                cursor: pointer;
+
+                &:active{
+                    background-color: #16325C;
+                    transition: 0.5s;
+                }
+            }
+
+            >button:last-child{
+                background-color: red;
+
+                &:active{
+                    background-color: rgb(182, 0, 0);
+                }
+            }
+        }
+    }
+}

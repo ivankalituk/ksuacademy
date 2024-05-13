@@ -7,6 +7,7 @@ import ThemePage from "./pages/themePage/themePage";
 import ProfilePage from "./pages/profilePage/profilePage";
 import CourseDevelopmentPage from "./pages/courseDevelopmentPage/courseDevelopmentPage";
 import ThemeDevelopmentPage from "./pages/themeDevelopmentPage/themeDevelopmentPage";
+import LectionDevelopmentPage from "./pages/lectionDevelopmentPage/lectionDevelopmentPage";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -28,7 +29,7 @@ function App() {
       <Header burgerCallback={burgerCallback}></Header>
 
       <Routes>
-        <Route path="/" Component={MainPage} ></Route>
+        <Route path="/" Component={LectionDevelopmentPage} ></Route>
         <Route path="/course/:course_id" Component={CoursePage}></Route>
         <Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} ></Route>
         <Route path="/profile" Component={ProfilePage}></Route>
