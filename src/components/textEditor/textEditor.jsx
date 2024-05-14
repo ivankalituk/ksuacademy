@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import ReactQuill from 'react-quill';
+import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Стили Quill
 import './textEditor.scss'
+import ImageUploader from 'quill-image-uploader';
+import axios from 'axios';
+
+Quill.register("modules/imageUploader", ImageUploader)
 
 class TextEditor extends Component {
     constructor(props) {
@@ -20,6 +24,31 @@ class TextEditor extends Component {
         ['clean'],
         [{'align': ''},{'align': 'center'},{'align': 'right'}],
       ],
+      imageUploader: {
+        upload: file => {
+          return new Promise((resolve, reject) => {
+            const formData = new FormData();
+            formData.append("photo", file);
+  
+            fetch(
+              "http://localhost:1000/lection/photo",
+              {
+                method: "POST",
+                body: formData
+              }
+            )
+              .then(response => response.json())
+              .then(result => {
+                console.log(result);
+                resolve(result.imageUrl);
+              })
+              .catch(error => {
+                reject("Upload failed");
+                console.error("Error:", error);
+              });
+          });
+        }
+      }
     };
   
     formats = [
@@ -32,6 +61,8 @@ class TextEditor extends Component {
       this.props.onTextChange(value);
     }
   
+
+    
     render() {
       return (
         <div className="editorStyle">

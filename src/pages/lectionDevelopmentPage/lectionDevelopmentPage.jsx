@@ -39,9 +39,6 @@ function LectionDevelopmentPage(){
         console.log("DELETE")
     }
 
-
-
-
     return(
         <div className="lectionDevPage">
             <div className="lectionDevPage_container">
