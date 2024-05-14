@@ -27,17 +27,17 @@ class TextEditor extends Component {
       'list', 'bullet', 'link', 'image', 'align' 
     ];
   
-    // handleTextChange = (value) => {
-    //   this.setState({ text: value });
-    //   this.props.onTextChange(value);
-    // }
+    handleTextChange = (value) => {
+      this.setState({ text: value });
+      this.props.onTextChange(value);
+    }
   
     render() {
       return (
         <div className="editorStyle">
           <ReactQuill
             value={this.state.text}
-            // onChange={this.handleTextChange}
+            onChange={this.handleTextChange}
             modules={this.modules}
             formats={this.formats}
             style={{height: "300px"}}
