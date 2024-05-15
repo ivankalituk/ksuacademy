@@ -9,8 +9,10 @@ import { createLection } from '../../api/lection'
 
 function LectionDevelopmentPage(){
 
-    // const {theme_id} = useParams()
-    const theme_id = 1
+    const {theme_id} = useParams()
+
+    //createMode true если создание заново, createMode false если редактирование созданного
+    const createMode = true
 
     const [content, setContent] = useState(null)                //для сохранения контента лекции
     const [lectionName, setLectionName] = useState('')          //для созранения названия лекции

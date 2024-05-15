@@ -29,12 +29,13 @@ function App() {
       <Header burgerCallback={burgerCallback}></Header>
 
       <Routes>
-        <Route path="/" Component={LectionDevelopmentPage} ></Route>
+        <Route path="/" Component={MainPage} ></Route>
         <Route path="/course/:course_id" Component={CoursePage}></Route>
         <Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} ></Route>
         <Route path="/profile" Component={ProfilePage}></Route>
         <Route path="/courseDevelopment" Component={CourseDevelopmentPage}></Route>
         <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage}></Route>
+        <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id"  Component={LectionDevelopmentPage}></Route>
       </Routes>
 
       <Footer />

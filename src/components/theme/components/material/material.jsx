@@ -4,7 +4,10 @@ import './material.scss'
 import lection from '../../../../assets/photos/lection.svg'
 
 
-function Material(){
+function Material(props){
+
+    // поменять ссылки
+
     return(
         <Link className="material">
             <div className="material_img">
@@ -12,7 +15,7 @@ function Material(){
 
             </div>
 
-            <div className="material_name">Назва лекції</div>
+            <div className="material_name">{props.data.lection_name}</div>
         </Link>
     )
 }

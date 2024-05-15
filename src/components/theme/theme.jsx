@@ -6,16 +6,18 @@ import Practice from './components/practice/practice'
 import del from '../../assets/photos/delete.svg'
 import edit  from '../../assets/photos/edit.svg'
 
-import { Link } from 'react-router-dom'
-import { useRequest } from '../../hooks/hook'
+import { Link, useParams } from 'react-router-dom'
+import { useFetchRequest, useRequest } from '../../hooks/hook'
 import { deleteTheme, updateTheme } from '../../api/theme'
 import { useState } from 'react'
+import { getLections } from '../../api/lection'
 
 function Theme(props){
 
     const [editMode, setEditMode] = useState(false)         //режим редактирования
     const [nameInput, setNameInput] = useState('')          //сохранение инпута названия темы
 
+    const {chapter_id, course_id}  = useParams()
 
     // удаление темы
     const {mutatedFunc: themeDelete} = useRequest({fetchFunc: deleteTheme})
@@ -23,6 +25,11 @@ function Theme(props){
     // изменение темы
     const {mutatedFunc: themeUpdate} = useRequest({fetchFunc: updateTheme})
     
+    // получение лекций
+    const {data: lections, isFetching: lectionsFetcing} = useFetchRequest({fetchFunc: ()=>getLections({theme_id: props.data.theme_id}), key: [], enebled: true})
+
+    // нету получения практик
+
 
     // функция удаления темы
     const handleDelete = () => {
@@ -63,8 +70,11 @@ function Theme(props){
                     <div className="theme_education_heading">Навчальні матеріали</div>
 
                     <div className="theme_materials_list">
-                        <Material></Material>
-                        {props.role === 'teacher' && <Link className="theme_material_create">+ Створити лекцію</Link>}
+                        {lectionsFetcing && lections.map((data, index) => (
+                            <Material data = {data} key={index}></Material>
+                        ))}
+                        
+                        {props.role === 'teacher' && <Link className="theme_material_create" to={`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}/lectionDevelopment/${props.data.theme_id}`}>+ Створити лекцію</Link>}
                     </div>
                 </div>
 
