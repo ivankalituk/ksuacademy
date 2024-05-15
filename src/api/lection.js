@@ -9,3 +9,9 @@ export async function createLection(data){
 export async function getLections(data){
     return await axios.get('http://localhost:1000/lections/' + data.theme_id).then(({data})=> data)
 }
+
+// получение одной лекции
+export async function getOneLection(data){
+    console.log(data)
+    return await axios.get('http://localhost:1000/lection/' + data.lection_id).then(({data})=> data)
+}

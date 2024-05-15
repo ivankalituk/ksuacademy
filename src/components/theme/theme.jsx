@@ -71,7 +71,7 @@ function Theme(props){
 
                     <div className="theme_materials_list">
                         {lectionsFetcing && lections.map((data, index) => (
-                            <Material data = {data} key={index}></Material>
+                            <Material data = {data} key={index} role = {props.role}></Material>
                         ))}
                         
                         {props.role === 'teacher' && <Link className="theme_material_create" to={`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}/lectionDevelopment/${props.data.theme_id}`}>+ Створити лекцію</Link>}

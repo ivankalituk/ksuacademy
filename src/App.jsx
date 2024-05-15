@@ -8,6 +8,7 @@ import ProfilePage from "./pages/profilePage/profilePage";
 import CourseDevelopmentPage from "./pages/courseDevelopmentPage/courseDevelopmentPage";
 import ThemeDevelopmentPage from "./pages/themeDevelopmentPage/themeDevelopmentPage";
 import LectionDevelopmentPage from "./pages/lectionDevelopmentPage/lectionDevelopmentPage";
+import LectionPage from "./pages/lectionPage/lectionPage";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/" Component={MainPage} ></Route>
         <Route path="/course/:course_id" Component={CoursePage}></Route>
         <Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} ></Route>
+        <Route path="/course/:course_id/chapter/:chapter_id/theme/:theme_id/lection/:lection_id" Component={LectionPage}></Route>
         <Route path="/profile" Component={ProfilePage}></Route>
         <Route path="/courseDevelopment" Component={CourseDevelopmentPage}></Route>
         <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage}></Route>

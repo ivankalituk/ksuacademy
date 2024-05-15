@@ -14,20 +14,21 @@ function ThemePage(){
     const {chapter_id} = useParams()
 
     // получение данных про темы
-    const {data: themes, isFeching: themesIsFeching} = useFetchRequest({fetchFunc: () => getThemesByChapterId(chapter_id), key: []})
-    console.log(themes)
+    const {data: themes, isFetching: themesIsFetching} = useFetchRequest({fetchFunc: () => getThemesByChapterId({chapter_id: chapter_id}), key: [], enebled: true})
+    
+    console.log(themes, themesIsFetching)
     return(
         <div className="themePage">
 
 
             {/* в прогресс бар скинуть данные про раздел */}
-            <ProgressBarTP></ProgressBarTP>
+            {/* <ProgressBarTP></ProgressBarTP> */}
 
             <div className="themePage_container">
                 <div className="themePage_padding">
 
                     <div className="themePage_themeList">
-                        {themesIsFeching && themes.map((data, index) => (
+                        {themesIsFetching && themes.map((data, index) => (
                             <Theme role = {'student'} data = {data} key = {index}></Theme>
                         ))}
 
