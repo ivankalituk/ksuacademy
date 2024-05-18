@@ -15,3 +15,9 @@ export async function getOneLection(data){
     console.log(data)
     return await axios.get('http://localhost:1000/lection/' + data.lection_id).then(({data})=> data)
 }
+
+// обновление лекции
+export async function putLection(data){
+    console.log(data)
+    return await axios.put('http://localhost:1000/lection', {lection_name: data.lection_name, lection_content: data.lection_content, lection_id: data.lection_id}).then(({data})=> data)
+}

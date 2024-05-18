@@ -11,9 +11,11 @@ class TextEditor extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        text: '',
+        text: props.lection_contnent || '<p>empty</p>',
       };
     }
+
+
 
     modules = {
       toolbar: [

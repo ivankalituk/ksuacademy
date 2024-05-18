@@ -1,35 +1,63 @@
 import './lectionDevelopmentPage.scss'
 
 import TextEditor from '../../components/textEditor/textEditor'
-import { useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { useRequest } from '../../hooks/hook'
-import { createLection } from '../../api/lection'
-
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { useFetchRequest, useRequest } from '../../hooks/hook'
+import { createLection, getOneLection, putLection } from '../../api/lection'
+import userEvent from '@testing-library/user-event'
 
 function LectionDevelopmentPage(){
 
-    const {theme_id} = useParams()
-
-    //createMode true если создание заново, createMode false если редактирование созданного
-    const createMode = true
+    const {theme_id, lection_id} = useParams()
 
     const [content, setContent] = useState(null)                //для сохранения контента лекции
     const [lectionName, setLectionName] = useState('')          //для созранения названия лекции
 
+    const [lectionKey, setLectionKey] = useState(1)             //ключ получения если это редактирования
+    const [lectionEnebled, setlectionEnebled] = useState(false) //енейблед если это редактирование
+
+    const [createMode, setCreateMode] = useState(true)          //режим создания либо обновления
+
+
     // пост запрос на создание лекции
     const {mutatedFunc: postLection} = useRequest({fetchFunc: createLection})
 
+    // получение уже готовой лекции
+    const {data: lection, isFetching: lectionFetching} = useFetchRequest({fetchFunc: () => getOneLection({lection_id: lection_id}), key: [lectionKey], enebled: lectionEnebled})
+
+    //обновление лекции
+    const {mutatedFunc: updateLection} = useRequest({fetchFunc: putLection})
+
+    useEffect(() => {
+        if(lection_id){
+            setlectionEnebled(true)
+            setLectionKey(lectionKey + 1)
+            setCreateMode(false)
+        }
+    }, [])
+
+    useEffect(() => {
+        if(lectionFetching){
+            setLectionName(lection[0].lection_name)
+        }
+        
+    }, [lectionFetching])
+    
     // создание лекции
     const handleLectionCreate = async () =>{
         if (lectionName !== '' && content && content !== '<p><br></p>'){
             const data = {
                 lection_name: lectionName,
                 lection_content: content,
-                theme_id: theme_id
+                theme_id: theme_id,
+                lection_id: lection_id
             }
-
-            await postLection(data)
+            if(createMode){
+                await postLection(data)
+            } else {
+                await updateLection(data)
+            }
             console.log("FETCHING")
         } else {
             alert("Поля введення назви лекції або її контенту порожні")
@@ -46,6 +74,7 @@ function LectionDevelopmentPage(){
             <div className="lectionDevPage_container">
 
                 <div className="lectionDevPage_lectionName">
+                    {/* МЕНЯТЬ НАЗВАНИЕ ЛЕКЦИИ */}
                     <div className="lectionDevPage_lectionName_heading">Назва лекції</div>
 
                     <input type="text" placeholder='Назва лекції' value={lectionName} onChange={(event) => {setLectionName(event.target.value)}}/>
@@ -54,11 +83,14 @@ function LectionDevelopmentPage(){
                 <div className="lectionDevPage_lectionContent">
                     <div className="lectionDevPage_lectionContent_heading">Контент лекції</div>
 
-                    <TextEditor onTextChange = {setContent}></TextEditor>
+
+                    {/* ЗАМЕНИТЬ ЧТОБ БЫЛО ВОЗМОЖНОСТЬ МЕНЯТЬ И ДЛЯ РАЗРАБОТКИ ЛЕКЦИИ */}
+                    {lectionFetching && <TextEditor onTextChange = {setContent} lection_contnent = {lection[0].lection_content}></TextEditor>}
                 </div>
 
+                {/* ЗАМЕНИТЬ НА LINK */}
                 <div className="lectionDevPage_lectionControll">
-                    <button onClick={handleLectionCreate}>Створити лекцію</button>
+                    <button onClick={handleLectionCreate} to={'/'}>{createMode? 'Створити лекцію': 'Оновити лекцію'}</button>
                     <button onClick={handleLectionDelete}>Видалити лекцію</button>
                 </div>
 

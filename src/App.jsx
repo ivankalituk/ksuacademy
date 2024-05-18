@@ -38,6 +38,7 @@ function App() {
         <Route path="/courseDevelopment" Component={CourseDevelopmentPage}></Route>
         <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage}></Route>
         <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id"  Component={LectionDevelopmentPage}></Route>
+        <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/:lection_id"  Component={LectionDevelopmentPage}></Route>
       </Routes>
 
       <Footer />

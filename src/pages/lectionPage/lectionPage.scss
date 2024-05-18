@@ -4,5 +4,53 @@
 
     > .lectionPage_container{
         padding: 0 116px;
+
+        h1{
+            color: #16325C;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 29.26px;
+        }
+
+        h2{
+            color: #16325C;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24.38px;
+        }
+
+        div{
+            color: #16325C;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19.5px;
+        }
+        
+        strong{
+            font-weight: 900;
+        }
+
+        .ql-align-center{
+            text-align: center;
+        }
+
+        .ql-align-right{
+            text-align: right;
+        }
+
+        img{
+            max-width: 500px;
+            max-height: 500px;
+        }
+
+        a{
+            color: #16325C;
+            transition: 0.3s;
+
+            &:hover{
+                transition: 0.3s;
+                color: red;
+            }
+        }
     }
 }
