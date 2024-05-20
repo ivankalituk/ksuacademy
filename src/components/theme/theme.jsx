@@ -10,7 +10,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useFetchRequest, useRequest } from '../../hooks/hook'
 import { deleteTheme, updateTheme } from '../../api/theme'
 import { useState } from 'react'
-import { getLections } from '../../api/lection'
+import { createLection, getLections } from '../../api/lection'
 
 function Theme(props){
 
@@ -18,7 +18,7 @@ function Theme(props){
     const [nameInput, setNameInput] = useState('')          //сохранение инпута названия темы
 
     const {chapter_id, course_id}  = useParams()
-
+    const [lectionsKey, setLectionsKey] = useState(1)
     // удаление темы
     const {mutatedFunc: themeDelete} = useRequest({fetchFunc: deleteTheme})
 
@@ -26,9 +26,10 @@ function Theme(props){
     const {mutatedFunc: themeUpdate} = useRequest({fetchFunc: updateTheme})
     
     // получение лекций
-    const {data: lections, isFetching: lectionsFetcing} = useFetchRequest({fetchFunc: ()=>getLections({theme_id: props.data.theme_id}), key: [], enebled: true})
+    const {data: lections, isFetching: lectionsFetcing} = useFetchRequest({fetchFunc: ()=>getLections({theme_id: props.data.theme_id}), key: [lectionsKey], enebled: true})
 
-    // нету получения практик
+    // создание лекции
+    const {mutatedFunc: postLection} = useRequest({fetchFunc: createLection})
 
     console.log('theme_id', props.data.theme_id)
     // функция удаления темы
@@ -48,6 +49,16 @@ function Theme(props){
             }
         }
     }
+    
+    const handleCreateLection = async() => {
+        await postLection({
+            lection_name: 'Нова лекція',
+            lection_content: '',
+            theme_id: props.data.theme_id,
+        })
+        setLectionsKey(lectionsKey + 1)
+    } 
+
 
     return(
         <div className="theme">
@@ -74,7 +85,7 @@ function Theme(props){
                             <Material data = {data} key={index} role = {props.role} theme_id = {props.data.theme_id}></Material>
                         ))}
                         
-                        {props.role === 'teacher' && <Link className="theme_material_create" to={`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}/lectionDevelopment/${props.data.theme_id}`}>+ Створити лекцію</Link>}
+                        {props.role === 'teacher' && <button className="theme_material_create" onClick={handleCreateLection}>+ Створити лекцію</button>}
                     </div>
                 </div>
 

@@ -4,7 +4,7 @@ import TextEditor from '../../components/textEditor/textEditor'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useFetchRequest, useRequest } from '../../hooks/hook'
-import { createLection, getOneLection, putLection } from '../../api/lection'
+import { createLection, deleteLection, getOneLection, putLection } from '../../api/lection'
 import userEvent from '@testing-library/user-event'
 
 function LectionDevelopmentPage(){
@@ -15,27 +15,17 @@ function LectionDevelopmentPage(){
     const [lectionName, setLectionName] = useState('')          //для созранения названия лекции
 
     const [lectionKey, setLectionKey] = useState(1)             //ключ получения если это редактирования
-    const [lectionEnebled, setlectionEnebled] = useState(false) //енейблед если это редактирование
-
-    const [createMode, setCreateMode] = useState(true)          //режим создания либо обновления
-
-
-    // пост запрос на создание лекции
-    const {mutatedFunc: postLection} = useRequest({fetchFunc: createLection})
 
     // получение уже готовой лекции
-    const {data: lection, isFetching: lectionFetching} = useFetchRequest({fetchFunc: () => getOneLection({lection_id: lection_id}), key: [lectionKey], enebled: lectionEnebled})
+    const {data: lection, isFetching: lectionFetching} = useFetchRequest({fetchFunc: () => getOneLection({lection_id: lection_id}), key: [lectionKey], enebled: true})
 
     //обновление лекции
     const {mutatedFunc: updateLection} = useRequest({fetchFunc: putLection})
 
-    useEffect(() => {
-        if(lection_id){
-            setlectionEnebled(true)
-            setLectionKey(lectionKey + 1)
-            setCreateMode(false)
-        }
-    }, [])
+    // удаление лекции
+    const {mutatedFunc: delLection} = useRequest({fetchFunc:  deleteLection})
+
+    console.log(lection_id)
 
     useEffect(() => {
         if(lectionFetching){
@@ -53,20 +43,20 @@ function LectionDevelopmentPage(){
                 theme_id: theme_id,
                 lection_id: lection_id
             }
-            if(createMode){
-                await postLection(data)
-            } else {
-                await updateLection(data)
-            }
+
+            await updateLection(data)
+
             console.log("FETCHING")
         } else {
-            alert("Поля введення назви лекції або її контенту порожні")
+            alert("Поля введення назви лекції або її контенту порожні(не відбулось змін)")
         }
     }
 
     // удаление лекции
-    const handleLectionDelete = () => {
-        console.log("DELETE")
+    const handleLectionDelete = async() => {
+        if (lection_id){
+            delLection({lection_id: lection_id})
+        }
     }
 
     return(
@@ -85,13 +75,13 @@ function LectionDevelopmentPage(){
 
 
                     {/* ЗАМЕНИТЬ ЧТОБ БЫЛО ВОЗМОЖНОСТЬ МЕНЯТЬ И ДЛЯ РАЗРАБОТКИ ЛЕКЦИИ */}
-                    {lectionFetching && <TextEditor onTextChange = {setContent} lection_contnent = {lection[0].lection_content}></TextEditor>}
+                    {lectionFetching && <TextEditor onTextChange = {setContent} lection_contnent = {lection[0].lection_content} lection_id = {lection_id}></TextEditor>}
                 </div>
 
                 {/* ЗАМЕНИТЬ НА LINK */}
                 <div className="lectionDevPage_lectionControll">
-                    <button onClick={handleLectionCreate} to={'/'}>{createMode? 'Створити лекцію': 'Оновити лекцію'}</button>
-                    <button onClick={handleLectionDelete}>Видалити лекцію</button>
+                    <button onClick={handleLectionCreate} >Оновити лекцію</button>
+                    <button onClick={handleLectionDelete} >Видалити лекцію</button>
                 </div>
 
 

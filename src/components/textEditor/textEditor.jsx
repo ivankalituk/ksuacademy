@@ -12,6 +12,7 @@ class TextEditor extends Component {
       super(props);
       this.state = {
         text: props.lection_contnent || '<p>empty</p>',
+        lection_id: props.lection_id
       };
     }
 
@@ -31,6 +32,7 @@ class TextEditor extends Component {
           return new Promise((resolve, reject) => {
             const formData = new FormData();
             formData.append("photo", file);
+            formData.append("lection_id", this.state.lection_id)
   
             fetch(
               "http://localhost:1000/lection/photo",
