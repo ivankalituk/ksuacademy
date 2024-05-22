@@ -17,7 +17,6 @@ function Theme(props){
     const [editMode, setEditMode] = useState(false)         //режим редактирования
     const [nameInput, setNameInput] = useState('')          //сохранение инпута названия темы
 
-    const {chapter_id, course_id}  = useParams()
     const [lectionsKey, setLectionsKey] = useState(1)
     // удаление темы
     const {mutatedFunc: themeDelete} = useRequest({fetchFunc: deleteTheme})
@@ -33,8 +32,8 @@ function Theme(props){
 
     console.log('theme_id', props.data.theme_id)
     // функция удаления темы
-    const handleDelete = () => {
-        themeDelete({theme_id: props.data.theme_id})
+    const handleDelete = async() => {
+        await themeDelete({theme_id: props.data.theme_id})
         props.themesKeyCallback()
     }
 
@@ -85,7 +84,7 @@ function Theme(props){
                             <Material data = {data} key={index} role = {props.role} theme_id = {props.data.theme_id}></Material>
                         ))}
                         
-                        {props.role === 'teacher' && <button className="theme_material_create" onClick={handleCreateLection}>+ Створити лекцію</button>}
+                        {props.role === 'teacher' && <div className="theme_material_create" onClick={handleCreateLection}>+ Створити лекцію</div>}
                     </div>
                 </div>
 
@@ -95,7 +94,7 @@ function Theme(props){
                     <div className="theme_practice_list">
                         <Practice></Practice>
 
-                        {props.role === 'teacher' && <Link className="theme_practice_create">+ Створити тест</Link>}
+                        {props.role === 'teacher' && <div className="theme_practice_create">+ Створити тест</div>}
                     </div>
                 </div>
             </div>

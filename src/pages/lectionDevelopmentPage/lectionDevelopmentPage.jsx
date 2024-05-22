@@ -2,19 +2,20 @@ import './lectionDevelopmentPage.scss'
 
 import TextEditor from '../../components/textEditor/textEditor'
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useFetchRequest, useRequest } from '../../hooks/hook'
 import { createLection, deleteLection, getOneLection, putLection } from '../../api/lection'
-import userEvent from '@testing-library/user-event'
 
 function LectionDevelopmentPage(){
 
-    const {theme_id, lection_id} = useParams()
+    const {course_id, chapter_id, theme_id, lection_id} = useParams()
 
     const [content, setContent] = useState(null)                //для сохранения контента лекции
     const [lectionName, setLectionName] = useState('')          //для созранения названия лекции
 
     const [lectionKey, setLectionKey] = useState(1)             //ключ получения если это редактирования
+
+    const navigate = useNavigate()
 
     // получение уже готовой лекции
     const {data: lection, isFetching: lectionFetching} = useFetchRequest({fetchFunc: () => getOneLection({lection_id: lection_id}), key: [lectionKey], enebled: true})
@@ -24,8 +25,6 @@ function LectionDevelopmentPage(){
 
     // удаление лекции
     const {mutatedFunc: delLection} = useRequest({fetchFunc:  deleteLection})
-
-    console.log(lection_id)
 
     useEffect(() => {
         if(lectionFetching){
@@ -46,6 +45,8 @@ function LectionDevelopmentPage(){
 
             await updateLection(data)
 
+            navigate(`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}`)
+
             console.log("FETCHING")
         } else {
             alert("Поля введення назви лекції або її контенту порожні(не відбулось змін)")
@@ -54,9 +55,9 @@ function LectionDevelopmentPage(){
 
     // удаление лекции
     const handleLectionDelete = async() => {
-        if (lection_id){
-            delLection({lection_id: lection_id})
-        }
+        await delLection({lection_id: lection_id})
+        navigate(`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}`)
+
     }
 
     return(

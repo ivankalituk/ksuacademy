@@ -87,7 +87,7 @@ function Header({burgerCallback}){
                 <div className={`header_courses_container ${courses? "show" : ""}`}>
 
                     {coursesIsFeching && coursesList.map((data, index) => (
-                        <Link key={index}>{data.course_name}</Link>
+                        <Link key={index} to={`course/${data.course_id}`}>{data.course_name}</Link>
                     ))}
 
                 </div>
@@ -105,7 +105,7 @@ function Header({burgerCallback}){
                         <div className="header_burgerMenu_subjectList">
 
                             {coursesIsFeching && coursesList.map((data, index) => (
-                                <Link key={index}>{data.course_name}</Link>
+                                <Link key={index} to={`course/${data.course_id}`}>{data.course_name}</Link>
                             ))}
 
                         </div>

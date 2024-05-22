@@ -11,7 +11,7 @@ function Practice(){
 
             </div>
 
-            <div className="practice_name">Назва лекції</div>
+            <div className="practice_name">Назва практики</div>
         </Link>
     )
 }
