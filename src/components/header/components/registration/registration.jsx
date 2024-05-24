@@ -10,16 +10,16 @@ function Registration(){
     return(
         <div className="regstration">
 
-            <div className="header_registrationGroup_notAuthorized">
+            {/* <div className="header_registrationGroup_notAuthorized">
                 <GoogleLogin
                     onSuccess={(authData)=>{
                         console.log(authData)
                     }}
                     onError={()=>[
-                        console.log("ERROR WHILE  AUTH")
+                        console.log("ERROR WHILE AUTH")
                     ]}
                 />
-            </div>
+            </div> */}
 
             <Link className="header_registrationGroup_Authorized" to="/profile">
 

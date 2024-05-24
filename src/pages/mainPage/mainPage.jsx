@@ -9,6 +9,8 @@ import cat2 from '../../assets/photos/mainCatSB2.png'
 // components
 import CourseMainPage from './components/courseMainPage/courseMainPage';
 
+import Test from '../../components/test/test';
+
 // functions
 import { useFetchRequest } from '../../hooks/hook';
 import { getAllCourses } from '../../api/course';
@@ -86,6 +88,8 @@ function MainPage(){
                         </div>
                     </div>
                 </div>
+
+                <Test></Test>
             </div>
         </div>
     )

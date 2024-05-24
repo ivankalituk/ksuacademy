@@ -1,0 +1,40 @@
+.test{
+    width: 100%;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    padding: 16px 16px 32px 16px;
+    border-radius: 16px;
+
+    > .test_heading{
+        line-height: 36px;
+        font-weight: 700;
+        font-size: 24px;
+        color: #16325C;
+    }
+    > .test_buttons{
+        margin-top: 16px;
+        display: flex;
+        gap: 5px;
+
+        > button{
+            padding: 0 10px;
+            height: 32px;
+            // flex: 1;
+            outline: none;
+            border: none;
+            border-radius: 16px;
+            background-color: #005495;
+            color: white;
+            font-family: Montserrat;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.5s;
+            cursor: pointer;
+
+            &:active{
+                background-color: #16325C;
+                transition: 0.5s;
+            }
+        }
+    }
+}
