@@ -5,7 +5,7 @@ function Answer(){
         <div className="testContent_answers_answer">
             <div className="testContent_answers_answerNumber">1</div>
             <span>Відповідь</span>
-            <input type="radio" name="NAME" />
+            <input type="radio" name="NAME"/>
         </div>
     )
 }
