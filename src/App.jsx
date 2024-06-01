@@ -11,18 +11,59 @@ import LectionDevelopmentPage from "./pages/lectionDevelopmentPage/lectionDevelo
 import LectionPage from "./pages/lectionPage/lectionPage";
 
 import { Routes, Route } from "react-router-dom";
+import { setUser } from "./redux/userSlice";
 
 import "./App.scss"
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import TestPage from "./pages/testPage/testPage";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 
 function App() {
-  let [blockScroll, setBlockScroll] = useState(false)
+  const [blockScroll, setBlockScroll] = useState(false)       //для блокировки скролла из-за бургерМеню
+  
+  const dispatch = useDispatch()
+
 
   // колбек для бургер меню (блокировка скрола)
   let burgerCallback = useCallback((block) =>{
     setBlockScroll(block)
+  }, [])
+
+  // при маунте мы достаём токен гугл акка и проверяем активен ли он
+  useEffect(() => {
+
+    // если есть гугл токен, то проверяем если он активен
+    const checkUser = async () => {
+      if (localStorage.getItem('access_token')){
+        try {
+          const response = await axios.post('http://localhost:1000/userCheck', { access_token: localStorage.getItem('access_token') });
+          const data = response.data
+
+          console.log(data.userData[0])
+          
+          if (data.active){
+            // если токен активен, то заносим информацию в хранилище
+            const user = {
+              user_nickName: data.userData[0].user_nickName,
+              user_imgUrl: data.userData[0].user_imgUrl,
+              user_role: data.userData[0].user_role,
+              user_id: data.userData[0].user_id,
+              user_email: data.userData[0].user_email
+            }
+            
+            dispatch(setUser(user))
+            console.log('SETTED USER', user)
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      }
+    }
+    checkUser()
+    
+
   }, [])
 
   return (
