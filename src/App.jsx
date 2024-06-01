@@ -22,29 +22,25 @@ import { useDispatch } from "react-redux";
 
 function App() {
   const [blockScroll, setBlockScroll] = useState(false)       //для блокировки скролла из-за бургерМеню
-  
   const dispatch = useDispatch()
-
 
   // колбек для бургер меню (блокировка скрола)
   let burgerCallback = useCallback((block) =>{
     setBlockScroll(block)
   }, [])
 
-  // при маунте мы достаём токен гугл акка и проверяем активен ли он
+  // получение пользователя, если его токен активен
   useEffect(() => {
-
-    // если есть гугл токен, то проверяем если он активен
     const checkUser = async () => {
+      // если токен существует
       if (localStorage.getItem('access_token')){
         try {
+          // проверяем активен ли токен
           const response = await axios.post('http://localhost:1000/userCheck', { access_token: localStorage.getItem('access_token') });
           const data = response.data
-
-          console.log(data.userData[0])
           
+          // если токен активен, то заносим информацию в редакс
           if (data.active){
-            // если токен активен, то заносим информацию в хранилище
             const user = {
               user_nickName: data.userData[0].user_nickName,
               user_imgUrl: data.userData[0].user_imgUrl,
@@ -54,16 +50,14 @@ function App() {
             }
             
             dispatch(setUser(user))
-            console.log('SETTED USER', user)
           }
         } catch (error) {
           console.error('Error:', error);
         }
       }
     }
-    checkUser()
-    
 
+    checkUser()
   }, [])
 
   return (

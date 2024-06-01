@@ -1,7 +1,25 @@
 .regstration{
 
     > .header_registrationGroup_notAuthorized{
+        border: none;
+        outline: none;
+        background-color: #005495;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 32px;
+        width: 148px;
+        border-radius: 16px;
+        font-family: "Montserrat";
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: 0.5s;
 
+        &:active{
+            transition: 0.5s;
+            background-color: #16325C;
+        }
     }
 
     > .header_registrationGroup_Authorized{
