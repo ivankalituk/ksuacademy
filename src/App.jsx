@@ -9,6 +9,7 @@ import CourseDevelopmentPage from "./pages/courseDevelopmentPage/courseDevelopme
 import ThemeDevelopmentPage from "./pages/themeDevelopmentPage/themeDevelopmentPage";
 import LectionDevelopmentPage from "./pages/lectionDevelopmentPage/lectionDevelopmentPage";
 import LectionPage from "./pages/lectionPage/lectionPage";
+import SettingsPage from "./pages/settingsPage/settingsPage";
 
 import { Routes, Route } from "react-router-dom";
 import { setUser } from "./redux/userSlice";
@@ -33,10 +34,12 @@ function App() {
   useEffect(() => {
     const checkUser = async () => {
       // если токен существует
-      if (localStorage.getItem('access_token')){
+      const token = localStorage.getItem('access_token')
+      console.log(token)
+      if (token){
         try {
           // проверяем активен ли токен
-          const response = await axios.post('http://localhost:1000/userCheck', { access_token: localStorage.getItem('access_token') });
+          const response = await axios.post('http://localhost:1000/userCheck', { access_token: token });
           const data = response.data
           
           // если токен активен, то заносим информацию в редакс
@@ -74,6 +77,7 @@ function App() {
         <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage}></Route>
         <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id"  Component={LectionDevelopmentPage}></Route>
         <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/:lection_id"  Component={LectionDevelopmentPage}></Route>
+        <Route path="/profile/settings" Component={SettingsPage}/>
       </Routes>
 
       <Footer />
