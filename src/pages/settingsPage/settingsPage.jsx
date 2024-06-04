@@ -1,8 +1,84 @@
 import './settingsPage.scss'
 
 import imgChange from '../../assets/photos/addPhoto.svg'
+import { useState } from 'react'
+import { useRequest } from '../../hooks/hook'
+import { updateUserNickname, updateUserImg } from '../../api/user'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearUser, setUserNickname, setUserImgPath} from '../../redux/userSlice'
+import { googleLogout } from '@react-oauth/google'
+import { useNavigate } from 'react-router-dom'
 
 function SettingsPage(){
+
+    const user = useSelector((state) => state.user)
+
+    const dispatch = useDispatch()
+
+    
+    const [selectedImgFile, setSelectedImgFile] = useState(null)        //сохранение файла фото
+    const [selectedImg, setSelectedImg] = useState(null)                //сохранение ссылки на фото
+    const [nickname, setNickname] = useState('')                        //для инпута никнейма
+
+    const navigate = useNavigate()
+
+    // функция изменения никнейма
+    const {mutatedFunc: putUserName} = useRequest({fetchFunc: updateUserNickname})
+
+    // 
+    const {mutatedFunc: putUserImg, data: newImgPath} = useRequest({fetchFunc: updateUserImg})
+
+    // замена ника
+    const nicknameChange = async () => {
+        console.log(nickname)
+
+        // добавить сам запрос изменения
+        await putUserName({user_id: user.user_id, user_nickname: nickname})
+
+        // заменить никнейм в редаксе
+        dispatch(setUserNickname({user_nickName: nickname}))
+
+        // очищение поля ввода нового никнейма
+        setNickname('')
+    }
+
+    // отловить изменение инпут файла
+    const handleInputImgChange = (event) => {
+        const file = event.target.files[0]
+        setSelectedImgFile(file)
+        const reader = new FileReader()
+
+        reader.onload = () => [
+            setSelectedImg(reader.result)
+        ]
+
+        reader.readAsDataURL(file)
+    }
+
+    // замена фото
+    const handleImgChange = async () => {
+        if (selectedImgFile !== null){
+            const data = new FormData()
+
+            data.append('user_id', user.user_id)
+            data.append('photo', selectedImgFile)
+
+            console.log(data)
+
+            await putUserImg(data)
+        }
+    }
+
+    // выйти из аккаунта
+    const handleLogOut = () => {
+        
+        localStorage.setItem('access_token', null)          // очистить локал сторедж
+        dispatch(clearUser())                               // очистить редакс стор
+        googleLogout()                                      // выйти с гугл аккаунта
+        // выйти со страницы и перейти на главную
+        navigate('/')
+    }
+
     return(
         <div className="settingsPage">
             <div className="settingsPage_container">
@@ -12,8 +88,8 @@ function SettingsPage(){
                     <span>Змінити нікнейм</span>
 
                     <div className="settingsPage_nicknameChange_dev">
-                        <input type="text" placeholder='НОВИЙ НІКНЕЙМ'/>
-                        <button>Змінити</button>
+                        <input type="text" placeholder='НОВИЙ НІКНЕЙМ' value={nickname} onChange={(event) => {setNickname(event.target.value)}}/>
+                        <button onClick={nicknameChange}>Змінити</button>
                     </div>
                 </div>
 
@@ -24,16 +100,16 @@ function SettingsPage(){
                     <div className="settingsPage_avatarChange_dev">
                         <div className="settingsPage_avatarChange_customInput">
                             <img src={imgChange} alt="imgChange" />
-                            <input type="file" />
+                            <input type="file" onChange={handleInputImgChange} />
                         </div>
 
-                        <button>Змінити</button>
+                        <button onClick={handleImgChange}>Змінити</button>
                     </div>
                 </div>
 
                 {/* выход из  аккаунта */}
                 <div className="settingsPage_logOut">
-                    <button>Вийти з аккаунту</button>
+                    <button onClick={handleLogOut}>Вийти з аккаунту</button>
                 </div>
 
                 {/* удалить аккаунт */}

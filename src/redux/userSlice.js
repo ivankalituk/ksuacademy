@@ -26,9 +26,18 @@ const userSlice = createSlice({
             state.user_role = null;
             state.user_id = null;
             state.user_email = null;
+        },
+
+        setUserNickname: (state, action) => {
+            state.user_nickName = action.payload.user_nickName
+        },
+
+        setUserImgPath:  (state, action) => {
+            state.user_imgUrl = action.payload.user_imgUrl
         }
+        
     }
 })
 
-export const {setUser, clearUser} = userSlice.actions
+export const {setUser, clearUser, setUserNickname, setUserImgPath} = userSlice.actions
 export default userSlice.reducer
