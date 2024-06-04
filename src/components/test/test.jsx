@@ -4,6 +4,27 @@ import TestContent from './testContent/testContent'
 
 
 function Test(){
+
+    const questions = [
+        {
+            question_text:  "2+2 = ?",
+            answers: [
+                {
+                    answer_text: '3',
+                    truth: false
+                },
+                {
+                    answer_text: '4',
+                    truth: true
+                },
+                {
+                    answer_text: '6',
+                    truth: false
+                }
+            ]
+        }
+    ]
+
     return(
         <div className="test">
             <div className="test_heading">Завдання</div>

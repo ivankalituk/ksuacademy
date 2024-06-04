@@ -29,7 +29,7 @@ function  ProfilePage(){
                                 <div className="rightBlock_nicknameGroup">
                                     <div className="rightBlock_nicknameGroup_name">
                                         <span>Нікнейм</span>
-                                        <Link  to={'/settings'}><img src={changeNick} alt="changeNick" /></Link>
+                                        <Link  to={'/profile/settings'}><img src={changeNick} alt="changeNick" /></Link>
                                     </div>
 
                                     <div className="rightBlock_nicknameGroup_role">Роль користувача</div>

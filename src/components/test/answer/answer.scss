@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+    transition: 0.5s;
 
     > .testContent_answers_answerNumber{
         width: 32px;
@@ -30,12 +31,23 @@
         line-height: 19.5px;
         margin-left: 10px;
         color: #8D8E90;
+        transition: 0.5s;
     }
 
     >input{
         position: absolute;
         width: 100%;
         height: 100%;
-        opacity: 0.2;
+        opacity: 0;
     }
+}
+
+.activeCutstomInput{
+    background-color: #8D8E90;
+    transition: 0.5s;
+}
+
+.activeCustomInputText{
+    color: white;
+    transition: 0.5s;
 }

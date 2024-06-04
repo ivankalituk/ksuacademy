@@ -1,8 +1,17 @@
 import './testContent.scss'
 
 import Answer from '../answer/answer'
+import { useState } from 'react'
 
 function TestContent(){
+
+    const [selectedRadio, setSelectedRadio] = useState(null)
+
+    const handleSelection = (value) => {
+        setSelectedRadio(value)
+        console.log(value)
+    }
+
     return(
         <div className="testContent">
 
@@ -15,7 +24,9 @@ function TestContent(){
                 <div className="testContent_answers_querstionType">Виберіть одну правильну відповідь</div>
 
                 <div className="testContent_answers_answerlist">
-                    <Answer></Answer>
+                    <Answer handleSelection = {handleSelection} value = {1} selectedRadio = {selectedRadio}></Answer>
+                    <Answer handleSelection = {handleSelection} value = {2} selectedRadio = {selectedRadio}></Answer>
+                    <Answer handleSelection = {handleSelection} value = {3} selectedRadio = {selectedRadio}></Answer>
 
                 </div>
 
