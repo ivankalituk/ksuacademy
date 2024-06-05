@@ -88,8 +88,6 @@ function MainPage(){
                         </div>
                     </div>
                 </div>
-
-                <Test mode = {1}></Test>
             </div>
         </div>
     )

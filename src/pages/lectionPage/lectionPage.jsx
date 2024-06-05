@@ -3,6 +3,8 @@ import './lectionPage.scss'
 import { useFetchRequest } from '../../hooks/hook'
 import { getOneLection } from '../../api/lection'
 
+import Test from '../../components/test/test'
+
 function LectionPage(){
 
     const {lection_id} = useParams()
@@ -16,7 +18,8 @@ function LectionPage(){
             <div className="lectionPage_container">
                 {lectionFetching && <div dangerouslySetInnerHTML={{ __html: lection[0]?.lection_content || '' }} />}
 
-                
+                <Test mode = {1}/>
+
             </div>
         </div>
     )
