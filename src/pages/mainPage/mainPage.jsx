@@ -89,7 +89,7 @@ function MainPage(){
                     </div>
                 </div>
 
-                <Test></Test>
+                <Test mode = {1}></Test>
             </div>
         </div>
     )
