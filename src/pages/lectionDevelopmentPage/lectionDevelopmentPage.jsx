@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useFetchRequest, useRequest } from '../../hooks/hook'
 import { createLection, deleteLection, getOneLection, putLection } from '../../api/lection'
+import TestDev from '../../components/testDev/testDev'
+
 
 function LectionDevelopmentPage(){
 
@@ -60,6 +62,9 @@ function LectionDevelopmentPage(){
 
     }
 
+    // по нажатию на кнопку обновления лекции должно происходить обновление лекции и создание теста
+    // тест принимается в виде массива, который нужно отдельно разделить на данные и занести в бд
+
     return(
         <div className="lectionDevPage">
             <div className="lectionDevPage_container">
@@ -79,10 +84,13 @@ function LectionDevelopmentPage(){
                     {lectionFetching && <TextEditor onTextChange = {setContent} lection_contnent = {lection[0].lection_content} lection_id = {lection_id}></TextEditor>}
                 </div>
 
-                {/* ЗАМЕНИТЬ НА LINK */}
                 <div className="lectionDevPage_lectionControll">
                     <button onClick={handleLectionCreate} >Оновити лекцію</button>
                     <button onClick={handleLectionDelete} >Видалити лекцію</button>
+                </div>
+
+                <div className="testDevList">
+                    <TestDev />
                 </div>
 
 
