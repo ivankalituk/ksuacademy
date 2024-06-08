@@ -1,7 +1,186 @@
 .testDev{
-    width: 100%;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
-    box-sizing: border-box;
-    padding: 16px 16px 32px 16px;
+    > .testDev_heading{
+        line-height: 64px;
+        font-size: 36px;
+        font-weight: 900;
+        text-transform: uppercase;
+        background: var(--main-gradient, linear-gradient(360deg, #16325C 0%, #005494 100%));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    >.testDev_questions{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 16px;
+
+        > .testDev_question{
+            width: 100%;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+            padding: 16px 16px 32px 16px;
+            border-radius: 16px;
+
+            > .testDev_question_heading{
+                line-height: 64px;
+                font-weight: 700;
+                font-size: 24px;
+                color: #16325C;
+            }
+
+            > .testDev_question_questionTextGroup{
+                > span{
+                    margin-top: 5px;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 19.5px;
+                    color: #16325C;
+                }
+            }
+
+            > .testDev_question_inputMode{
+                margin-top: 5px;
+
+                >span{
+                    line-height: 20px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    color: #16325C;
+                }
+
+                > .testDev_question_inputMode_modes{
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 5px;
+                    >.testDev_question_inputMode_mode{
+                        position: relative;
+
+                        >input{
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            opacity: 0;
+                            z-index: 100;
+                        }
+
+                        > div{
+                            background-color: #F1F1F1;
+                            padding: 5px 10px;
+                            border-radius: 10px;
+                            color: #005495;
+                            transition: 0.5s;
+                        }
+
+                        >input:checked~div{
+                            background-color: #8D8E90;
+                            color: white;
+                            transition: 0.5s;
+                        }
+                    }
+                }
+            }
+
+            > .testDev_question_optionsGroup{
+                margin-top: 5px;
+
+                >span{
+                    line-height: 20px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    color: #16325C;
+                }
+
+                > .testDev_question_options{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+
+                    > div{
+                        display: flex;
+                        align-items: center;
+                        
+                        >input[type = "radio"], input[type = "checkbox"]{
+                            height: 20px;
+                            width: 20px;
+                            margin: 0;
+                        }
+
+                        > button{
+                            margin-left: 5px;
+                            background-color: red;
+
+                            &:active{
+                                transition: 0.5s;
+                                background-color: rgb(167, 0, 0);
+                            }
+                        }
+                    }
+                }
+            }
+
+            > .testDev_question_devButtons{
+                margin-top: 16px;
+                display: flex;
+                gap: 10px;
+                
+                > button:last-child{
+                    background-color: red;
+
+                    &:active{
+                        transition: 0.5s;
+                        background-color: rgb(167, 0, 0);
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+.testDev button{
+    padding: 0 10px;
+    height: 32px;
+    outline: none;
+    border: none;
     border-radius: 16px;
+    background-color: #005495;
+    color: white;
+    font-family: Montserrat;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+
+    &:active{
+        background-color: #16325C;
+        transition: 0.5s;
+    }
+}
+
+.testDev input[type = "text"]{
+    margin-left: 5px;
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: #F1F1F1;
+    border-radius: 16px;
+    height: 32px;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    font-family: Montserrat;
+    font-weight: 600;
+
+    &::placeholder{
+        color: #005495;
+        text-transform: uppercase;
+    }
+}
+
+.test_wrongAns{
+    margin-top: 16px;
+    color: red;
+    font-weight: 600;
 }

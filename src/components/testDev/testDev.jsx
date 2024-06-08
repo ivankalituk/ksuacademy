@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-
+import './testDev.scss'
 const TestDev = ({ initialQuestions }) => {
 
-    // тесты
-    const [questions, setQuestions] = useState(initialQuestions !== undefined? initialQuestions : []);
-    console.log(questions)
-    // добавление вопроса
-    const handleAddQuestion = () => {
+  // тесты
+  const [questions, setQuestions] = useState(initialQuestions !== undefined? initialQuestions : []);
+  
+  // добавление вопроса
+  const handleAddQuestion = () => {
         setQuestions([
         ...questions,
       {
@@ -18,23 +18,25 @@ const TestDev = ({ initialQuestions }) => {
     ]);
   };
 
-    //удаление вопроса
+  //удаление вопроса
   const handleDeleteQuestion = (index) => {
     const updatedQuestions = [...questions];
     updatedQuestions.splice(index, 1);
     setQuestions(updatedQuestions);
   };
 
-    //добавление опшинов
+  //добавление опшинов
   const handleAddOption = (questionIndex) => {
     const updatedQuestions = [...questions];
     updatedQuestions[questionIndex].options.push('');
     setQuestions(updatedQuestions);
   };
-    //удаление опшнов
+  
+  //удаление опшнов
   const handleDeleteOption = (questionIndex, optionIndex) => {
     const updatedQuestions = [...questions];
     updatedQuestions[questionIndex].options.splice(optionIndex, 1);
+    updatedQuestions[questionIndex].correctAnswer = []
     setQuestions(updatedQuestions);
   };
   
@@ -84,61 +86,63 @@ const TestDev = ({ initialQuestions }) => {
   };
 
   return (
-    <div>
-      <h2>Survey Builder</h2>
-      <button onClick={handleAddQuestion}>Add Question</button>
-      {questions.map((question, index) => (
-        <div key={index}>
-          <h3>Question {index + 1}</h3>
-          <label>Question:</label>
-          <input
-            type="text"
-            value={question.question}
-            onChange={(e) => handleQuestionChange(index, 'question', e.target.value)}
-          />
-          <label>Input Mode:</label>
-          <div>
-            <label>
-              <input
-                type="radio"
-                value="radio"
-                checked={question.inputMode === 'radio'}
-                onChange={(e) => handleInputModeChange(index, e.target.value)}
-              />
-              Radio
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="checkbox"
-                checked={question.inputMode === 'checkbox'}
-                onChange={(e) => handleInputModeChange(index, e.target.value)}
-              />
-              Checkbox
-            </label>
-          </div>
-          <label>Options:</label>
-          {question.options.map((option, optionIndex) => (
-            <div key={optionIndex}>
-              <input
-                type={question.inputMode}
-                name={`question-${index}`}
-                value={option}
-                checked={question.correctAnswer.includes(option)}
-                onChange={() => handleCorrectAnswerChange(index, optionIndex)}
-              />
-              <input
-                type="text"
-                value={option}
-                onChange={(e) => handleOptionChange(index, optionIndex, e.target.value)}
-              />
-              <button onClick={() => handleDeleteOption(index, optionIndex)}>Delete Option</button>
+    <div className='testDev'>
+
+      <div className="testDev_heading">Розроблення питань лекції</div>
+      <button onClick={handleAddQuestion}>Додати питання</button>
+
+      <div className="testDev_questions">
+        {questions.map((question, index) => (
+          <div key={index} className='testDev_question'>
+
+            <div className='testDev_question_heading'>Питання {index + 1}</div>
+
+            <div className="testDev_question_questionTextGroup">
+              <span>Питання:</span>
+              <input type="text" value={question.question} onChange={(event) => handleQuestionChange(index, 'question', event.target.value)} placeholder='Питання'/>
             </div>
-          ))}
-          <button onClick={() => handleAddOption(index)}>Add Option</button>
-          <button onClick={() => handleDeleteQuestion(index)}>Delete Question</button>
-        </div>
-      ))}
+
+
+            <div className="testDev_question_inputMode">
+              <span>Виберіть кількість відповідей:</span>
+
+              <div className="testDev_question_inputMode_modes">
+                <div className="testDev_question_inputMode_mode">
+                  <input type="radio" value="radio" checked={question.inputMode === 'radio'} onChange={(event) => handleInputModeChange(index, event.target.value)}/>
+                  <div>Одна відповідь</div>
+                </div>
+
+                <div className="testDev_question_inputMode_mode">
+                  <input type="radio" value="checkbox" checked={question.inputMode === 'checkbox'} onChange={(event) => handleInputModeChange(index, event.target.value)}/>
+                  <div>Довільна кількість</div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div className="testDev_question_optionsGroup">
+              <span>Відповіді</span>
+
+              <div className="testDev_question_options">
+                {question.options.map((option, optionIndex) => (
+                <div key={optionIndex}>
+                  <input type={question.inputMode} name={`question-${index}`} value={option} checked={question.correctAnswer.includes(option)} onChange={() => handleCorrectAnswerChange(index, optionIndex)}/>
+                  
+                  <input type="text" value={option} onChange={(e) => handleOptionChange(index, optionIndex, e.target.value)}/>
+                  
+                  <button onClick={() => handleDeleteOption(index, optionIndex)}>Видалити</button>
+                </div>
+              ))}
+              </div>
+            </div>
+            
+            <div className="testDev_question_devButtons">
+              <button onClick={() => handleAddOption(index)}>Add Option</button>
+              <button onClick={() => handleDeleteQuestion(index)}>Delete Question</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

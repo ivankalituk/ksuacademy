@@ -18,7 +18,7 @@ function LectionDevelopmentPage(){
     const [lectionKey, setLectionKey] = useState(1)             //ключ получения если это редактирования
 
     const navigate = useNavigate()
-
+    
     // получение уже готовой лекции
     const {data: lection, isFetching: lectionFetching} = useFetchRequest({fetchFunc: () => getOneLection({lection_id: lection_id}), key: [lectionKey], enebled: true})
 
@@ -37,13 +37,17 @@ function LectionDevelopmentPage(){
     
     // создание лекции
     const handleLectionCreate = async () =>{
+
+        // добавитьь
         if (lectionName !== '' && content && content !== '<p><br></p>'){
+            
             const data = {
                 lection_name: lectionName,
                 lection_content: content,
                 theme_id: theme_id,
                 lection_id: lection_id
             }
+            
 
             await updateLection(data)
 
@@ -84,15 +88,14 @@ function LectionDevelopmentPage(){
                     {lectionFetching && <TextEditor onTextChange = {setContent} lection_contnent = {lection[0].lection_content} lection_id = {lection_id}></TextEditor>}
                 </div>
 
-                <div className="lectionDevPage_lectionControll">
-                    <button onClick={handleLectionCreate} >Оновити лекцію</button>
-                    <button onClick={handleLectionDelete} >Видалити лекцію</button>
-                </div>
-
                 <div className="testDevList">
                     <TestDev />
                 </div>
 
+                <div className="lectionDevPage_lectionControll">
+                    <button onClick={handleLectionCreate} >Оновити лекцію</button>
+                    <button onClick={handleLectionDelete} >Видалити лекцію</button>
+                </div>
 
             </div>
         </div>
