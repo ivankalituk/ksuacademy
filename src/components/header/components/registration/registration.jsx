@@ -21,7 +21,7 @@ function Registration(){
 
             // получение юзера
             const resData = await axios.post('http://localhost:1000/user', {access_tocken: data.access_token}).then(({data})=> data)
-            
+
             // заносим в редакс юзера
             const user = {
                 user_nickName: resData[0].user_nickName,
@@ -48,7 +48,7 @@ function Registration(){
                         <div className="registrationGroup_Authorized_nickname">{user.user_nickName}</div>
                             
                         {/* ЗАМЕНИТЬ ЛОГО */}
-                        <img src={logo2} alt="user_logo" />
+                        <img src={user.user_imgUrl? 'http://localhost:1000/' + user.user_imgUrl : logo2} alt="user_logo" />
                             
                     </div>
                 </Link>

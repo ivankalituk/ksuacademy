@@ -3,9 +3,12 @@ import './profilePage.scss'
 import { Link } from 'react-router-dom'
 
 import changeNick from '../../assets/photos/changeNick.svg'
-import profilePhoto from '../../assets/photos/logo2.png'
+import logo2 from '../../assets/photos/logo2.png'
+import { useSelector } from 'react-redux'
 
 function  ProfilePage(){
+
+    const user = useSelector((state) => state.user)
 
     // АДАПТИВ НЕ РАБОТАЕТ
 
@@ -24,15 +27,15 @@ function  ProfilePage(){
                 
                             <div className="rightBlock_accoutGroup">
 
-                                <img src={profilePhoto} alt="profilePhoto" />
+                                <img src={user.user_imgUrl? 'http://localhost:1000/' + user.user_imgUrl : logo2} alt="profilePhoto" />
 
                                 <div className="rightBlock_nicknameGroup">
                                     <div className="rightBlock_nicknameGroup_name">
-                                        <span>Нікнейм</span>
+                                        <span>{user.user_nickName}</span>
                                         <Link  to={'/profile/settings'}><img src={changeNick} alt="changeNick" /></Link>
                                     </div>
 
-                                    <div className="rightBlock_nicknameGroup_role">Роль користувача</div>
+                                    <div className="rightBlock_nicknameGroup_role">{user.user_role === 'teacher'? 'Профіль вчителя': 'Профіль студента'}</div>
                                 </div>
                             </div>
 
@@ -42,7 +45,7 @@ function  ProfilePage(){
                             </div>
                         </div>
                         
-                        <Link to={'/courseDevelopment'} className="rightBlock_changeCourses">+ Змінити Курс</Link>
+                        {user.user_role === 'teacher' && <Link to={'/courseDevelopment'} className="rightBlock_changeCourses">+ Змінити Курс</Link>}
 
                         <div className="rightBlock_progressTables">
 

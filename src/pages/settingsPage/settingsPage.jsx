@@ -25,7 +25,8 @@ function SettingsPage(){
     // функция изменения никнейма
     const {mutatedFunc: putUserName} = useRequest({fetchFunc: updateUserNickname})
 
-    // 
+    // замена фотографии
+    // Для отображения смены фото нужно перезагружать страницу
     const {mutatedFunc: putUserImg, data: newImgPath} = useRequest({fetchFunc: updateUserImg})
 
     // замена ника
