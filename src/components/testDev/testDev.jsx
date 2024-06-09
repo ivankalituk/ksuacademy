@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './testDev.scss'
-const TestDev = ({ initialQuestions }) => {
+const TestDev = ({ test, handleSetTest }) => {
 
   // тесты
-  const [questions, setQuestions] = useState(initialQuestions !== undefined? initialQuestions : []);
+  const [questions, setQuestions] = useState(test !== undefined? test : []);
   
   // добавление вопроса
   const handleAddQuestion = () => {
@@ -16,6 +16,7 @@ const TestDev = ({ initialQuestions }) => {
         inputMode: 'radio',
       },
     ]);
+    handleSetTest(questions)
   };
 
   //удаление вопроса
@@ -23,6 +24,7 @@ const TestDev = ({ initialQuestions }) => {
     const updatedQuestions = [...questions];
     updatedQuestions.splice(index, 1);
     setQuestions(updatedQuestions);
+    handleSetTest(updatedQuestions)
   };
 
   //добавление опшинов
@@ -30,14 +32,16 @@ const TestDev = ({ initialQuestions }) => {
     const updatedQuestions = [...questions];
     updatedQuestions[questionIndex].options.push('');
     setQuestions(updatedQuestions);
+    handleSetTest(questions)
   };
-  
+
   //удаление опшнов
   const handleDeleteOption = (questionIndex, optionIndex) => {
     const updatedQuestions = [...questions];
     updatedQuestions[questionIndex].options.splice(optionIndex, 1);
     updatedQuestions[questionIndex].correctAnswer = []
     setQuestions(updatedQuestions);
+    handleSetTest(updatedQuestions)
   };
   
   //замена текста вопроса
@@ -45,13 +49,16 @@ const TestDev = ({ initialQuestions }) => {
     const updatedQuestions = [...questions];
     updatedQuestions[index][field] = value;
     setQuestions(updatedQuestions);
+    handleSetTest(updatedQuestions)
   };
 
   // замена текста опшна
   const handleOptionChange = (questionIndex, optionIndex, value) => {
     const updatedQuestions = [...questions];
     updatedQuestions[questionIndex].options[optionIndex] = value;
+    updatedQuestions[questionIndex].correctAnswer = []
     setQuestions(updatedQuestions);
+    handleSetTest(updatedQuestions)
   };
 
   //запись правильного ответа
@@ -75,6 +82,7 @@ const TestDev = ({ initialQuestions }) => {
       ];
     }
     setQuestions(updatedQuestions);
+    handleSetTest(updatedQuestions)
   };
 
   //изменение режима инпутов опшнов
@@ -83,6 +91,7 @@ const TestDev = ({ initialQuestions }) => {
     updatedQuestions[questionIndex].inputMode = mode;
     updatedQuestions[questionIndex].correctAnswer = [];
     setQuestions(updatedQuestions);
+    handleSetTest(updatedQuestions)
   };
 
   return (

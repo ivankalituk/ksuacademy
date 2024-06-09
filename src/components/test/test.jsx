@@ -2,28 +2,29 @@ import React, { useState } from 'react';
 import './test.scss'
 
 // Тестовые данные
-const questions = [
-  {
-    question: 'What is 2 + 2?',
-    options: ['3', '4', '5', '6'],
-    correctAnswer: ['4'],
-    inputMode: 'radio',
-  },
-  {
-    question: 'What is the capital of France?',
-    options: ['London', 'Paris', 'Berlin', 'Madrid'],
-    correctAnswer: ['Paris'],
-    inputMode: 'radio',
-  },
-  {
-    question: 'What is |x| = 2?',
-    options: ['2', '-2', '4', '10'],
-    correctAnswer: ['2', '-2'],
-    inputMode: 'checkbox',
-  },
-];
+// const questions = [
+//   {
+//     question: 'What is 2 + 2?',
+//     options: ['3', '4', '5', '6'],
+//     correctAnswer: ['4'],
+//     inputMode: 'radio',
+//   },
+//   {
+//     question: 'What is the capital of France?',
+//     options: ['London', 'Paris', 'Berlin', 'Madrid'],
+//     correctAnswer: ['Paris'],
+//     inputMode: 'radio',
+//   },
+//   {
+//     question: 'What is |x| = 2?',
+//     options: ['2', '-2', '4', '10'],
+//     correctAnswer: ['2', '-2'],
+//     inputMode: 'checkbox',
+//   },
+// ];
 
-const Test = ({ mode }) => {
+const Test = ({ mode, fetchedQuestions }) => {
+  const [questions, setQuestions] = useState(fetchedQuestions)
   const [currentQuestion, setCurrentQuestion] = useState(0);          //индекс текущего вопроса 
   const [selectedOptions, setSelectedOptions] = useState({});         //сохранение выбранного ответа
   const [score, setScore] = useState(0);                              //сохранение результата для итогового теста

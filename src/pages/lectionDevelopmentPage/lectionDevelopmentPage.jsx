@@ -2,10 +2,11 @@ import './lectionDevelopmentPage.scss'
 
 import TextEditor from '../../components/textEditor/textEditor'
 import { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useFetchRequest, useRequest } from '../../hooks/hook'
-import { createLection, deleteLection, getOneLection, putLection } from '../../api/lection'
+import {  deleteLection, getOneLection, putLection } from '../../api/lection'
 import TestDev from '../../components/testDev/testDev'
+import { getLectionTest, postLectionTest } from '../../api/lectionTest'
 
 
 function LectionDevelopmentPage(){
@@ -14,8 +15,9 @@ function LectionDevelopmentPage(){
 
     const [content, setContent] = useState(null)                //для сохранения контента лекции
     const [lectionName, setLectionName] = useState('')          //для созранения названия лекции
-
     const [lectionKey, setLectionKey] = useState(1)             //ключ получения если это редактирования
+    const [test, setTest] = useState([])
+
 
     const navigate = useNavigate()
     
@@ -28,6 +30,11 @@ function LectionDevelopmentPage(){
     // удаление лекции
     const {mutatedFunc: delLection} = useRequest({fetchFunc:  deleteLection})
 
+    // добавление теста в лекцию
+    const {mutatedFunc: createLectionTest} = useRequest({fetchFunc: postLectionTest})
+
+    const {data: quiz, isFetching: quizFetching} = useFetchRequest({fetchFunc: () => getLectionTest({lection_id: lection_id}), key: [], enebled: true})
+
     useEffect(() => {
         if(lectionFetching){
             setLectionName(lection[0].lection_name)
@@ -38,22 +45,29 @@ function LectionDevelopmentPage(){
     // создание лекции
     const handleLectionCreate = async () =>{
 
-        // добавитьь
+        // проверяем заполнены ли поля лекции
         if (lectionName !== '' && content && content !== '<p><br></p>'){
-            
-            const data = {
-                lection_name: lectionName,
-                lection_content: content,
-                theme_id: theme_id,
-                lection_id: lection_id
+         
+            // проверяем валидность теста
+            if (testValidation(test)){
+
+                // дата для лекции
+                const data = {
+                    lection_name: lectionName,
+                    lection_content: content,
+                    theme_id: theme_id,
+                    lection_id: lection_id
+                }
+                
+                // обновление лекции
+                await updateLection(data)
+                //обновление теста лекции
+                await createLectionTest({testMass: test, lection_id: lection_id})
+                // переход на страницу тем
+                navigate(`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}`)
+            } else {
+                alert("Тестові поля або відповіді не заповнені")
             }
-            
-
-            await updateLection(data)
-
-            navigate(`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}`)
-
-            console.log("FETCHING")
         } else {
             alert("Поля введення назви лекції або її контенту порожні(не відбулось змін)")
         }
@@ -65,6 +79,27 @@ function LectionDevelopmentPage(){
         navigate(`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}`)
 
     }
+
+    // колбек для изменения теста
+    const handleSetTest = (updatedTest) => {
+        setTest(updatedTest)
+    }
+
+    // проверка на валидность теста
+    const testValidation = (questions) => {
+        return questions.length > 0 && questions.every((q) => {
+          return (
+            q.question &&
+            Array.isArray(q.options) &&
+            q.options.length > 0 &&
+            q.options.every((option) => option !== '') &&
+            Array.isArray(q.correctAnswer) &&
+            q.correctAnswer.length > 0 &&
+            q.correctAnswer.every((answer) => answer !== '') &&
+            q.inputMode
+          );
+        });
+      };
 
     // по нажатию на кнопку обновления лекции должно происходить обновление лекции и создание теста
     // тест принимается в виде массива, который нужно отдельно разделить на данные и занести в бд
@@ -89,7 +124,7 @@ function LectionDevelopmentPage(){
                 </div>
 
                 <div className="testDevList">
-                    <TestDev />
+                    {quizFetching && <TestDev handleSetTest = {handleSetTest} test = {quiz}/>}
                 </div>
 
                 <div className="lectionDevPage_lectionControll">
