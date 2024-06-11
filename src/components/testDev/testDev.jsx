@@ -118,12 +118,12 @@ const TestDev = ({ test, handleSetTest }) => {
               <div className="testDev_question_inputMode_modes">
                 <div className="testDev_question_inputMode_mode">
                   <input type="radio" value="radio" checked={question.inputMode === 'radio'} onChange={(event) => handleInputModeChange(index, event.target.value)}/>
-                  <div>Одна відповідь</div>
+                  <div>Одна</div>
                 </div>
 
                 <div className="testDev_question_inputMode_mode">
                   <input type="radio" value="checkbox" checked={question.inputMode === 'checkbox'} onChange={(event) => handleInputModeChange(index, event.target.value)}/>
-                  <div>Довільна кількість</div>
+                  <div>Довільна</div>
                 </div>
               </div>
             </div>

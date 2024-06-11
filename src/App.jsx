@@ -61,10 +61,10 @@ function App() {
           console.error('Error:', error);
         }
       }
+      setReady(true)
     }
 
     checkUser()
-    setReady(true)
   }, [])
 
   return (

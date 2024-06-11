@@ -91,3 +91,20 @@
         }
     }
 }
+
+@media (max-width: 1000px) {
+    .lectionDevPage{
+        > .lectionDevPage_container{
+            padding: 0 20px;
+
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .lectionDevPage{
+        > .lectionDevPage_container{
+            padding: 0 10px;
+        }
+    }
+}
