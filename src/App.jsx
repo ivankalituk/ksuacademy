@@ -19,18 +19,21 @@ import { setUser } from "./redux/userSlice";
 import "./App.scss"
 
 import React, { useCallback, useEffect, useState } from "react";
-import TestPage from "./pages/testPage/testPage";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
+
 function App() {
   const [blockScroll, setBlockScroll] = useState(false)       //для блокировки скролла из-за бургерМеню
+  const [ready, setReady] = useState(false)                   //для отображения всего сайта только после получения пользователя
   const dispatch = useDispatch()
 
   // колбек для бургер меню (блокировка скрола)
   let burgerCallback = useCallback((block) =>{
     setBlockScroll(block)
   }, [])
+
+  
 
   // получение пользователя, если его токен активен
   useEffect(() => {
@@ -41,9 +44,11 @@ function App() {
       if (token){
         try {
           // проверяем активен ли токен
+          
           const response = await axios.post('http://localhost:1000/userCheck', { access_token: token });
           const data = response.data
           console.log(data)
+
           // если токен активен, то заносим информацию в редакс
           if (data.active){
             const user = {
@@ -55,6 +60,7 @@ function App() {
             }
             
             dispatch(setUser(user))
+            setReady(true)
           }
         } catch (error) {
           console.error('Error:', error);
@@ -67,28 +73,32 @@ function App() {
 
   return (
     <div className={`App ${blockScroll? 'blockScroll' : ''}`}>
-      <Header burgerCallback={burgerCallback} />
+      {ready && <>
+              <Header burgerCallback={burgerCallback} />
 
-      <Routes>
-        {/* ОБЫЧНЫЕ РОУТЫ */}
-        <Route path="/" Component={MainPage} />
-        <Route path="/course/:course_id" Component={CoursePage}/>
+              <Routes>
+                {/* ОБЫЧНЫЕ РОУТЫ */}
+                <Route path="/" Component={MainPage} />
+                <Route path="/course/:course_id" Component={CoursePage}/>
+        
+                {/* Защищённые роуты только по логину */}
+        
+                <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} /></Route>
+                <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/profile/settings" Component={SettingsPage} /></Route>
+                <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/profile" Component={ProfilePage} /></Route>
+                <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/course/:course_id/chapter/:chapter_id/theme/:theme_id/lection/:lection_id" Component={LectionPage} /></Route>
+        
+                {/* Защищённые роуты, только по логину и роли преподавателя */}
+                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment" Component={CourseDevelopmentPage} /></Route>
+                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage} /></Route>
+                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id"  Component={LectionDevelopmentPage} /></Route>
+                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/:lection_id"  Component={LectionDevelopmentPage} /></Route>
+              </Routes>
+        
+              <Footer />
+            </>
+          }
 
-        {/* Защищённые роуты только по логину */}
-
-        <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} /></Route>
-        <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/profile/settings" Component={SettingsPage} /></Route>
-        <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/profile" Component={ProfilePage} /></Route>
-        <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/course/:course_id/chapter/:chapter_id/theme/:theme_id/lection/:lection_id" Component={LectionPage} /></Route>
-
-        {/* Защищённые роуты, только по логину и роли преподавателя */}
-        <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment" Component={CourseDevelopmentPage} /></Route>
-        <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage} /></Route>
-        <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id"  Component={LectionDevelopmentPage} /></Route>
-        <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/:lection_id"  Component={LectionDevelopmentPage} /></Route>
-      </Routes>
-
-      <Footer />
 
     </div>
   );
