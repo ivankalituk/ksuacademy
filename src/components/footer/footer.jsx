@@ -13,7 +13,7 @@ function Footer(){
                     <Link to="/" className="footer_logoGroup">
                         <img src={logo} alt="Logo" />
                         
-                        <div className="footer_logoGroup_text">ksu academy</div>
+                        <h1 className="footer_logoGroup_text">ksu academy</h1>
                     </Link>
 
                     <div className="footer_mainInfo_info">

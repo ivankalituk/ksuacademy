@@ -74,7 +74,8 @@ header{
         transform: translateX(-50%);    /* смещаем блок назад на половину его ширины */
     
         > .header_courses_container{
-            z-index: -100;
+            position: relative;
+            z-index: 100;
             padding: 20px 116px;
             box-sizing: border-box;
             width: 1440px;
@@ -86,12 +87,15 @@ header{
             gap: 10px;
 
             > a{
-                display: block;
-                cursor: pointer;
                 text-decoration: none;
-                color: #16325C;
-                font-weight: 900;
-                margin-top: 10px;
+                h2{
+                    margin: 0;    
+                    display: block;
+                    cursor: pointer;
+                    color: #16325C;
+                    font-weight: 900;
+                    margin-top: 10px;
+                }
             }
         }
 
@@ -137,14 +141,17 @@ header{
                     
 
                     > a{
-                        font-size: 24px;
-                        font-weight: 700;
-                        color: #005495;
-                        display: block;
                         text-decoration: none;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        white-space: nowrap;
+                        color: #005495;
+                        h2{
+                            margin: 0;
+                            font-size: 24px;
+                            font-weight: 700;
+                            display: block;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
                     }
                 }
             }

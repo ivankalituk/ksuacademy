@@ -11,6 +11,8 @@ import LectionDevelopmentPage from "./pages/lectionDevelopmentPage/lectionDevelo
 import LectionPage from "./pages/lectionPage/lectionPage";
 import SettingsPage from "./pages/settingsPage/settingsPage";
 
+import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+
 import { Routes, Route } from "react-router-dom";
 import { setUser } from "./redux/userSlice";
 
@@ -41,7 +43,7 @@ function App() {
           // проверяем активен ли токен
           const response = await axios.post('http://localhost:1000/userCheck', { access_token: token });
           const data = response.data
-          
+          console.log(data)
           // если токен активен, то заносим информацию в редакс
           if (data.active){
             const user = {
@@ -65,19 +67,25 @@ function App() {
 
   return (
     <div className={`App ${blockScroll? 'blockScroll' : ''}`}>
-      <Header burgerCallback={burgerCallback}></Header>
+      <Header burgerCallback={burgerCallback} />
 
       <Routes>
-        <Route path="/" Component={MainPage} ></Route>
-        <Route path="/course/:course_id" Component={CoursePage}></Route>
-        <Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} ></Route>
-        <Route path="/course/:course_id/chapter/:chapter_id/theme/:theme_id/lection/:lection_id" Component={LectionPage}></Route>
-        <Route path="/profile" Component={ProfilePage}></Route>
-        <Route path="/courseDevelopment" Component={CourseDevelopmentPage}></Route>
-        <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage}></Route>
-        <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id"  Component={LectionDevelopmentPage}></Route>
-        <Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/:lection_id"  Component={LectionDevelopmentPage}></Route>
-        <Route path="/profile/settings" Component={SettingsPage}/>
+        {/* ОБЫЧНЫЕ РОУТЫ */}
+        <Route path="/" Component={MainPage} />
+        <Route path="/course/:course_id" Component={CoursePage}/>
+
+        {/* Защищённые роуты только по логину */}
+
+        <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} /></Route>
+        <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/profile/settings" Component={SettingsPage} /></Route>
+        <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/profile" Component={ProfilePage} /></Route>
+        <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/course/:course_id/chapter/:chapter_id/theme/:theme_id/lection/:lection_id" Component={LectionPage} /></Route>
+
+        {/* Защищённые роуты, только по логину и роли преподавателя */}
+        <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment" Component={CourseDevelopmentPage} /></Route>
+        <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage} /></Route>
+        <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id"  Component={LectionDevelopmentPage} /></Route>
+        <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/:lection_id"  Component={LectionDevelopmentPage} /></Route>
       </Routes>
 
       <Footer />

@@ -1,7 +1,7 @@
 .couDevPage{
     max-width: 1440px;
     margin: 0 auto;
-
+    min-height: 100vh;
     > .couDevPage_container{
         padding: 0 116px;
 
@@ -16,14 +16,8 @@
             gap: 16px;
 
             > .couDevPage_courseDevControl_selectCourse{
+                position: relative;
                 z-index: 0;
-
-                Select{
-                    z-index: -1;
-                }
-
-                // СТИЛИЗАЦИЯ СЕЛЕКТА
-
             }
 
             > .couDevPage_courseDevControl_createCourse{
@@ -127,6 +121,10 @@
             }
 
             > .couDevPage_courseName_name{
+                flex: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
                 font-weight: 900;
                 font-size: 36px;
                 line-height: 43.88px;

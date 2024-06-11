@@ -28,7 +28,7 @@ function CourseMainPage(props){
                 </div>
 
                 <div className="course_heading_container">
-                    <Link to={`/course/${props.data.course_id}`}>{props.data.course_name}</Link>
+                    <Link to={`/course/${props.data.course_id}`}><h2>{props.data.course_name}</h2></Link>
 
                     <div className="course_heading_tick" onClick={togleCourse}>
                         <img src={courseHeadingTick} alt="Tick" className={tick? "rotate" : ""}/>

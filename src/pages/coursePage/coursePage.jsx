@@ -12,7 +12,10 @@ function CoursePage(){
 
     const {data: course, isFetching: courseIsFetching} = useFetchRequest({fetchFunc: () => getOneCourse({course_id: course_id}), key: [], enebled: true})
     const {data: chapters, isFetching: chaptersIsFetching} = useFetchRequest({fetchFunc: () => getChaptersByCourseId({course_id: course_id}), key: [], enebled: true})
-    // console.log(course_id)
+
+    console.log(course)
+
+
     return(
         <div className="coursePage">
             <div className="coursePage_container">

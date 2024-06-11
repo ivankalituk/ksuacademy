@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import './header.scss'
 
@@ -22,6 +22,11 @@ function Header({burgerCallback}){
 
     let isMobile = useMediaQuery({maxWidth: 700});
 
+    const location = useLocation()
+
+    useEffect(()=>{
+        setCourses(true)
+    }, [location])
 
     // для отслеживания размера экрана
     useEffect(()=>{
@@ -57,7 +62,7 @@ function Header({burgerCallback}){
                 <Link to="/" className="header_logoGroup">
                     <img src={logo} alt="Logo" />
                     
-                    <div className="header_logoGroup_text">ksu academy</div>
+                    <h1 className="header_logoGroup_text">ksu academy</h1>
                 </Link>
 
 
@@ -87,7 +92,7 @@ function Header({burgerCallback}){
                 <div className={`header_courses_container ${courses? "show" : ""}`}>
 
                     {coursesIsFeching && coursesList.map((data, index) => (
-                        <Link key={index} to={`course/${data.course_id}`}>{data.course_name}</Link>
+                        <Link key={index} to={`course/${data.course_id}`}><h2>{data.course_name}</h2></Link>
                     ))}
 
                 </div>
@@ -105,7 +110,7 @@ function Header({burgerCallback}){
                         <div className="header_burgerMenu_subjectList">
 
                             {coursesIsFeching && coursesList.map((data, index) => (
-                                <Link key={index} to={`course/${data.course_id}`}>{data.course_name}</Link>
+                                <Link key={index} to={`course/${data.course_id}`}><h2>{data.course_name}</h2></Link>
                             ))}
 
                         </div>
