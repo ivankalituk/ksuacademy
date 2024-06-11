@@ -69,6 +69,7 @@ header{
 
     > .header_courses{
         position: absolute;
+        z-index: 100;
         top: 65px;
         left: 50%;                      /* располагаем блок по горизонтали на 50% от левой границы родительского элемента */
         transform: translateX(-50%);    /* смещаем блок назад на половину его ширины */

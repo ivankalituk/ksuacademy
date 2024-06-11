@@ -33,21 +33,17 @@ function App() {
     setBlockScroll(block)
   }, [])
 
-  
-
   // получение пользователя, если его токен активен
   useEffect(() => {
     const checkUser = async () => {
       // если токен существует
       const token = localStorage.getItem('access_token')
-      console.log(token)
       if (token){
         try {
           // проверяем активен ли токен
           
-          const response = await axios.post('http://localhost:1000/userCheck', { access_token: token });
+          const response = await axios.post(process.env.REACT_APP_SERVER_URL + 'userCheck', { access_token: token });
           const data = response.data
-          console.log(data)
 
           // если токен активен, то заносим информацию в редакс
           if (data.active){
@@ -60,7 +56,6 @@ function App() {
             }
             
             dispatch(setUser(user))
-            setReady(true)
           }
         } catch (error) {
           console.error('Error:', error);
@@ -69,6 +64,7 @@ function App() {
     }
 
     checkUser()
+    setReady(true)
   }, [])
 
   return (

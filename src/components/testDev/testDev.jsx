@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './testDev.scss'
 const TestDev = ({ test, handleSetTest }) => {
-
+  
   // тесты
-  const [questions, setQuestions] = useState(test !== undefined? test : []);
+  const [questions, setQuestions] = useState(test.data !== null? test : []);
   
   // добавление вопроса
   const handleAddQuestion = () => {

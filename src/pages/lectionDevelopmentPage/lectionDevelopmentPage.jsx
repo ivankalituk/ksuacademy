@@ -33,7 +33,9 @@ function LectionDevelopmentPage(){
     // добавление теста в лекцию
     const {mutatedFunc: createLectionTest} = useRequest({fetchFunc: postLectionTest})
 
+    // получение теста
     const {data: quiz, isFetching: quizFetching} = useFetchRequest({fetchFunc: () => getLectionTest({lection_id: lection_id}), key: [], enebled: true})
+
 
     useEffect(() => {
         if(lectionFetching){
