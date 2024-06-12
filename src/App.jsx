@@ -10,6 +10,7 @@ import ThemeDevelopmentPage from "./pages/themeDevelopmentPage/themeDevelopmentP
 import LectionDevelopmentPage from "./pages/lectionDevelopmentPage/lectionDevelopmentPage";
 import LectionPage from "./pages/lectionPage/lectionPage";
 import SettingsPage from "./pages/settingsPage/settingsPage";
+import FinalTestDevPage from "./pages/finalTestDevPage/finalTestDevPage";
 
 import ProtectedRoute from "./components/protectedRoute/protectedRoute";
 
@@ -78,7 +79,6 @@ function App() {
                 <Route path="/course/:course_id" Component={CoursePage}/>
         
                 {/* Защищённые роуты только по логину */}
-        
                 <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/course/:course_id/chapter/:chapter_id" Component={ThemePage} /></Route>
                 <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/profile/settings" Component={SettingsPage} /></Route>
                 <Route element={<ProtectedRoute isRoleNeeded = {false} />}><Route path="/profile" Component={ProfilePage} /></Route>
@@ -89,6 +89,8 @@ function App() {
                 <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage} /></Route>
                 <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id"  Component={LectionDevelopmentPage} /></Route>
                 <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/:lection_id"  Component={LectionDevelopmentPage} /></Route>
+                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/themeTestDevelopment"  Component={FinalTestDevPage} /></Route>
+                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/chapterTestDevelopment"  Component={FinalTestDevPage} /></Route>
               </Routes>
         
               <Footer />

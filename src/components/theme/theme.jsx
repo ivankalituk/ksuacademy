@@ -6,14 +6,15 @@ import Practice from './components/practice/practice'
 import del from '../../assets/photos/delete.svg'
 import edit  from '../../assets/photos/edit.svg'
 
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useFetchRequest, useRequest } from '../../hooks/hook'
 import { deleteTheme, updateTheme } from '../../api/theme'
 import { useState } from 'react'
 import { createLection, getLections } from '../../api/lection'
 
 function Theme(props){
-
+    const navigate = useNavigate()
+    const {course_id, chapter_id} = useParams()
     const [editMode, setEditMode] = useState(false)         //режим редактирования
     const [nameInput, setNameInput] = useState('')          //сохранение инпута названия темы
 
@@ -35,8 +36,12 @@ function Theme(props){
     console.log('theme_id', props.data.theme_id)
     // функция удаления темы
     const handleDelete = async() => {
-        await themeDelete({theme_id: props.data.theme_id})
-        props.themesKeyCallback()
+        if(lections.length > 0){
+            alert('Спочатку видаліть лекції теми')
+        } else {
+            await themeDelete({theme_id: props.data.theme_id})
+            props.themesKeyCallback()
+        }
     }
 
     // функция изменения темы
@@ -59,8 +64,7 @@ function Theme(props){
             lection_ready: false
         })
         setLectionsKey(lectionsKey + 1)
-    } 
-
+    }
 
     return(
         <div className="theme">
@@ -99,7 +103,7 @@ function Theme(props){
                     <div className="theme_practice_list">
                         <Practice></Practice>
 
-                        {props.role === 'teacher' && <div className="theme_practice_create">+ Створити тест</div>}
+                        {props.role === 'teacher' && <div className="theme_practice_create" onClick={()=> {navigate(`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}/lectionDevelopment/${props.data.theme_id}/themeTestDevelopment`)}}>+ Створити тест</div>}
                     </div>
                 </div>
             </div>

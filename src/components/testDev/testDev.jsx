@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './testDev.scss'
-const TestDev = ({ test, handleSetTest }) => {
+const TestDev = ({ test, handleSetTest, mode }) => {
   
   // тесты
   const [questions, setQuestions] = useState(test.data !== null? test : []);
@@ -97,7 +97,7 @@ const TestDev = ({ test, handleSetTest }) => {
   return (
     <div className='testDev'>
 
-      <div className="testDev_heading">Розроблення питань лекції</div>
+      <div className="testDev_heading">Розроблення питань {mode === 'lection' && 'лекції'}{mode === 'theme' && 'теми'}{mode === 'chapter' && 'розділу'} </div>
       <button onClick={handleAddQuestion}>Додати питання</button>
 
       <div className="testDev_questions">
@@ -146,8 +146,8 @@ const TestDev = ({ test, handleSetTest }) => {
             </div>
             
             <div className="testDev_question_devButtons">
-              <button onClick={() => handleAddOption(index)}>Add Option</button>
-              <button onClick={() => handleDeleteQuestion(index)}>Delete Question</button>
+              <button onClick={() => handleAddOption(index)}>Додати відповідь</button>
+              <button onClick={() => handleDeleteQuestion(index)}>Видалити відповідь</button>
             </div>
           </div>
         ))}

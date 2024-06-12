@@ -7,6 +7,7 @@ import { useFetchRequest, useRequest } from '../../hooks/hook'
 import {  deleteLection, getOneLection, putLection } from '../../api/lection'
 import TestDev from '../../components/testDev/testDev'
 import { getLectionTest, postLectionTest } from '../../api/lectionTest'
+import { testCheckFunc } from '../../utils/testCheckFunc'
 
 
 function LectionDevelopmentPage(){
@@ -51,7 +52,7 @@ function LectionDevelopmentPage(){
         if (lectionName !== '' && content && content !== '<p><br></p>'){
          
             // проверяем валидность теста
-            if (testValidation(test)){
+            if (testCheckFunc(test)){
 
                 // дата для лекции
                 const data = {
@@ -89,20 +90,20 @@ function LectionDevelopmentPage(){
     }
 
     // проверка на валидность теста
-    const testValidation = (questions) => {
-        return questions.length > 0 && questions.every((q) => {
-          return (
-            q.question &&
-            Array.isArray(q.options) &&
-            q.options.length > 0 &&
-            q.options.every((option) => option !== '') &&
-            Array.isArray(q.correctAnswer) &&
-            q.correctAnswer.length > 0 &&
-            q.correctAnswer.every((answer) => answer !== '') &&
-            q.inputMode
-          );
-        });
-      };
+    // const testValidation = (questions) => {
+    //     return questions.length > 0 && questions.every((q) => {
+    //       return (
+    //         q.question &&
+    //         Array.isArray(q.options) &&
+    //         q.options.length > 0 &&
+    //         q.options.every((option) => option !== '') &&
+    //         Array.isArray(q.correctAnswer) &&
+    //         q.correctAnswer.length > 0 &&
+    //         q.correctAnswer.every((answer) => answer !== '') &&
+    //         q.inputMode
+    //       );
+    //     });
+    //   };
 
     // по нажатию на кнопку обновления лекции должно происходить обновление лекции и создание теста
     // тест принимается в виде массива, который нужно отдельно разделить на данные и занести в бд
@@ -127,7 +128,7 @@ function LectionDevelopmentPage(){
                 </div>
 
                 <div className="testDevList">
-                    {quizFetching && <TestDev handleSetTest = {handleSetTest} test = {quiz}/>}
+                    {quizFetching && <TestDev handleSetTest = {handleSetTest} test = {quiz} mode = {'lection'}/>}
                 </div>
 
                 <div className="lectionDevPage_lectionControll">

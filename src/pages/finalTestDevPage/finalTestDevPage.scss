@@ -1,0 +1,48 @@
+.finalTestDevPage{
+    max-width: 1440px;
+    margin: 0 auto;
+    min-height: 600px;
+    > .finalTestDevPage_container{
+        padding: 0 116px;
+
+        > .finalTestDevPage_testDevContainer{
+            padding: 20px 0;
+        }
+
+        button{
+            padding: 0 10px;
+            height: 32px;
+            outline: none;
+            border: none;
+            border-radius: 16px;
+            background-color: #005495;
+            color: white;
+            font-family: Montserrat;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.5s;
+            cursor: pointer;
+        
+            &:active{
+                background-color: #16325C;
+                transition: 0.5s;
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .finalTestDevPage{
+        > .finalTestDevPage_container{
+            padding: 0 20px;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .finalTestDevPage{
+        > .finalTestDevPage_container{
+            padding: 0 10px;
+        }
+    }
+}
