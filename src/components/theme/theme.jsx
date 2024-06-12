@@ -30,6 +30,8 @@ function Theme(props){
     // создание лекции
     const {mutatedFunc: postLection} = useRequest({fetchFunc: createLection})
 
+    console.log(lections)
+
     console.log('theme_id', props.data.theme_id)
     // функция удаления темы
     const handleDelete = async() => {
@@ -54,6 +56,7 @@ function Theme(props){
             lection_name: 'Нова лекція',
             lection_content: '',
             theme_id: props.data.theme_id,
+            lection_ready: false
         })
         setLectionsKey(lectionsKey + 1)
     } 
@@ -81,7 +84,9 @@ function Theme(props){
 
                     <div className="theme_materials_list">
                         {lectionsFetcing && lections.map((data, index) => (
-                            <Material data = {data} key={index} role = {props.role} theme_id = {props.data.theme_id}></Material>
+                            props.role === 'teacher'? <Material data = {data} key={index} role = {props.role} theme_id = {props.data.theme_id} ready = {data.lection_ready}></Material>
+                            :
+                            (data.lection_ready? <Material data = {data} key={index} role = {props.role} theme_id = {props.data.theme_id} ready = {data.lection_ready}></Material> : null)
                         ))}
                         
                         {props.role === 'teacher' && <div className="theme_material_create" onClick={handleCreateLection}>+ Створити лекцію</div>}

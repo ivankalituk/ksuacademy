@@ -48,7 +48,7 @@ function Registration(){
                         <div className="registrationGroup_Authorized_nickname">{user.user_nickName}</div>
                             
                         {/* ЗАМЕНИТЬ ЛОГО */}
-                        <img src={user.user_imgUrl? 'http://localhost:1000/' + user.user_imgUrl : logo2} alt="user_logo" />
+                        <img src={user.user_imgUrl? process.env.REACT_APP_SERVER_URL + user.user_imgUrl : logo2} alt="user_logo" />
                             
                     </div>
                 </Link>

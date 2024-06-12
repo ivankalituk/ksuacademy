@@ -11,7 +11,7 @@ function Material(props){
     // Поменять ссылку для редактирования лекции
 
     return(
-        <Link className="material" to={(props.role === 'student')? `/course/${course_id}/chapter/${chapter_id}/theme/${theme_id}/lection/${props.data.lection_id}` : `/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}/lectionDevelopment/${theme_id}/${props.data.lection_id}`}>
+        <Link className={props.ready? "material" : "material notReady"} to={(props.role === 'student')? `/course/${course_id}/chapter/${chapter_id}/theme/${theme_id}/lection/${props.data.lection_id}` : `/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}/lectionDevelopment/${theme_id}/${props.data.lection_id}`}>
             <div className="material_img">
                 <img src={lection} alt="lection" />
             </div>

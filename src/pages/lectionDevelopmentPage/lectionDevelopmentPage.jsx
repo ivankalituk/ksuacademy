@@ -58,7 +58,8 @@ function LectionDevelopmentPage(){
                     lection_name: lectionName,
                     lection_content: content,
                     theme_id: theme_id,
-                    lection_id: lection_id
+                    lection_id: lection_id,
+                    lection_ready: true
                 }
                 
                 // обновление лекции

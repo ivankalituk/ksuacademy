@@ -32,6 +32,10 @@
     }
 }
 
+.material.notReady{
+    background-color: rgb(255, 122, 122);
+}
+
 @media (max-width: 700px) {
     .material{
         max-width: none;

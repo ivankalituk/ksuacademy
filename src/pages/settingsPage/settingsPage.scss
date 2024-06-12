@@ -1,12 +1,14 @@
 .settingsPage{
     max-width: 1440px;
     margin: 0 auto;
-    min-height: 100vh;
+    min-height: 600px;
+    
     > .settingsPage_container{
         padding: 0 116px;
 
         > .settingsPage_nicknameChange{
             margin-top: 5px;
+
             > span{
                 display: block;
                 font-size: 36px;
@@ -81,35 +83,59 @@
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                > .settingsPage_avatarChange_customInput{
+
+                > .settingsPage_avatarChange_changing{
+                    flex: 1;
+                    
                     position: relative;
-                    width: 100px;
-                    height: 100px;
-                    background-color: red;
-                    display: flex;
-                    justify-content: space-around;
-                    align-items: center;
-                    border-radius: 50%;
 
                     >img{
-                        height: 70%;
-                        width: 70%;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 50%;
                     }
 
                     >input{
                         position: absolute;
-                        z-index: 1000;
-                        width: 100%;
+                        z-index: 100;
                         height: 100%;
+                        width: 100%;
+                        top: 0px;
+                        left: 0px;
+                        cursor: pointer;
                         border-radius: 50%;
                         opacity: 0;
+
+                        &:hover~div{
+                            opacity: 1;
+                            transition: 0.5s;
+                        }
+                    }
+
+                    >div{
+                        position: absolute;
+                        z-index: 99;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 50%;
+                        opacity: 0;
+                        background-color: gray;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        transition: 0.5s;
+                        >img{
+                            width: 70%;
+                        }
                     }
                 }
 
                 > button{
                     height: 32px;
                     flex: 1;
-                    max-width: 500px;
+                    width: 100%;
                     outline: none;
                     border: none;
                     border-radius: 16px;
@@ -119,7 +145,8 @@
                     font-weight: 600;
                     text-transform: uppercase;
                     transition: 0.5s;
-        
+                    padding: 5px;
+                    min-height: 32px;
                     &:active{
                         background-color: #16325C;
                         transition: 0.5s;
@@ -128,10 +155,13 @@
             }
         }
 
-        > .settingsPage_logOut{
-            margin-top: 5px;
+        > .settingsPage_accountDev{
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+
             > button{
-                height: 32px;
+                min-height: 32px;
                 flex: 1;
                 outline: none;
                 border: none;
@@ -142,6 +172,7 @@
                 font-weight: 600;
                 text-transform: uppercase;
                 transition: 0.5s;
+                padding: 5px;
     
                 &:active{
                     background-color: rgb(185, 2, 2);
@@ -149,30 +180,37 @@
                 }
             }
         }
+    }
+}
 
-        > .settingsPage_accountDelete{
-            margin: 5px 0;
+@media (max-width: 1000px) {
+    .settingsPage{
+        > .settingsPage_container{
+            padding: 0 20px
+        }
+    }
+}
 
-            > button{
-                height: 32px;
-                flex: 1;
-                outline: none;
-                border: none;
-                border-radius: 16px;
-                background-color: red;
-                color: white;
-                font-family: Montserrat;
-                font-weight: 600;
-                text-transform: uppercase;
-                transition: 0.5s;
-    
-                &:active{
-                    background-color: rgb(185, 2, 2);
-                    transition: 0.5s;
+@media (max-width: 700px) {
+    .settingsPage{
+        > .settingsPage_container{
+            padding: 0 10px;
+
+            > .settingsPage_nicknameChange{
+                > span{
+                    font-size: 26px;
                 }
+            }
 
-                &:disabled{
-                    opacity: 0.5;
+            > .settingsPage_avatarChange{
+                > span{
+                    font-size: 26px;
+                }
+            }   
+
+            > .settingsPage_avatarChange{
+                > .settingsPage_avatarChange_dev{
+                    flex-direction: column;
                 }
             }
         }

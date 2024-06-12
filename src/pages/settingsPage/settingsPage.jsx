@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearUser, setUserNickname, setUserImgPath} from '../../redux/userSlice'
 import { googleLogout } from '@react-oauth/google'
 import { useNavigate } from 'react-router-dom'
-
+import logo from '../../assets/photos/logo2.png'
 function SettingsPage(){
 
     const user = useSelector((state) => state.user)
@@ -99,22 +99,26 @@ function SettingsPage(){
                     <span>Змінити аватар</span>
 
                     <div className="settingsPage_avatarChange_dev">
-                        <div className="settingsPage_avatarChange_customInput">
-                            <img src={imgChange} alt="imgChange" />
+
+                        
+
+
+
+                        <div className="settingsPage_avatarChange_changing">
+                            <img src={selectedImg? selectedImg : user.user_imgUrl? process.env.REACT_APP_SERVER_URL + user.user_imgUrl : logo} alt="alt" />
+
                             <input type="file" onChange={handleInputImgChange} />
+                            <div><img src={imgChange} alt="imgChange" /></div>
                         </div>
 
                         <button onClick={handleImgChange}>Змінити</button>
                     </div>
                 </div>
 
-                {/* выход из  аккаунта */}
-                <div className="settingsPage_logOut">
-                    <button onClick={handleLogOut}>Вийти з аккаунту</button>
-                </div>
 
-                {/* удалить аккаунт */}
-                <div className="settingsPage_accountDelete">
+                <div className="settingsPage_accountDev">
+                    <button onClick={handleLogOut}>Вийти з аккаунту</button>
+
                     <button disabled = {true}>Видалити аккаунт</button>
                 </div>
             </div>
