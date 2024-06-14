@@ -87,10 +87,10 @@ function App() {
                 {/* Защищённые роуты, только по логину и роли преподавателя */}
                 <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment" Component={CourseDevelopmentPage} /></Route>
                 <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id" Component={ThemeDevelopmentPage} /></Route>
-                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id"  Component={LectionDevelopmentPage} /></Route>
+                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id" Component={LectionDevelopmentPage} /></Route>
                 <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/:lection_id"  Component={LectionDevelopmentPage} /></Route>
-                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/themeTestDevelopment"  Component={FinalTestDevPage} /></Route>
-                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/chapterTestDevelopment"  Component={FinalTestDevPage} /></Route>
+                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/themeTestDevelopment/:theme_id" Component={FinalTestDevPage} /></Route>
+                <Route element = {<ProtectedRoute isRoleNeeded = {true} />}><Route path="/courseDevelopment/:course_id/themeDevelopment/:chapter_id/lectionDevelopment/:theme_id/chapterTestDevelopment" Component={FinalTestDevPage} /></Route>
               </Routes>
         
               <Footer />

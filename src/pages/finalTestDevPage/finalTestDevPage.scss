@@ -8,26 +8,40 @@
         > .finalTestDevPage_testDevContainer{
             padding: 20px 0;
         }
-
-        button{
-            padding: 0 10px;
-            height: 32px;
-            outline: none;
-            border: none;
-            border-radius: 16px;
-            background-color: #005495;
-            color: white;
-            font-family: Montserrat;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: 0.5s;
-            cursor: pointer;
         
-            &:active{
-                background-color: #16325C;
+        > .finalTestDevPage_buttons{
+            display: flex;
+            gap: 10px;
+            >button{
+                flex: 1;
+                padding: 0 10px;
+                height: 32px;
+                outline: none;
+                border: none;
+                border-radius: 16px;
+                background-color: #005495;
+                color: white;
+                font-family: Montserrat;
+                font-weight: 600;
+                text-transform: uppercase;
                 transition: 0.5s;
+                cursor: pointer;
+            
+                &:active{
+                    background-color: #16325C;
+                    transition: 0.5s;
+                }
+
+                &:last-child{
+                    background-color: red;
+
+                    &:active{
+                        background-color: rgb(182, 0, 0);
+                    }
+                }
             }
         }
+
     }
 }
 

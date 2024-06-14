@@ -4,7 +4,7 @@ const serverUrl = process.env.REACT_APP_SERVER_URL
 
 // получение всхе разделов по айди курса
 export async function getLectionTest(data) {
-    console.log(data)
+    // console.log(data)
     return await axios.get(serverUrl + 'lection/test/' + data.lection_id).then(({data}) => data);
 }
 

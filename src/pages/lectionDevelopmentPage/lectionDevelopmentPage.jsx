@@ -89,25 +89,6 @@ function LectionDevelopmentPage(){
         setTest(updatedTest)
     }
 
-    // проверка на валидность теста
-    // const testValidation = (questions) => {
-    //     return questions.length > 0 && questions.every((q) => {
-    //       return (
-    //         q.question &&
-    //         Array.isArray(q.options) &&
-    //         q.options.length > 0 &&
-    //         q.options.every((option) => option !== '') &&
-    //         Array.isArray(q.correctAnswer) &&
-    //         q.correctAnswer.length > 0 &&
-    //         q.correctAnswer.every((answer) => answer !== '') &&
-    //         q.inputMode
-    //       );
-    //     });
-    //   };
-
-    // по нажатию на кнопку обновления лекции должно происходить обновление лекции и создание теста
-    // тест принимается в виде массива, который нужно отдельно разделить на данные и занести в бд
-
     return(
         <div className="lectionDevPage">
             <div className="lectionDevPage_container">

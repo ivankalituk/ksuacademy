@@ -11,6 +11,7 @@ import { useFetchRequest, useRequest } from '../../hooks/hook'
 import { deleteTheme, updateTheme } from '../../api/theme'
 import { useState } from 'react'
 import { createLection, getLections } from '../../api/lection'
+import { getThemePractice, postThemePractice } from '../../api/themeTest'
 
 function Theme(props){
     const navigate = useNavigate()
@@ -19,6 +20,8 @@ function Theme(props){
     const [nameInput, setNameInput] = useState('')          //сохранение инпута названия темы
 
     const [lectionsKey, setLectionsKey] = useState(1)
+    const [practiceKey, setPracticeKey] = useState(1)
+
     // удаление темы
     const {mutatedFunc: themeDelete} = useRequest({fetchFunc: deleteTheme})
 
@@ -31,7 +34,13 @@ function Theme(props){
     // создание лекции
     const {mutatedFunc: postLection} = useRequest({fetchFunc: createLection})
 
-    console.log(lections)
+    // получение практики
+    const {data: practice, isFetching: practiceFetching} = useFetchRequest({fetchFunc: ()=> getThemePractice({theme_id: props.data.theme_id}), key: [practiceKey], enebled: true})
+
+    // создание практики
+    const {mutatedFunc: createPractice} = useRequest({fetchFunc: postThemePractice})
+
+    console.log(practice)
 
     console.log('theme_id', props.data.theme_id)
     // функция удаления темы
@@ -64,6 +73,11 @@ function Theme(props){
             lection_ready: false
         })
         setLectionsKey(lectionsKey + 1)
+    }
+
+    const handlePracticeCreate = async() => {
+        await createPractice({theme_id: props.data.theme_id})
+        setPracticeKey(practiceKey + 1)
     }
 
     return(
@@ -101,9 +115,9 @@ function Theme(props){
                     <div className="theme_education_heading">Практичні завдання</div>
 
                     <div className="theme_practice_list">
-                        <Practice></Practice>
+                    {practiceFetching && practice.length > 0 && <Practice></Practice>}
 
-                        {props.role === 'teacher' && <div className="theme_practice_create" onClick={()=> {navigate(`/courseDevelopment/${course_id}/themeDevelopment/${chapter_id}/lectionDevelopment/${props.data.theme_id}/themeTestDevelopment`)}}>+ Створити тест</div>}
+                        {(practiceFetching && props.role === 'teacher' && !(practice.length > 0)) && <div className="theme_practice_create" onClick={handlePracticeCreate}>+ Створити тест</div>}
                     </div>
                 </div>
             </div>
